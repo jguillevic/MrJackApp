@@ -7,13 +7,12 @@
              x:Name="UserControl">
     <UserControl.Resources>
         <tileConverter:TileToFillConverter x:Key="FillConverter"/>
-        <tileConverter:TileXToXPosConverter x:Key="XConverter"/>
-        <tileConverter:TileYToYPosConverter x:Key="YConverter"/>
         <tileConverter:TileCoordinateToTextConverter x:Key="TextConverter"/>
+        <tileConverter:TilePosToMarginConverter x:Key="PosToMarginConverter"/>
         <commonConverter:BoolToVisibilityConverter x:Key="BoolToVisConverter"/>
     </UserControl.Resources>
 
-    <Canvas>
+    <Canvas Margin="{Binding Coordinate, Converter={StaticResource PosToMarginConverter}}">
         <interactivity:Interaction.Triggers>
             <interactivity:EventTrigger EventName="MouseLeftButtonDown">
                 <interactivity:InvokeCommandAction Command="{Binding SelectionCommand}"/>
@@ -24,14 +23,8 @@
                  StrokeThickness="1"
                  Stroke="Black"
                  Points="60, 0, 30, 51.96152, -30, 51.96152, -60, 0, -30, -51.96152, 30, -51.96152">
-            <Polygon.RenderTransform>
-                <TranslateTransform X="{Binding Coordinate, Converter={StaticResource XConverter}}" Y="{Binding Coordinate, Converter={StaticResource YConverter}}"/>
-            </Polygon.RenderTransform>
         </Polygon>
         <TextBlock Text="{Binding Coordinate, Converter={StaticResource TextConverter}}" Foreground="Goldenrod" Margin="-25 -10 0 0" Visibility="{Binding ShowCoordinate, Converter={StaticResource BoolToVisConverter}}">
-            <TextBlock.RenderTransform>
-                <TranslateTransform X="{Binding Coordinate, Converter={StaticResource XConverter}}" Y="{Binding Coordinate, Converter={StaticResource YConverter}}"/>
-            </TextBlock.RenderTransform>
         </TextBlock>
     </Canvas>
 </UserControl>

@@ -51,13 +51,11 @@
     <Compile Include="Game\Board\Character\CharacterConst.cs" />
     <Compile Include="Game\Board\Character\CharacterToDiameterConverter.cs" />
     <Compile Include="Game\Board\Character\CharacterToFillConverter.cs" />
-    <Compile Include="Game\Board\Character\CharacterXToXPosConverter.cs" />
-    <Compile Include="Game\Board\Character\CharacterYToYPosConverter.cs" />
+    <Compile Include="Game\Board\Character\CharPosToMarginConverter.cs" />
     <Compile Include="Game\Board\Tile\TileConst.cs" />
     <Compile Include="Game\Board\Tile\TileCoordinateToTextConverter.cs" />
+    <Compile Include="Game\Board\Tile\TilePosToMarginConverter.cs" />
     <Compile Include="Game\Board\Tile\TileToFillConverter.cs" />
-    <Compile Include="Game\Board\Tile\TileXToXPosConverter.cs" />
-    <Compile Include="Game\Board\Tile\TileYToYPosConverter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>

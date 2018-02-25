@@ -52,8 +52,7 @@ namespace MrJackApp.ViewModel.App
                     CurrentViewModel = new MainMenuViewModel(this);
                     break;
                 case NavigationIndex.WaitingForGame:
-                    var viewModel = new WaitingForGameViewModel(this, _gameServiceClient);
-                    CurrentViewModel = viewModel;
+                    CurrentViewModel = new WaitingForGameViewModel(this, _gameServiceClient);
                     break;
                 case NavigationIndex.About:
                     break;

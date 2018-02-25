@@ -4,20 +4,15 @@
              xmlns:charConverter="clr-namespace:MrJackApp.Converter.Game.Board.Character;assembly=MrJackApp.Converter">
     <UserControl.Resources>
         <charConverter:CharacterToFillConverter x:Key="FillConverter"/>
-        <charConverter:CharacterXToXPosConverter x:Key="XConverter"/>
-        <charConverter:CharacterYToYPosConverter x:Key="YConverter"/>
         <charConverter:CharacterToDiameterConverter x:Key="DiameterConverter"/>
+        <charConverter:CharPosToMarginConverter x:Key="PosToMarginConverter"/>
     </UserControl.Resources>
 
-    <Canvas>
-        <Canvas.RenderTransform>
-            <TranslateTransform X="{Binding Coordinate, Converter={StaticResource XConverter}}" Y="{Binding Coordinate, Converter={StaticResource YConverter}}"/>
-        </Canvas.RenderTransform>
-        
+    <Canvas Margin="{Binding Coordinate, Converter={StaticResource PosToMarginConverter}}">
         <Ellipse Stroke="Black" 
                  StrokeThickness="1" 
-                 Width="{Binding Coordinate, Converter={StaticResource DiameterConverter}, FallbackValue=30}" 
-                 Height="{Binding Coordinate, Converter={StaticResource DiameterConverter}, FallbackValue=30}" 
+                 Width="{Binding Converter={StaticResource DiameterConverter}, FallbackValue=30}" 
+                 Height="{Binding Converter={StaticResource DiameterConverter}, FallbackValue=30}" 
                  Fill="{Binding Converter={StaticResource FillConverter}, FallbackValue=Black}">
         </Ellipse>
     </Canvas>
