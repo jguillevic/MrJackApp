@@ -1,0 +1,24 @@
+﻿<UserControl x:Class="MrJackApp.View.Game.Board.Character.CharacterView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:charConverter="clr-namespace:MrJackApp.Converter.Game.Board.Character;assembly=MrJackApp.Converter">
+    <UserControl.Resources>
+        <charConverter:CharacterToFillConverter x:Key="FillConverter"/>
+        <charConverter:CharacterXToXPosConverter x:Key="XConverter"/>
+        <charConverter:CharacterYToYPosConverter x:Key="YConverter"/>
+        <charConverter:CharacterToDiameterConverter x:Key="DiameterConverter"/>
+    </UserControl.Resources>
+
+    <Canvas>
+        <Canvas.RenderTransform>
+            <TranslateTransform X="{Binding Coordinate, Converter={StaticResource XConverter}}" Y="{Binding Coordinate, Converter={StaticResource YConverter}}"/>
+        </Canvas.RenderTransform>
+        
+        <Ellipse Stroke="Black" 
+                 StrokeThickness="1" 
+                 Width="{Binding Coordinate, Converter={StaticResource DiameterConverter}, FallbackValue=30}" 
+                 Height="{Binding Coordinate, Converter={StaticResource DiameterConverter}, FallbackValue=30}" 
+                 Fill="{Binding Converter={StaticResource FillConverter}, FallbackValue=Black}">
+        </Ellipse>
+    </Canvas>
+</UserControl>

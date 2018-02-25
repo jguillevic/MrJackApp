@@ -1,0 +1,64 @@
+﻿<UserControl x:Class="MrJackApp.View.Game.Board.Card.CharacterCardView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:commonConverter="clr-namespace:MrJackApp.Converter.Common;assembly=MrJackApp.Converter"
+             xmlns:interactivity="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+             x:Name="UserControl">
+    <UserControl.Resources>
+        <commonConverter:BoolToVisibilityConverter x:Key="BoolToVisConverter"/>
+    </UserControl.Resources>
+
+    <interactivity:Interaction.Triggers>
+        <interactivity:EventTrigger EventName="MouseLeftButtonDown">
+            <interactivity:InvokeCommandAction Command="{Binding SelectionCommand}"/>
+        </interactivity:EventTrigger>
+    </interactivity:Interaction.Triggers>
+
+    <UserControl.Style>
+        <Style TargetType="UserControl">
+            <Setter Property="RenderTransformOrigin" Value="0.5,0.5"/>
+            <Setter Property="RenderTransform">
+                <Setter.Value>
+                    <ScaleTransform/>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <EventTrigger RoutedEvent="MouseEnter">
+                    <EventTrigger.Actions>
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleX" To="1.2" Duration="0:0:.3"/>
+                                <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleY" To="1.2" Duration="0:0:.3"/>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger.Actions>
+                </EventTrigger>
+                <EventTrigger RoutedEvent="MouseLeave">
+                    <EventTrigger.Actions>
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleX" To="1.0" Duration="0:0:.3"/>
+                                <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleY" To="1.0" Duration="0:0:.3"/>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger.Actions>
+                </EventTrigger>
+            </Style.Triggers>
+        </Style>
+    </UserControl.Style>
+
+
+    <Grid HorizontalAlignment="Center" VerticalAlignment="Center" Width="{Binding ElementName=UserCotrol, Path=GridWidth}" Height="{Binding ElementName=UserCotrol, Path=GridHeight}">
+        <Border BorderThickness="{Binding ElementName=UserCotrol, Path=CardBorderThickness}" BorderBrush="#ffa500" CornerRadius="{Binding ElementName=UserCotrol, Path=CardCornerRadius}" Width="{Binding ElementName=UserCotrol, Path=CardBorderWidth}" Height="{Binding ElementName=UserCotrol, Path=CardBorderHeight}" Visibility="{Binding IsSelected, Converter={StaticResource BoolToVisConverter}, FallbackValue=Visible}"/>
+        <Rectangle RadiusX="{Binding ElementName=UserCotrol, Path=CardRadius}" RadiusY="{Binding ElementName=UserCotrol, Path=CardRadius}" Width="{Binding ElementName=UserCotrol, Path=CardWidth}" Height="{Binding ElementName=UserCotrol, Path=CardHeight}" Fill="#003366"/>
+        <Rectangle RadiusX="{Binding ElementName=UserCotrol, Path=CardRadius}" RadiusY="{Binding ElementName=UserCotrol, Path=CardRadius}" Width="{Binding ElementName=UserCotrol, Path=CardInnerWidth}" Height="{Binding ElementName=UserCotrol, Path=CardInnerHeight}" Fill="#468499"/>
+        <TextBlock Text="{Binding Path=Name, FallbackValue='Nom du personnage'}" 
+                               Foreground="Black" 
+                               FontSize="15" 
+                               FontFamily="SegoeUI" 
+                               FontWeight="SemiBold" 
+                               HorizontalAlignment="Center" 
+                               VerticalAlignment="Bottom"
+                               Margin="0 0 0 20"/>
+    </Grid>
+</UserControl>

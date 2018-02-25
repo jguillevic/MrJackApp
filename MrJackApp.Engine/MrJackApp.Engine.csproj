@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{C868E7E0-B06D-4585-B9BA-4A806ACB24C4}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MrJackApp.Engine</RootNamespace>
+    <AssemblyName>MrJackApp.Engine</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Game\Board\Board.cs" />
+    <Compile Include="Game\Board\Card\AlibiCard.cs" />
+    <Compile Include="Game\Board\Card\AlibiDeck.cs" />
+    <Compile Include="Game\Board\Card\CharacterCard.cs" />
+    <Compile Include="Game\Board\Card\CharacterDeck.cs" />
+    <Compile Include="Game\Board\Card\JackVisibility.cs" />
+    <Compile Include="Game\Board\Character\Character.cs" />
+    <Compile Include="Game\Board\Character\InspecteurLestrade.cs" />
+    <Compile Include="Game\Board\Character\JeremyBert.cs" />
+    <Compile Include="Game\Board\Character\JohnHWatson.cs" />
+    <Compile Include="Game\Board\Character\JohnSmith.cs" />
+    <Compile Include="Game\Board\Character\MissStealthy.cs" />
+    <Compile Include="Game\Board\Character\SergentGoodley.cs" />
+    <Compile Include="Game\Board\Character\SherlockHolmes.cs" />
+    <Compile Include="Game\Board\Character\SirWilliamGull.cs" />
+    <Compile Include="Game\Board\Tile\EmptyTile.cs" />
+    <Compile Include="Game\Board\Tile\ExitTile.cs" />
+    <Compile Include="Game\Board\Tile\GasBurnerTile.cs" />
+    <Compile Include="Game\Board\Tile\HouseTile.cs" />
+    <Compile Include="Game\Board\Tile\ManholeTile.cs" />
+    <Compile Include="Game\Board\Tile\StreetTile.cs" />
+    <Compile Include="Game\Board\Tile\Tile.cs" />
+    <Compile Include="Game\Board\Turn\Turn.cs" />
+    <Compile Include="Game\Board\Turn\TurnScheduler.cs" />
+    <Compile Include="Game\Game.cs" />
+    <Compile Include="Game\GameResultState.cs" />
+    <Compile Include="Game\Player\InspectorPlayer.cs" />
+    <Compile Include="Game\Player\JackPlayer.cs" />
+    <Compile Include="Helper\ListHelper.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\MrJackApp.DTO\MrJackApp.DTO.csproj">
+      <Project>{f2739fc9-fb09-4baa-8d56-179bc21a7667}</Project>
+      <Name>MrJackApp.DTO</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

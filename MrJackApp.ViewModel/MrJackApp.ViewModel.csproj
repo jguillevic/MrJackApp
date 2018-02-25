@@ -1,0 +1,105 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{BA65A86A-F381-47FF-AE38-39E2D640B083}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MrJackApp.ViewModel</RootNamespace>
+    <AssemblyName>MrJackApp.ViewModel</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App\AppViewModel.cs" />
+    <Compile Include="Common\BindableBase.cs" />
+    <Compile Include="Common\CoordinateViewModel.cs" />
+    <Compile Include="Common\Command\DelegateCommand.cs" />
+    <Compile Include="Common\Navigation\INavigationService.cs" />
+    <Compile Include="Common\Navigation\NavigationIndex.cs" />
+    <Compile Include="Common\Navigation\NavigationViewModel.cs" />
+    <Compile Include="Game\Board\BoardViewModel.cs" />
+    <Compile Include="Game\Board\Card\AlibiCardsDisplayerViewModel.cs" />
+    <Compile Include="Game\Board\Card\CardsDisplayerViewModel.cs" />
+    <Compile Include="Game\Board\Card\CardSelectedEventArgs.cs" />
+    <Compile Include="Game\Board\Card\CardViewModel.cs" />
+    <Compile Include="Game\Board\Card\CharacterCardsDisplayerViewModel.cs" />
+    <Compile Include="Game\Board\Card\JackIdentityViewModel.cs" />
+    <Compile Include="Game\Board\Card\JackVisibilityViewModel.cs" />
+    <Compile Include="Game\Board\Character\CharacterViewModel.cs" />
+    <Compile Include="Game\Board\Character\InspecteurLestradeViewModel.cs" />
+    <Compile Include="Game\Board\Character\JeremyBertViewModel.cs" />
+    <Compile Include="Game\Board\Character\JohnHWatsonViewModel.cs" />
+    <Compile Include="Game\Board\Character\JohnSmithViewModel.cs" />
+    <Compile Include="Game\Board\Character\MissStealthyViewModel.cs" />
+    <Compile Include="Game\Board\Character\SergentGoodleyViewModel.cs" />
+    <Compile Include="Game\Board\Character\SherlockHolmesViewModel.cs" />
+    <Compile Include="Game\Board\Character\SirWilliamGullViewModel.cs" />
+    <Compile Include="Game\Board\Tile\EmptyTileViewModel.cs" />
+    <Compile Include="Game\Board\Tile\ExitTileViewModel.cs" />
+    <Compile Include="Game\Board\Tile\GasBurnerTileViewModel.cs" />
+    <Compile Include="Game\Board\Tile\HouseTileViewModel.cs" />
+    <Compile Include="Game\Board\Tile\ManholeTileViewModel.cs" />
+    <Compile Include="Game\Board\Tile\StreetTileViewModel.cs" />
+    <Compile Include="Game\Board\Tile\TileViewModel.cs" />
+    <Compile Include="Game\Board\Turn\TurnSchedulerViewModel.cs" />
+    <Compile Include="Game\Board\Turn\TurnViewModel.cs" />
+    <Compile Include="MainMenu\AboutMenuItemViewModel.cs" />
+    <Compile Include="MainMenu\MainMenuItemViewModel.cs" />
+    <Compile Include="MainMenu\MainMenuViewModel.cs" />
+    <Compile Include="MainMenu\QuickGameMenuItemViewModel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Waiting\WaitingForGameViewModel.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="About\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MrJackApp.DTO\MrJackApp.DTO.csproj">
+      <Project>{F2739FC9-FB09-4BAA-8D56-179BC21A7667}</Project>
+      <Name>MrJackApp.DTO</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MrJackApp.WCFContract\MrJackApp.WCFContract.csproj">
+      <Project>{CC84521A-B9A3-46B6-9303-2CDF96E38D10}</Project>
+      <Name>MrJackApp.WCFContract</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MrJackApp.WCFServiceCallback\MrJackApp.WCFServiceCallback.csproj">
+      <Project>{10E24F73-ED2B-434B-994F-AE726152D83A}</Project>
+      <Name>MrJackApp.WCFServiceCallback</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MrJackApp.WCFServiceClient\MrJackApp.WCFServiceClient.csproj">
+      <Project>{3F2546D7-CF7F-4552-B99C-9D8A0016F7A8}</Project>
+      <Name>MrJackApp.WCFServiceClient</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
