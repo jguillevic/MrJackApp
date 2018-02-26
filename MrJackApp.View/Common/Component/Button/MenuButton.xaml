@@ -3,6 +3,14 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:interactivity="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
              x:Name="UserControl">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="MenuButtonResDic.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    
     <interactivity:Interaction.Triggers>
         <interactivity:EventTrigger EventName="MouseLeftButtonDown">
             <interactivity:InvokeCommandAction Command="{Binding ElementName=UserControl, Path=Command}"/>
@@ -46,7 +54,7 @@
         <Border BorderThickness="3" BorderBrush="#0e2f44">
             <Grid>
                 <Rectangle Fill="#008080"/>
-                <TextBlock Text="{Binding ElementName=UserControl, Path=Text}" FontFamily="ms-appx:///Assets/Fonts/OldLondon.ttf#Old London" FontSize="30" Foreground="Black" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <TextBlock Text="{Binding ElementName=UserControl, Path=Text}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
             </Grid>
         </Border>
     </Grid>

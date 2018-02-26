@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MrJackApp.DTO.Game.Board.Character;
+using System;
 
 namespace MrJackApp.Engine.Game.Board.Character
 {
@@ -14,6 +15,11 @@ namespace MrJackApp.Engine.Game.Board.Character
         public override void ExecutePower()
         {
             throw new NotImplementedException();
+        }
+
+        protected override CharacterKind GetCharacterKind()
+        {
+            return CharacterKind.SherlockHolmes;
         }
     }
 }

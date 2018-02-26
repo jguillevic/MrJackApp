@@ -1,11 +1,11 @@
 ﻿namespace MrJackApp.ViewModel.Common
 {
-    public sealed class CoordinateViewModel : BindableBase
+    public struct Coordinate
     {
         public int X { get; set; }
         public int Y { get; set; }
 
-        public CoordinateViewModel(int x, int y) : base()
+        public Coordinate(int x, int y)
         {
             X = x;
             Y = y;

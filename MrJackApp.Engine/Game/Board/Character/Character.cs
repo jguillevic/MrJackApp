@@ -59,7 +59,11 @@ namespace MrJackApp.Engine.Game.Board.Character
             character.X = X;
             character.Y = Y;
 
+            character.Kind = GetCharacterKind();
+
             return character;
         }
+
+        protected abstract CharacterKind GetCharacterKind();
     }
 }

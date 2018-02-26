@@ -31,6 +31,8 @@ namespace MrJackApp.ViewModel.Waiting
 
         private void CancelCommandExecute()
         {
+            _gameServiceClient.CloseSession();
+
             GoBack();
         }
     }

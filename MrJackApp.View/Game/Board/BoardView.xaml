@@ -1,55 +1,30 @@
 ﻿<UserControl x:Class="MrJackApp.View.Game.Board.BoardView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:tileView="clr-namespace:MrJackApp.View.Game.Board.Tile"
-             xmlns:characterView="clr-namespace:MrJackApp.View.Game.Board.Character"
-             xmlns:turnView="clr-namespace:MrJackApp.View.Game.Board.Turn"
-             xmlns:cardView="clr-namespace:MrJackApp.View.Game.Board.Card">
+             xmlns:TileView="clr-namespace:MrJackApp.View.Game.Board.Tile"
+             xmlns:CharacterView="clr-namespace:MrJackApp.View.Game.Board.Character"
+             xmlns:TurnView="clr-namespace:MrJackApp.View.Game.Board.Turn"
+             xmlns:CardView="clr-namespace:MrJackApp.View.Game.Board.Card">
+    
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="350"/>
+            <ColumnDefinition Width="350"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="9*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
 
-    <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
-        <Grid Background="#c0d6e4">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="350"/>
-                <ColumnDefinition Width="350"/>
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="Auto"/>
-            </Grid.RowDefinitions>
+        <Grid Grid.Row="0" Grid.Column="0">
+            <TileView:TilesDisplayerView/>
 
-
-            <Grid Grid.Row="0" Grid.Column="0">
-                <ItemsControl ItemsSource="{Binding Tiles}">
-                    <ItemsControl.ItemsPanel>
-                        <ItemsPanelTemplate>
-                            <Grid/>
-                        </ItemsPanelTemplate>
-                    </ItemsControl.ItemsPanel>
-                    <ItemsControl.ItemTemplate>
-                        <DataTemplate>
-                            <tileView:TileView/>
-                        </DataTemplate>
-                    </ItemsControl.ItemTemplate>
-                </ItemsControl>
-                <ItemsControl ItemsSource="{Binding Characters}">
-                    <ItemsControl.ItemsPanel>
-                        <ItemsPanelTemplate>
-                            <Grid/>
-                        </ItemsPanelTemplate>
-                    </ItemsControl.ItemsPanel>
-                    <ItemsControl.ItemTemplate>
-                        <DataTemplate>
-                            <characterView:CharacterView/>
-                        </DataTemplate>
-                    </ItemsControl.ItemTemplate>
-                </ItemsControl>
-            </Grid>
-
-
-            <turnView:TurnSchedulerView Grid.Row="1" Grid.Column="0" DataContext="{Binding TurnScheduler}"/>
-
-            <cardView:CharacterCardsDisplayerView Grid.Row="0" Grid.Column="1" DataContext="{Binding CharacterCardsDisplayer}"/>
+            <CharacterView:CharactersDisplayerView/>
         </Grid>
-    </ScrollViewer>
+
+        <TurnView:TurnSchedulerView Grid.Row="1" Grid.Column="0" DataContext="{Binding TurnScheduler}"/>
+
+        <CardView:CharacterCardsDisplayerView Grid.Row="0" Grid.Column="1" DataContext="{Binding CharacterCardsDisplayer}"/>
+    </Grid>
 </UserControl>

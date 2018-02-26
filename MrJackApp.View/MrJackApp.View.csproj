@@ -70,8 +70,14 @@
     <Compile Include="Game\Board\Card\CharacterCardView.xaml.cs">
       <DependentUpon>CharacterCardView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Game\Board\Character\CharactersDisplayerView.xaml.cs">
+      <DependentUpon>CharactersDisplayerView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Game\Board\Character\CharacterView.xaml.cs">
       <DependentUpon>CharacterView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Game\Board\Tile\TilesDisplayerView.xaml.cs">
+      <DependentUpon>TilesDisplayerView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Game\Board\Tile\TileView.xaml.cs">
       <DependentUpon>TileView.xaml</DependentUpon>
@@ -126,6 +132,18 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="App\AppResDic.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Common\Component\Button\MenuButtonResDic.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Common\ResDic\CommonResDic.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Game\Board\BoardView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -138,7 +156,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Game\Board\Character\CharactersDisplayerView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Game\Board\Character\CharacterView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Game\Board\Tile\TilesDisplayerView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -171,6 +197,10 @@
     <ProjectReference Include="..\MrJackApp.Converter\MrJackApp.Converter.csproj">
       <Project>{3ec728af-ab64-4dc4-8bc3-92e6e6fd6b46}</Project>
       <Name>MrJackApp.Converter</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MrJackApp.Resource\MrJackApp.Resource.csproj">
+      <Project>{ba4bf2df-eda1-483b-993b-3608da03c67c}</Project>
+      <Name>MrJackApp.Resource</Name>
     </ProjectReference>
     <ProjectReference Include="..\MrJackApp.ViewModel\MrJackApp.ViewModel.csproj">
       <Project>{ba65a86a-f381-47ff-ae38-39e2d640b083}</Project>

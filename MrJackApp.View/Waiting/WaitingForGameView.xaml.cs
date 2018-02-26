@@ -37,7 +37,7 @@ namespace MrJackApp.View.Waiting
                     new Ellipse {
                         Width = 10
                         , Height = 10
-                        , Fill = new SolidColorBrush(Colors.Black)
+                        , Fill = new SolidColorBrush(Colors.White)
                         , Margin = new Thickness(5, 0, 5, 0)
                         , RenderTransformOrigin = new Point(0.5, 0.5)
                         , RenderTransform = new ScaleTransform() }
