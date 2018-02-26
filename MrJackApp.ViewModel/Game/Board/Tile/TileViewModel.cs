@@ -23,7 +23,7 @@ namespace MrJackApp.ViewModel.Game.Board.Tile
         }
 
         public bool CanGoOn { get; private set; }
-        public CoordinateViewModel Coordinate { get; private set; }
+        public Coordinate Coordinate { get; private set; }
 
         public TileViewModel(TileDTO tile) : base()
         {
@@ -39,7 +39,7 @@ namespace MrJackApp.ViewModel.Game.Board.Tile
         protected virtual void Map(TileDTO tile)
         {
             CanGoOn = tile.CanGoOn;
-            Coordinate = new CoordinateViewModel(tile.X, tile.Y);
+            Coordinate = new Coordinate(tile.X, tile.Y);
         }
 
         public delegate void SelectedEventHandler(object sender, EventArgs e);

@@ -1,0 +1,12 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:MrJackApp.View.Common.Component.Button">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="pack://application:,,,/MrJackApp.View;component/Common/ResDic/CommonResDic.xaml"/>
+    </ResourceDictionary.MergedDictionaries>
+    
+    <Style BasedOn="{StaticResource CommonTextStyle}" TargetType="TextBlock">
+        <Setter Property="FontSize" Value="30"/>
+    </Style>
+</ResourceDictionary>

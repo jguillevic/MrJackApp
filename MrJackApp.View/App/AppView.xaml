@@ -1,24 +1,19 @@
 ﻿<UserControl x:Class="MrJackApp.View.App.AppView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:MainMenuView="clr-namespace:MrJackApp.View.MainMenu"
-             xmlns:MainMenuViewModel="clr-namespace:MrJackApp.ViewModel.MainMenu;assembly=MrJackApp.ViewModel"
-             xmlns:WaitingView="clr-namespace:MrJackApp.View.Waiting"
-             xmlns:WaitingViewModel="clr-namespace:MrJackApp.ViewModel.Waiting;assembly=MrJackApp.ViewModel"
-             xmlns:GameView="clr-namespace:MrJackApp.View.Game.Board"
-             xmlns:GameViewModel="clr-namespace:MrJackApp.ViewModel.Game.Board;assembly=MrJackApp.ViewModel">
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <UserControl.Resources>
-        <DataTemplate DataType="{x:Type MainMenuViewModel:MainMenuViewModel}">
-            <MainMenuView:MainMenuView/>
-        </DataTemplate>
-        <DataTemplate DataType="{x:Type WaitingViewModel:WaitingForGameViewModel}">
-            <WaitingView:WaitingForGameView/>
-        </DataTemplate>
-        <DataTemplate DataType="{x:Type GameViewModel:BoardViewModel}">
-            <GameView:BoardView/>
-        </DataTemplate>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="AppResDic.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
     </UserControl.Resources>
-    
+
+    <UserControl.Background>
+        <ImageBrush ImageSource="pack://application:,,,/MrJackApp.Resource;component/Image/AppBackground.jpg" Stretch="UniformToFill"/>
+    </UserControl.Background>
+
+
     <Grid>
         <ContentControl Content="{Binding CurrentViewModel}"/>
     </Grid>

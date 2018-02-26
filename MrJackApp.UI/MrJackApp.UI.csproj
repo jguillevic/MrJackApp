@@ -107,6 +107,10 @@
       <Project>{3ec728af-ab64-4dc4-8bc3-92e6e6fd6b46}</Project>
       <Name>MrJackApp.Converter</Name>
     </ProjectReference>
+    <ProjectReference Include="..\MrJackApp.Resource\MrJackApp.Resource.csproj">
+      <Project>{ba4bf2df-eda1-483b-993b-3608da03c67c}</Project>
+      <Name>MrJackApp.Resource</Name>
+    </ProjectReference>
     <ProjectReference Include="..\MrJackApp.ViewModel\MrJackApp.ViewModel.csproj">
       <Project>{ba65a86a-f381-47ff-ae38-39e2d640b083}</Project>
       <Name>MrJackApp.ViewModel</Name>

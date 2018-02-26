@@ -42,7 +42,7 @@
   <ItemGroup>
     <Compile Include="App\AppViewModel.cs" />
     <Compile Include="Common\BindableBase.cs" />
-    <Compile Include="Common\CoordinateViewModel.cs" />
+    <Compile Include="Common\Coordinate.cs" />
     <Compile Include="Common\Command\DelegateCommand.cs" />
     <Compile Include="Common\Navigation\INavigationService.cs" />
     <Compile Include="Common\Navigation\NavigationIndex.cs" />

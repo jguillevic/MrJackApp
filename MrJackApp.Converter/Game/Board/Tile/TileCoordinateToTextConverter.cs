@@ -9,7 +9,7 @@ namespace MrJackApp.Converter.Game.Board.Tile
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            var coord = (CoordinateViewModel)value;
+            var coord = (Coordinate)value;
 
             return $"(X:{coord.X},Y:{coord.Y})";
         }

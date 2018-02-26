@@ -10,7 +10,7 @@ namespace MrJackApp.Converter.Game.Board.Tile
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            var coord = (CoordinateViewModel)value;
+            var coord = (Coordinate)value;
 
             return TileConst.Radius + coord.X * TileConst.Radius * 3f / 2f;
         }

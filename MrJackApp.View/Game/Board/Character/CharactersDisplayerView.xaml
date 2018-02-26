@@ -1,0 +1,19 @@
+﻿<UserControl x:Class="MrJackApp.View.Game.Board.Character.CharactersDisplayerView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:CharacterView="clr-namespace:MrJackApp.View.Game.Board.Character">
+    <Grid>
+        <ItemsControl ItemsSource="{Binding Characters}">
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <Canvas/>
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <CharacterView:CharacterView/>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+    </Grid>
+</UserControl>

@@ -10,7 +10,7 @@ namespace MrJackApp.Converter.Game.Board.Character
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            var coord = (CoordinateViewModel)value;
+            var coord = (Coordinate)value;
 
             double yOffset = 0;
             if (coord.X % 2 > 0)
