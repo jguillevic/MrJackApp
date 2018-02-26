@@ -10,7 +10,15 @@
     </UserControl.Resources>
 
     <UserControl.Background>
-        <ImageBrush ImageSource="pack://application:,,,/MrJackApp.Resource;component/Image/AppBackground.jpg" Stretch="UniformToFill"/>
+        <VisualBrush Stretch="UniformToFill">
+            <VisualBrush.Visual>
+                <Image Source="{StaticResource AppBackground}">
+                    <Image.Effect>
+                        <BlurEffect Radius="5" KernelType="Box"/>
+                    </Image.Effect>
+                </Image>
+            </VisualBrush.Visual>
+        </VisualBrush>
     </UserControl.Background>
 
 
