@@ -1,17 +1,22 @@
 ﻿<UserControl x:Class="MrJackApp.View.Game.Board.Tile.TilesDisplayerView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:TileView="clr-namespace:MrJackApp.View.Game.Board.Tile">
+             xmlns:TileView="clr-namespace:MrJackApp.View.Game.Board.Tile"
+             xmlns:tileConverter="clr-namespace:MrJackApp.Converter.Game.Board.Tile;assembly=MrJackApp.Converter">
+    <UserControl.Resources>
+        <tileConverter:TilePosToMarginConverter x:Key="PosToMarginConverter"/>
+    </UserControl.Resources>
+    
     <Grid>
         <ItemsControl ItemsSource="{Binding Tiles}">
             <ItemsControl.ItemsPanel>
                 <ItemsPanelTemplate>
-                    <Canvas/>
+                    <Grid/>
                 </ItemsPanelTemplate>
             </ItemsControl.ItemsPanel>
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
-                    <TileView:TileView/>
+                    <TileView:TileView Margin="{Binding Coordinate, Converter={StaticResource PosToMarginConverter}}"/>
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
         </ItemsControl>

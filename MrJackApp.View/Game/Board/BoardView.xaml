@@ -6,7 +6,7 @@
              xmlns:TurnView="clr-namespace:MrJackApp.View.Game.Board.Turn"
              xmlns:CardView="clr-namespace:MrJackApp.View.Game.Board.Card">
     
-    <Grid>
+    <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="350"/>

@@ -8,11 +8,10 @@
     <UserControl.Resources>
         <tileConverter:TileToFillConverter x:Key="FillConverter"/>
         <tileConverter:TileCoordinateToTextConverter x:Key="TextConverter"/>
-        <tileConverter:TilePosToMarginConverter x:Key="PosToMarginConverter"/>
         <commonConverter:BoolToVisibilityConverter x:Key="BoolToVisConverter"/>
     </UserControl.Resources>
 
-    <Canvas Margin="{Binding Coordinate, Converter={StaticResource PosToMarginConverter}}">
+    <Canvas>
         <interactivity:Interaction.Triggers>
             <interactivity:EventTrigger EventName="MouseLeftButtonDown">
                 <interactivity:InvokeCommandAction Command="{Binding SelectionCommand}"/>

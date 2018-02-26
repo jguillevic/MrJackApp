@@ -5,10 +5,9 @@
     <UserControl.Resources>
         <charConverter:CharacterToFillConverter x:Key="FillConverter"/>
         <charConverter:CharacterToDiameterConverter x:Key="DiameterConverter"/>
-        <charConverter:CharPosToMarginConverter x:Key="PosToMarginConverter"/>
     </UserControl.Resources>
 
-    <Canvas Margin="{Binding Coordinate, Converter={StaticResource PosToMarginConverter}}">
+    <Canvas>
         <Ellipse Stroke="Black" 
                  StrokeThickness="1" 
                  Width="{Binding Converter={StaticResource DiameterConverter}, FallbackValue=30}" 

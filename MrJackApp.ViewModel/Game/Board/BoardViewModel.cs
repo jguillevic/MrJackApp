@@ -58,7 +58,7 @@ namespace MrJackApp.ViewModel.Game.Board
 
         private void AlibiCardsDisplayerCardSelected(object sender, CardSelectedEventArgs e)
         {
-            
+
         }
 
         private void MapTurnScheduler(BoardDTO board)
