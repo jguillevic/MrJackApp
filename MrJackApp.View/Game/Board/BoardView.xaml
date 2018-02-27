@@ -5,25 +5,27 @@
              xmlns:CharacterView="clr-namespace:MrJackApp.View.Game.Board.Character"
              xmlns:TurnView="clr-namespace:MrJackApp.View.Game.Board.Turn"
              xmlns:CardView="clr-namespace:MrJackApp.View.Game.Board.Card">
-    
+
     <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="350"/>
-            <ColumnDefinition Width="350"/>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="200"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="9*"/>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <Grid Grid.Row="0" Grid.Column="0">
-            <TileView:TilesDisplayerView/>
+        <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+            <Grid Grid.Row="0" Grid.Column="0">
+                <TileView:TilesDisplayerView/>
 
-            <CharacterView:CharactersDisplayerView/>
-        </Grid>
+                <CharacterView:CharactersDisplayerView/>
+            </Grid>
+        </ScrollViewer>
 
-        <TurnView:TurnSchedulerView Grid.Row="1" Grid.Column="0" DataContext="{Binding TurnScheduler}"/>
+        <TurnView:TurnSchedulerView Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" DataContext="{Binding TurnScheduler}" Margin="0 20 0 20"/>
 
         <CardView:CharacterCardsDisplayerView Grid.Row="0" Grid.Column="1" DataContext="{Binding CharacterCardsDisplayer}"/>
     </Grid>

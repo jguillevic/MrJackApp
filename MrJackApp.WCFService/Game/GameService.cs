@@ -14,15 +14,9 @@ namespace MrJackApp.WCFService.Game
         public void CloseSession()
         {
             var sessionId = OperationContext.Current.SessionId;
-            
-            lock (_lfgSessionIds)
-                _lfgSessionIds.Remove(sessionId);
 
             lock (_callbacks)
                 _callbacks.Remove(sessionId);
-
-            lock (_hostedGames)
-                _hostedGames.Remove(sessionId);
         }
 
         public void LookingForQuickGame()
@@ -63,6 +57,17 @@ namespace MrJackApp.WCFService.Game
 
             lock (_callbacks)
                 _callbacks.Add(sessionId, callback);
+        }
+
+        public void StopLookingForQuickGame()
+        {
+            var sessionId = OperationContext.Current.SessionId;
+
+            lock (_lfgSessionIds)
+                _lfgSessionIds.Remove(sessionId);
+
+            lock (_hostedGames)
+                _hostedGames.Remove(sessionId);
         }
     }
 }

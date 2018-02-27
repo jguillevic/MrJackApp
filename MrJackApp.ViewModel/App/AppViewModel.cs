@@ -4,7 +4,6 @@ using MrJackApp.ViewModel.Common.Navigation;
 using MrJackApp.ViewModel.Game.Board;
 using MrJackApp.ViewModel.MainMenu;
 using MrJackApp.ViewModel.Waiting;
-using MrJackApp.WCFContract.Game;
 using MrJackApp.WCFServiceClient.Game;
 using System;
 using System.Collections.Generic;
@@ -14,7 +13,8 @@ namespace MrJackApp.ViewModel.App
 {
     public sealed class AppViewModel : BindableBase, INavigationService
     {
-        private GameServiceClient _gameServiceClient = new GameServiceClient("ConfigClient");
+        private ServiceClientManager _serviceClientManager = new ServiceClientManager();
+        private List<object> _previousViewModels = new List<object>();
 
         private object _currentViewModel;
         public object CurrentViewModel
@@ -23,9 +23,12 @@ namespace MrJackApp.ViewModel.App
             set { SetProperty(ref _currentViewModel, value); }
         }
 
-        private List<object> _previousViewModels = new List<object>();
-
         public AppViewModel() : base() { }
+
+        public void Initialize()
+        {
+            _serviceClientManager.OpenSession();
+        }
 
         public void GoBack()
         {
@@ -49,10 +52,10 @@ namespace MrJackApp.ViewModel.App
             switch (index)
             {
                 case NavigationIndex.MainMenu:
-                    CurrentViewModel = new MainMenuViewModel(this);
+                    CurrentViewModel = new MainMenuViewModel(this, _serviceClientManager);
                     break;
                 case NavigationIndex.WaitingForGame:
-                    CurrentViewModel = new WaitingForGameViewModel(this, _gameServiceClient);
+                    CurrentViewModel = new WaitingForGameViewModel(this, _serviceClientManager);
                     break;
                 case NavigationIndex.About:
                     break;

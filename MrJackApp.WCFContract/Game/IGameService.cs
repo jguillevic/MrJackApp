@@ -13,5 +13,8 @@ namespace MrJackApp.WCFContract.Game
 
         [OperationContract(IsInitiating = false, IsTerminating = false, IsOneWay = true)]
         void LookingForQuickGame();
+
+        [OperationContract(IsInitiating = false, IsTerminating = false, IsOneWay = true)]
+        void StopLookingForQuickGame();
     }
 }

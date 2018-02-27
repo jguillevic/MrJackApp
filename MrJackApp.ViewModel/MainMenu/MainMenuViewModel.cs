@@ -1,4 +1,5 @@
 ﻿using MrJackApp.ViewModel.Common.Navigation;
+using MrJackApp.WCFServiceClient.Game;
 using System.Collections.Generic;
 
 namespace MrJackApp.ViewModel.MainMenu
@@ -7,9 +8,9 @@ namespace MrJackApp.ViewModel.MainMenu
     {
         public List<MainMenuItemViewModel> Menus { get; private set; } = new List<MainMenuItemViewModel>();
 
-        public MainMenuViewModel(INavigationService navigationService) : base(navigationService)
+        public MainMenuViewModel(INavigationService navigationService, ServiceClientManager serviceClientManager) : base(navigationService)
         {
-            Menus.Add(new QuickGameMenuItemViewModel(navigationService));
+            Menus.Add(new QuickGameMenuItemViewModel(navigationService, serviceClientManager));
             Menus.Add(new AboutMenuItemViewModel(navigationService));
         }
     }

@@ -8,21 +8,20 @@ namespace MrJackApp.WCFServiceClient.Game
     {
         private IGameService _service;
         private string _configName;
-        private bool _isClose = true;
 
         public GameServiceCallback Callback { get; } = new GameServiceCallback();
 
         public GameServiceClient(string configName)
         {
-            _configName = configName;     
+            _configName = configName;
+
+            var channelFactory = new DuplexChannelFactory<IGameService>(Callback, _configName);
+            _service = channelFactory.CreateChannel();
         }
 
         public void CloseSession()
         {
             _service.CloseSession();
-
-            _isClose = true;
-            _service = null;
         }
 
         public void LookingForQuickGame()
@@ -32,15 +31,12 @@ namespace MrJackApp.WCFServiceClient.Game
 
         public void OpenSession()
         {
-            if (_isClose)
-            {
-                var channelFactory = new DuplexChannelFactory<IGameService>(Callback, _configName);
-                _service = channelFactory.CreateChannel();
-            }
-
             _service.OpenSession();
+        }
 
-            _isClose = false;
+        public void StopLookingForQuickGame()
+        {
+            _service.StopLookingForQuickGame();
         }
     }
 }

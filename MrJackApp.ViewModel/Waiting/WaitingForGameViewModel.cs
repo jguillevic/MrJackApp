@@ -8,30 +8,27 @@ namespace MrJackApp.ViewModel.Waiting
 {
     public sealed class WaitingForGameViewModel : NavigationViewModel
     {
-        private GameServiceClient _gameServiceClient;
+        private ServiceClientManager _serviceClientManager;
 
         public ICommand CancelCommand { get; private set; }
 
-        public WaitingForGameViewModel(INavigationService navigationService, GameServiceClient gameServiceClient) : base(navigationService)
-        {      
+        public WaitingForGameViewModel(INavigationService navigationService, ServiceClientManager serviceClientManager) : base(navigationService)
+        {
             CancelCommand = new DelegateCommand(CancelCommandExecute);
 
-            _gameServiceClient = gameServiceClient;
-            _gameServiceClient.Callback.BoardReceived += CallbackBoardReceived;
-
-            _gameServiceClient.OpenSession();
-            _gameServiceClient.LookingForQuickGame();
+            _serviceClientManager = serviceClientManager;
+            _serviceClientManager.GameServiceClient.Callback.BoardReceived += CallbackBoardReceived;
         }
 
         private void CallbackBoardReceived(object sender, BoardReceivedEventArgs e)
         {
-            _gameServiceClient.Callback.BoardReceived -= CallbackBoardReceived;
+            _serviceClientManager.GameServiceClient.Callback.BoardReceived -= CallbackBoardReceived;
             NavigateTo(NavigationIndex.Game, e.Board);
         }
 
         private void CancelCommandExecute()
         {
-            _gameServiceClient.CloseSession();
+            _serviceClientManager.GameServiceClient.StopLookingForQuickGame();
 
             GoBack();
         }
