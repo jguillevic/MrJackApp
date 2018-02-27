@@ -1,0 +1,26 @@
+﻿<UserControl x:Class="MrJackApp.View.Game.Board.Notifier.NotifierView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             Visibility="Collapsed"
+             Opacity="0"
+             x:Name="UserControl">
+    <UserControl.Triggers>
+        <EventTrigger RoutedEvent="Binding.TargetUpdated">
+            <BeginStoryboard>
+                <Storyboard Completed="StoryboardCompleted">
+                    <ObjectAnimationUsingKeyFrames Storyboard.TargetName="UserControl" Storyboard.TargetProperty="Visibility">
+                        <DiscreteObjectKeyFrame KeyTime="0:0:1.0" Value="{x:Static Visibility.Visible}"/>
+                    </ObjectAnimationUsingKeyFrames>
+                    <DoubleAnimation Storyboard.TargetName="UserControl" Storyboard.TargetProperty="Opacity" From="0" To="1" BeginTime="0:0:1.0" Duration="0:0:2.0"/>
+                    <DoubleAnimation Storyboard.TargetName="UserControl" Storyboard.TargetProperty="Opacity" From="1" To="0" BeginTime="0:0:10.0" Duration="0:0:2.0"/>
+                    <ObjectAnimationUsingKeyFrames Storyboard.TargetName="UserControl" Storyboard.TargetProperty="Visibility">
+                        <DiscreteObjectKeyFrame KeyTime="0:0:12.0" Value="{x:Static Visibility.Collapsed}"/>
+                    </ObjectAnimationUsingKeyFrames>
+                </Storyboard>
+            </BeginStoryboard>
+        </EventTrigger>
+    </UserControl.Triggers>
+    <Grid Background="LightGray">
+        <TextBlock Text="{Binding Path=CurrentMessage, NotifyOnTargetUpdated=True}" FontSize="200" HorizontalAlignment="Center"/>
+    </Grid>
+</UserControl>

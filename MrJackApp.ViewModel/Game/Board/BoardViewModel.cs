@@ -10,6 +10,8 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using MrJackApp.ViewModel.Common.Navigation;
 using MrJackApp.DTO.Game.Board.Character;
+using MrJackApp.ViewModel.Game.Board.Notifier;
+using System.Collections.Generic;
 
 namespace MrJackApp.ViewModel.Game.Board
 {
@@ -17,19 +19,22 @@ namespace MrJackApp.ViewModel.Game.Board
     {
         public CharacterViewModel _selectedCharacter;
 
-        public ObservableCollection<TileViewModel> Tiles { get; private set; } = new ObservableCollection<TileViewModel>();
-        public ObservableCollection<CharacterViewModel> Characters { get; private set; } = new ObservableCollection<CharacterViewModel>();
-        public AlibiCardsDisplayerViewModel AlibiCardsDisplayer { get; private set; } = new AlibiCardsDisplayerViewModel();
-        public CharacterCardsDisplayerViewModel CharacterCardsDisplayer { get; private set; } = new CharacterCardsDisplayerViewModel();
+        public ObservableCollection<TileViewModel> Tiles { get; } = new ObservableCollection<TileViewModel>();
+        public ObservableCollection<CharacterViewModel> Characters { get; } = new ObservableCollection<CharacterViewModel>();
+        public AlibiCardsDisplayerViewModel AlibiCardsDisplayer { get; } = new AlibiCardsDisplayerViewModel();
+        public CharacterCardsDisplayerViewModel CharacterCardsDisplayer { get; } = new CharacterCardsDisplayerViewModel();
         public JackVisibilityViewModel JackVisibility { get; private set; }
         public JackIdentityViewModel JackIdentity { get; private set; }
         public TurnSchedulerViewModel TurnScheduler { get; private set; }
+        public NotifierViewModel Notifier { get; } = new NotifierViewModel();
 
         public BoardViewModel(BoardDTO board, INavigationService navigationService) : base(navigationService)
         {
             Map(board);
 
             SetEvents();
+
+            Notifier.Notify(new List<string> { "Toto", "Titi", "Tata" });
         }
 
         private void Map(BoardDTO board)

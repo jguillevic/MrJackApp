@@ -4,9 +4,10 @@
              xmlns:TileView="clr-namespace:MrJackApp.View.Game.Board.Tile"
              xmlns:CharacterView="clr-namespace:MrJackApp.View.Game.Board.Character"
              xmlns:TurnView="clr-namespace:MrJackApp.View.Game.Board.Turn"
-             xmlns:CardView="clr-namespace:MrJackApp.View.Game.Board.Card">
+             xmlns:CardView="clr-namespace:MrJackApp.View.Game.Board.Card"
+             xmlns:NotifierView="clr-namespace:MrJackApp.View.Game.Board.Notifier">
 
-    <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+    <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="200"/>
@@ -28,5 +29,7 @@
         <TurnView:TurnSchedulerView Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" DataContext="{Binding TurnScheduler}" Margin="0 20 0 20"/>
 
         <CardView:CharacterCardsDisplayerView Grid.Row="0" Grid.Column="1" DataContext="{Binding CharacterCardsDisplayer}"/>
+
+        <NotifierView:NotifierView Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="0" Grid.RowSpan="2" DataContext="{Binding Notifier}" HorizontalContentAlignment="Stretch" VerticalAlignment="Center"/>
     </Grid>
 </UserControl>

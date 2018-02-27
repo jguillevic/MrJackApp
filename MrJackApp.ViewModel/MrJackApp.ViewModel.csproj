@@ -64,6 +64,7 @@
     <Compile Include="Game\Board\Character\SergentGoodleyViewModel.cs" />
     <Compile Include="Game\Board\Character\SherlockHolmesViewModel.cs" />
     <Compile Include="Game\Board\Character\SirWilliamGullViewModel.cs" />
+    <Compile Include="Game\Board\Notifier\NotifierViewModel.cs" />
     <Compile Include="Game\Board\Tile\EmptyTileViewModel.cs" />
     <Compile Include="Game\Board\Tile\ExitTileViewModel.cs" />
     <Compile Include="Game\Board\Tile\GasBurnerTileViewModel.cs" />
