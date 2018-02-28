@@ -78,7 +78,9 @@
     <Compile Include="MainMenu\MainMenuItemViewModel.cs" />
     <Compile Include="MainMenu\MainMenuViewModel.cs" />
     <Compile Include="MainMenu\QuickGameMenuItemViewModel.cs" />
+    <Compile Include="MainMenu\RuleBookMenuItemViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RuleBook\RuleBookDisplayerViewModel.cs" />
     <Compile Include="Waiting\WaitingForGameViewModel.cs" />
   </ItemGroup>
   <ItemGroup>

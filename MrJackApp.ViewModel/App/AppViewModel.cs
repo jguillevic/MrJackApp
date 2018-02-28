@@ -3,6 +3,7 @@ using MrJackApp.ViewModel.Common;
 using MrJackApp.ViewModel.Common.Navigation;
 using MrJackApp.ViewModel.Game.Board;
 using MrJackApp.ViewModel.MainMenu;
+using MrJackApp.ViewModel.RuleBook;
 using MrJackApp.ViewModel.Waiting;
 using MrJackApp.WCFServiceClient.Game;
 using System;
@@ -36,7 +37,7 @@ namespace MrJackApp.ViewModel.App
             {
                 var previousViewModel = _previousViewModels.Last();
                 _previousViewModels.RemoveAt(_previousViewModels.Count - 1);
-                CurrentViewModel = previousViewModel;          
+                CurrentViewModel = previousViewModel;
             }
         }
 
@@ -47,7 +48,8 @@ namespace MrJackApp.ViewModel.App
 
         public void NavigateTo(int index, object parameter)
         {
-            _previousViewModels.Add(CurrentViewModel);
+            if (CurrentViewModel != null)
+                _previousViewModels.Add(CurrentViewModel);
 
             switch (index)
             {
@@ -61,6 +63,9 @@ namespace MrJackApp.ViewModel.App
                     break;
                 case NavigationIndex.Game:
                     CurrentViewModel = new BoardViewModel((BoardDTO)parameter, this);
+                    break;
+                case NavigationIndex.RuleBook:
+                    CurrentViewModel = new RuleBookDisplayerViewModel(this);
                     break;
                 default:
                     throw new NotImplementedException();

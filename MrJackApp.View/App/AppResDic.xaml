@@ -5,7 +5,9 @@
                     xmlns:WaitingView="clr-namespace:MrJackApp.View.Waiting"
                     xmlns:WaitingViewModel="clr-namespace:MrJackApp.ViewModel.Waiting;assembly=MrJackApp.ViewModel"
                     xmlns:GameView="clr-namespace:MrJackApp.View.Game.Board"
-                    xmlns:GameViewModel="clr-namespace:MrJackApp.ViewModel.Game.Board;assembly=MrJackApp.ViewModel">
+                    xmlns:GameViewModel="clr-namespace:MrJackApp.ViewModel.Game.Board;assembly=MrJackApp.ViewModel"
+                    xmlns:RuleBookView="clr-namespace:MrJackApp.View.RuleBook"
+                    xmlns:RuleBookViewModel="clr-namespace:MrJackApp.ViewModel.RuleBook;assembly=MrJackApp.ViewModel">
 
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="pack://application:,,,/MrJackApp.View;component/Common/ResDic/CommonResDic.xaml"/>
@@ -20,6 +22,9 @@
     <DataTemplate DataType="{x:Type GameViewModel:BoardViewModel}">
         <GameView:BoardView/>
     </DataTemplate>
+    <DataTemplate DataType="{x:Type RuleBookViewModel:RuleBookDisplayerViewModel}">
+        <RuleBookView:RuleBookDisplayerView/>
+    </DataTemplate>
 
-    <BitmapImage x:Key="AppBackground" UriSource="pack://application:,,,/MrJackApp.Resource;component/Image/AppBackground.jpg"/>
+    <BitmapImage x:Key="AppBackground" UriSource="pack://application:,,,/MrJackApp.Resource;component/Image/Background/AppBackground.jpg"/>
 </ResourceDictionary>

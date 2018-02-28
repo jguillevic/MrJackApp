@@ -11,6 +11,7 @@ namespace MrJackApp.ViewModel.MainMenu
         public MainMenuViewModel(INavigationService navigationService, ServiceClientManager serviceClientManager) : base(navigationService)
         {
             Menus.Add(new QuickGameMenuItemViewModel(navigationService, serviceClientManager));
+            Menus.Add(new RuleBookMenuItemViewModel(navigationService));
             Menus.Add(new AboutMenuItemViewModel(navigationService));
         }
     }
