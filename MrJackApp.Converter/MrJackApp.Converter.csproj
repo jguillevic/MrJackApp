@@ -48,6 +48,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Common\BoolToVisibilityConverter.cs" />
+    <Compile Include="Common\Command\Button\NavButCanExecuteToFillConverter.cs" />
     <Compile Include="Game\Board\Character\CharacterConst.cs" />
     <Compile Include="Game\Board\Character\CharacterToDiameterConverter.cs" />
     <Compile Include="Game\Board\Character\CharacterToFillConverter.cs" />

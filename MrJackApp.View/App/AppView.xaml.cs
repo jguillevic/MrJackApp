@@ -18,6 +18,8 @@ namespace MrJackApp.View.App
 
         private void AppViewLoaded(object sender, System.Windows.RoutedEventArgs e)
         {
+            Loaded -= AppViewLoaded;
+
             var viewModel = new AppViewModel();
             viewModel.Initialize();
             viewModel.NavigateTo(NavigationIndex.MainMenu);

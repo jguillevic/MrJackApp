@@ -25,6 +25,8 @@ namespace MrJackApp.View.Waiting
 
         private void WaitingForGameViewLoaded(object sender, RoutedEventArgs e)
         {
+            Loaded -= WaitingForGameViewLoaded;
+
             AddChildren();
 
             StartTimer();
