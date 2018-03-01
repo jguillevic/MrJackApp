@@ -55,40 +55,40 @@
     </Resource>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Image\RuleBook\MrJack_RuleBook_0.png">
+    <Resource Include="Image\RuleBook\MrJack_RuleBook_0.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Image\RuleBook\MrJack_RuleBook_1.png">
+    <Resource Include="Image\RuleBook\MrJack_RuleBook_1.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Image\RuleBook\MrJack_RuleBook_10.png">
+    <Resource Include="Image\RuleBook\MrJack_RuleBook_10.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Image\RuleBook\MrJack_RuleBook_11.png">
+    <Resource Include="Image\RuleBook\MrJack_RuleBook_11.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Image\RuleBook\MrJack_RuleBook_2.png">
+    <Resource Include="Image\RuleBook\MrJack_RuleBook_2.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Image\RuleBook\MrJack_RuleBook_3.png">
+    <Resource Include="Image\RuleBook\MrJack_RuleBook_3.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Image\RuleBook\MrJack_RuleBook_4.png">
+    <Resource Include="Image\RuleBook\MrJack_RuleBook_4.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Image\RuleBook\MrJack_RuleBook_5.png">
+    <Resource Include="Image\RuleBook\MrJack_RuleBook_5.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Image\RuleBook\MrJack_RuleBook_6.png">
+    <Resource Include="Image\RuleBook\MrJack_RuleBook_6.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Image\RuleBook\MrJack_RuleBook_7.png">
+    <Resource Include="Image\RuleBook\MrJack_RuleBook_7.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Image\RuleBook\MrJack_RuleBook_8.png">
+    <Resource Include="Image\RuleBook\MrJack_RuleBook_8.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Image\RuleBook\MrJack_RuleBook_9.png">
+    <Resource Include="Image\RuleBook\MrJack_RuleBook_9.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>

@@ -7,7 +7,7 @@ namespace MrJackApp.ViewModel.RuleBook
 {
     public sealed class RuleBookDisplayerViewModel : NavigationViewModel
     {
-        private string _pagePathPattern = "pack://application:,,,/MrJackApp.Resource;component/Image/RuleBook/MrJack_RuleBook_{0}.png";
+        private string _pagePathPattern = "pack://application:,,,/MrJackApp.Resource;component/Image/RuleBook/MrJack_RuleBook_{0}.jpg";
 
         private int _minPageIndex = 0;
         private int _maxPageIndex = 11;
