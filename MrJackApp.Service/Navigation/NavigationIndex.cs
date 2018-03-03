@@ -1,4 +1,4 @@
-﻿namespace MrJackApp.ViewModel.Common.Navigation
+﻿namespace MrJackApp.Service.Navigation
 {
     public static class NavigationIndex
     {

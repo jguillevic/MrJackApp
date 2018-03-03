@@ -1,6 +1,8 @@
 ﻿<UserControl x:Class="MrJackApp.View.App.AppView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:MusicView="clr-namespace:MrJackApp.View.Sound.Music"
+             xmlns:EffectView="clr-namespace:MrJackApp.View.Sound.Effect">
     <UserControl.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -23,6 +25,21 @@
 
 
     <Grid>
+        <!--<MediaElement x:Name="MediaElement" LoadedBehavior="Play">
+            <MediaElement.Triggers>
+                <EventTrigger RoutedEvent="MediaElement.Loaded">
+                    <EventTrigger.Actions>
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <MediaTimeline Source="Sound/Music/MainTheme.mp3" Storyboard.TargetName="MediaElement" RepeatBehavior="Forever"/>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger.Actions>
+                </EventTrigger>
+            </MediaElement.Triggers>
+        </MediaElement>-->
+        <MusicView:MusicPlayerView DataContext="{Binding MusicPlayerViewModel}"/>
+
         <ContentControl Content="{Binding CurrentViewModel}"/>
     </Grid>
 </UserControl>

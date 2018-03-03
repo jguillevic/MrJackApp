@@ -27,7 +27,7 @@
             </ItemsControl.ItemsPanel>
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
-                    <MainMenuView:MainMenuItemView Margin="0 10 0 10"/>
+                    <MainMenuView:MainMenuItemView Margin="0 5 0 5"/>
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
         </ItemsControl>

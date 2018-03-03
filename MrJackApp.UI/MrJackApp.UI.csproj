@@ -111,6 +111,10 @@
       <Project>{ba4bf2df-eda1-483b-993b-3608da03c67c}</Project>
       <Name>MrJackApp.Resource</Name>
     </ProjectReference>
+    <ProjectReference Include="..\MrJackApp.Service\MrJackApp.Service.csproj">
+      <Project>{87c1b4f9-83b9-432c-8eb6-89536eb7637d}</Project>
+      <Name>MrJackApp.Service</Name>
+    </ProjectReference>
     <ProjectReference Include="..\MrJackApp.ViewModel\MrJackApp.ViewModel.csproj">
       <Project>{ba65a86a-f381-47ff-ae38-39e2d640b083}</Project>
       <Name>MrJackApp.ViewModel</Name>

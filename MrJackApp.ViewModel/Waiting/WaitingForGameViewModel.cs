@@ -1,4 +1,5 @@
-﻿using MrJackApp.ViewModel.Common.Command;
+﻿using MrJackApp.Service.Navigation;
+using MrJackApp.ViewModel.Common.Command;
 using MrJackApp.ViewModel.Common.Navigation;
 using MrJackApp.WCFServiceCallback.Game;
 using MrJackApp.WCFServiceClient.Game;

@@ -1,5 +1,5 @@
-﻿using MrJackApp.ViewModel.App;
-using MrJackApp.ViewModel.Common.Navigation;
+﻿using MrJackApp.Service.Navigation;
+using MrJackApp.ViewModel.App;
 using System.Windows.Controls;
 
 namespace MrJackApp.View.App

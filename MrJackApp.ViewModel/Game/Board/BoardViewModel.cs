@@ -12,6 +12,7 @@ using MrJackApp.ViewModel.Common.Navigation;
 using MrJackApp.DTO.Game.Board.Character;
 using MrJackApp.ViewModel.Game.Board.Notifier;
 using System.Collections.Generic;
+using MrJackApp.Service.Navigation;
 
 namespace MrJackApp.ViewModel.Game.Board
 {

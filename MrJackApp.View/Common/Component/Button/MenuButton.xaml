@@ -49,13 +49,13 @@
             </Style.Triggers>
         </Style>
     </UserControl.Style>
-    
-    <Grid HorizontalAlignment="Center" VerticalAlignment="Center" Width="{Binding Path=ActualWidth, ElementName=UserControl}" Height="{Binding Path=ActualHeight, ElementName=UserControl}">
-        <Border BorderThickness="3" BorderBrush="#0e2f44">
-            <Grid>
-                <Rectangle Fill="#008080"/>
-                <TextBlock Text="{Binding ElementName=UserControl, Path=Text}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-            </Grid>
-        </Border>
+
+    <Grid HorizontalAlignment="Center" VerticalAlignment="Center" 
+          Width="{Binding ElementName=UserControl, Path=ActualWidth}"
+          Height="{Binding ElementName=UserControl, Path=ActualHeight}">
+        <Grid.Background>
+            <ImageBrush ImageSource="pack://application:,,,/MrJackApp.Resource;component/Image/Button/MenuButton.png" Stretch="Fill"/>
+        </Grid.Background>
+        <TextBlock Text="{Binding ElementName=UserControl, Path=Text, FallbackValue='Texte'}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
     </Grid>
 </UserControl>

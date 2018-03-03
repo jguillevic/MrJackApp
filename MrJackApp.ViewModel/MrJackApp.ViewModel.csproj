@@ -44,8 +44,6 @@
     <Compile Include="Common\BindableBase.cs" />
     <Compile Include="Common\Coordinate.cs" />
     <Compile Include="Common\Command\DelegateCommand.cs" />
-    <Compile Include="Common\Navigation\INavigationService.cs" />
-    <Compile Include="Common\Navigation\NavigationIndex.cs" />
     <Compile Include="Common\Navigation\NavigationViewModel.cs" />
     <Compile Include="Game\Board\BoardViewModel.cs" />
     <Compile Include="Game\Board\Card\AlibiCardsDisplayerViewModel.cs" />
@@ -81,6 +79,8 @@
     <Compile Include="MainMenu\RuleBookMenuItemViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RuleBook\RuleBookDisplayerViewModel.cs" />
+    <Compile Include="Sound\Effect\EffectPlayerViewModel.cs" />
+    <Compile Include="Sound\Music\MusicPlayerViewModel.cs" />
     <Compile Include="Waiting\WaitingForGameViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -90,6 +90,10 @@
     <ProjectReference Include="..\MrJackApp.DTO\MrJackApp.DTO.csproj">
       <Project>{F2739FC9-FB09-4BAA-8D56-179BC21A7667}</Project>
       <Name>MrJackApp.DTO</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MrJackApp.Service\MrJackApp.Service.csproj">
+      <Project>{87C1B4F9-83B9-432C-8EB6-89536EB7637D}</Project>
+      <Name>MrJackApp.Service</Name>
     </ProjectReference>
     <ProjectReference Include="..\MrJackApp.WCFContract\MrJackApp.WCFContract.csproj">
       <Project>{CC84521A-B9A3-46B6-9303-2CDF96E38D10}</Project>

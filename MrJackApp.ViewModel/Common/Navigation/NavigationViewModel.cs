@@ -1,4 +1,6 @@
-﻿namespace MrJackApp.ViewModel.Common.Navigation
+﻿using MrJackApp.Service.Navigation;
+
+namespace MrJackApp.ViewModel.Common.Navigation
 {
     public abstract class NavigationViewModel : BindableBase
     {

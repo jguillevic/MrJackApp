@@ -1,4 +1,4 @@
-﻿using MrJackApp.ViewModel.Common.Navigation;
+﻿using MrJackApp.Service.Navigation;
 using MrJackApp.WCFServiceClient.Game;
 
 namespace MrJackApp.ViewModel.MainMenu

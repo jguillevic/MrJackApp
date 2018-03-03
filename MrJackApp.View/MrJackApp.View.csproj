@@ -117,6 +117,13 @@
     <Compile Include="RuleBook\RuleBookDisplayerView.xaml.cs">
       <DependentUpon>RuleBookDisplayerView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Sound\Common\MediaElementExtension.cs" />
+    <Compile Include="Sound\Effect\EffectPlayerView.xaml.cs">
+      <DependentUpon>EffectPlayerView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Sound\Music\MusicPlayerView.xaml.cs">
+      <DependentUpon>MusicPlayerView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Waiting\WaitingForGameView.xaml.cs">
       <DependentUpon>WaitingForGameView.xaml</DependentUpon>
     </Compile>
@@ -210,6 +217,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Sound\Effect\EffectPlayerView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Sound\Music\MusicPlayerView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Waiting\WaitingForGameView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -223,6 +238,10 @@
     <ProjectReference Include="..\MrJackApp.Resource\MrJackApp.Resource.csproj">
       <Project>{ba4bf2df-eda1-483b-993b-3608da03c67c}</Project>
       <Name>MrJackApp.Resource</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MrJackApp.Service\MrJackApp.Service.csproj">
+      <Project>{87C1B4F9-83B9-432C-8EB6-89536EB7637D}</Project>
+      <Name>MrJackApp.Service</Name>
     </ProjectReference>
     <ProjectReference Include="..\MrJackApp.ViewModel\MrJackApp.ViewModel.csproj">
       <Project>{ba65a86a-f381-47ff-ae38-39e2d640b083}</Project>
