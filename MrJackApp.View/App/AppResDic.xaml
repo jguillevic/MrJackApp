@@ -1,5 +1,7 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:AboutView="clr-namespace:MrJackApp.View.About"
+                    xmlns:AboutViewModel="clr-namespace:MrJackApp.ViewModel.About;assembly=MrJackApp.ViewModel"
                     xmlns:MainMenuView="clr-namespace:MrJackApp.View.MainMenu"
                     xmlns:MainMenuViewModel="clr-namespace:MrJackApp.ViewModel.MainMenu;assembly=MrJackApp.ViewModel"
                     xmlns:WaitingView="clr-namespace:MrJackApp.View.Waiting"
@@ -14,7 +16,10 @@
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="pack://application:,,,/MrJackApp.View;component/Common/ResDic/CommonResDic.xaml"/>
     </ResourceDictionary.MergedDictionaries>
-    
+
+    <DataTemplate DataType="{x:Type AboutViewModel:AboutViewModel}">
+        <AboutView:AboutView/>
+    </DataTemplate>
     <DataTemplate DataType="{x:Type MainMenuViewModel:MainMenuViewModel}">
         <MainMenuView:MainMenuView/>
     </DataTemplate>

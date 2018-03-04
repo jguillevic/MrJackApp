@@ -69,8 +69,6 @@ namespace MrJackApp.ViewModel.App
                 case NavigationIndex.WaitingForGame:
                     CurrentViewModel = new WaitingForGameViewModel(this, _serviceClientManager);
                     break;
-                case NavigationIndex.About:
-                    break;
                 case NavigationIndex.Game:
                     CurrentViewModel = new BoardViewModel((BoardDTO)parameter, this);
                     break;

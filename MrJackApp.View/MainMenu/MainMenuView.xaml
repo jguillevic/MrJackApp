@@ -1,7 +1,8 @@
 ﻿<UserControl x:Class="MrJackApp.View.MainMenu.MainMenuView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:MainMenuView="clr-namespace:MrJackApp.View.MainMenu">
+             xmlns:MainMenuView="clr-namespace:MrJackApp.View.MainMenu"
+             xmlns:AboutView="clr-namespace:MrJackApp.View.About">
 
     <UserControl.Resources>
         <ResourceDictionary>

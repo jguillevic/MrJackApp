@@ -7,10 +7,5 @@
                   Volume="{Binding Volume}" 
                   Source="{Binding Source}"
                   Extension:MediaElementExtension.IsPlaying="{Binding IsPlaying}">
-        <Interactivity:Interaction.Triggers>
-            <Interactivity:EventTrigger EventName="MediaOpened">
-                <Interactivity:InvokeCommandAction Command="{Binding PlayCommand}"/>
-            </Interactivity:EventTrigger>
-        </Interactivity:Interaction.Triggers>
     </MediaElement>
 </UserControl>

@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="About\AboutViewModel.cs" />
     <Compile Include="App\AppViewModel.cs" />
     <Compile Include="Common\BindableBase.cs" />
     <Compile Include="Common\Coordinate.cs" />
@@ -72,7 +73,6 @@
     <Compile Include="Game\Board\Tile\TileViewModel.cs" />
     <Compile Include="Game\Board\Turn\TurnSchedulerViewModel.cs" />
     <Compile Include="Game\Board\Turn\TurnViewModel.cs" />
-    <Compile Include="MainMenu\AboutMenuItemViewModel.cs" />
     <Compile Include="MainMenu\MainMenuItemViewModel.cs" />
     <Compile Include="MainMenu\MainMenuViewModel.cs" />
     <Compile Include="MainMenu\QuickGameMenuItemViewModel.cs" />
@@ -85,9 +85,7 @@
     <Compile Include="Sound\Music\MusicPlayerViewModel.cs" />
     <Compile Include="Waiting\WaitingForGameViewModel.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="About\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\MrJackApp.DTO\MrJackApp.DTO.csproj">
       <Project>{F2739FC9-FB09-4BAA-8D56-179BC21A7667}</Project>
