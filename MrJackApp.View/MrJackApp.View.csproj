@@ -117,6 +117,9 @@
     <Compile Include="RuleBook\RuleBookDisplayerView.xaml.cs">
       <DependentUpon>RuleBookDisplayerView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Setting\SettingsView.xaml.cs">
+      <DependentUpon>SettingsView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Sound\Common\MediaElementExtension.cs" />
     <Compile Include="Sound\Effect\EffectPlayerView.xaml.cs">
       <DependentUpon>EffectPlayerView.xaml</DependentUpon>
@@ -214,6 +217,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="RuleBook\RuleBookDisplayerView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Setting\SettingsView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

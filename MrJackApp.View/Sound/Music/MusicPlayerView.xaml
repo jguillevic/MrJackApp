@@ -5,12 +5,11 @@
              xmlns:Interactivity="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity">
     <MediaElement LoadedBehavior="Manual"
                   Volume="{Binding Volume}" 
-                  Source="{Binding Source}" 
-                  Extension:MediaElementExtension.Position="{Binding Position}" 
+                  Source="{Binding Source}"
                   Extension:MediaElementExtension.IsPlaying="{Binding IsPlaying}">
         <Interactivity:Interaction.Triggers>
             <Interactivity:EventTrigger EventName="Loaded">
-                <Interactivity:InvokeCommandAction Command="{Binding InitialPlayCommand}"/>
+                <Interactivity:InvokeCommandAction Command="{Binding InitializationCommand}"/>
             </Interactivity:EventTrigger>
             <Interactivity:EventTrigger EventName="MediaEnded">
                 <Interactivity:InvokeCommandAction Command="{Binding RepeatCommand}"/>

@@ -1,12 +1,16 @@
 ﻿using MrJackApp.Service.Sound.Effect;
 using MrJackApp.ViewModel.Common;
+using MrJackApp.ViewModel.Common.Command;
 using System;
+using System.Windows.Input;
 
 namespace MrJackApp.ViewModel.Sound.effect
 {
     public sealed class EffectPlayerViewModel : BindableBase, IEffectController
     {
-        private double _volume = 0.5;
+        private bool _isMute;
+
+        private double _volume;
         public double Volume
         {
             get { return _volume; }
@@ -20,13 +24,6 @@ namespace MrJackApp.ViewModel.Sound.effect
             set { SetProperty(ref _source, value); }
         }
 
-        private TimeSpan _position;
-        public TimeSpan Position
-        {
-            get { return _position; }
-            set { SetProperty(ref _position, value); }
-        }
-
         private bool _isPlaying;
         public bool IsPlaying
         {
@@ -38,19 +35,24 @@ namespace MrJackApp.ViewModel.Sound.effect
 
         public void Play(int effectIndex)
         {
-            IsPlaying = false;
-
-            Position = TimeSpan.FromMilliseconds(0.0);
-
-            switch (effectIndex)
+            if (!_isMute)
             {
-                case EffectIndex.ButtonPointerOver:
-                    break;
-                default:
-                    throw new NotImplementedException();
-            }
+                IsPlaying = false;
 
-            IsPlaying = true;
+                switch (effectIndex)
+                {
+                    case EffectIndex.MenuButtonPointerOver:
+                        Source = "Sound/Effect/Button/MenuButtonPointerOver.mp3";
+                        break;
+                    case EffectIndex.MenuButtonClicked:
+                        Source = "Sound/Effect/Button/MenuButtonClicked.mp3";
+                        break;
+                    default:
+                        throw new NotImplementedException();
+                }
+
+                IsPlaying = true;
+            }
         }
 
         public void SetVolume(double volume)
@@ -58,14 +60,62 @@ namespace MrJackApp.ViewModel.Sound.effect
             Volume = volume;
         }
 
-        public void Play()
-        {
-            IsPlaying = true;
-        }
-
         public void Stop()
         {
-            IsPlaying = false;
+            if (!_isMute)
+                IsPlaying = false;
+        }
+
+        public double GetVolume()
+        {
+            return Volume;
+        }
+
+        public void Mute()
+        {
+            _isMute = true;
+        }
+
+        public void Unmute()
+        {
+            _isMute = false;
+        }
+
+        public bool IsMute()
+        {
+            return _isMute;
+        }
+
+        public void Save()
+        {
+            
+        }
+
+        public void Initialize()
+        {
+            if (HasDataToLoad())
+                Load();
+            else
+            {
+                SetDefaultValues();
+                Save();
+            }
+        }
+
+        private void Load()
+        {
+
+        }
+
+        private bool HasDataToLoad()
+        {
+            return false;
+        }
+
+        private void SetDefaultValues()
+        {
+            _isMute = false;
+            Volume = 0.5;
         }
     }
 }

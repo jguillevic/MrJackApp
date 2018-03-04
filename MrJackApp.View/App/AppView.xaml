@@ -25,20 +25,8 @@
 
 
     <Grid>
-        <!--<MediaElement x:Name="MediaElement" LoadedBehavior="Play">
-            <MediaElement.Triggers>
-                <EventTrigger RoutedEvent="MediaElement.Loaded">
-                    <EventTrigger.Actions>
-                        <BeginStoryboard>
-                            <Storyboard>
-                                <MediaTimeline Source="Sound/Music/MainTheme.mp3" Storyboard.TargetName="MediaElement" RepeatBehavior="Forever"/>
-                            </Storyboard>
-                        </BeginStoryboard>
-                    </EventTrigger.Actions>
-                </EventTrigger>
-            </MediaElement.Triggers>
-        </MediaElement>-->
         <MusicView:MusicPlayerView DataContext="{Binding MusicPlayerViewModel}"/>
+        <EffectView:EffectPlayerView DataContext="{Binding EffectPlayerViewModel}"/>
 
         <ContentControl Content="{Binding CurrentViewModel}"/>
     </Grid>

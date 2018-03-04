@@ -8,9 +8,10 @@ namespace MrJackApp.ViewModel.Sound.Music
 {
     public sealed class MusicPlayerViewModel : BindableBase, IMusicController
     {
+        private bool _isMute;
         private int _currentMusicIndex;
 
-        private double _volume = 0.5;
+        private double _volume = 0.1;
         public double Volume
         {
             get { return _volume; }
@@ -24,13 +25,6 @@ namespace MrJackApp.ViewModel.Sound.Music
             set { SetProperty(ref _source, value); }
         }
 
-        private TimeSpan _position;
-        public TimeSpan Position
-        {
-            get { return _position; }
-            set { SetProperty(ref _position, value); }
-        }
-
         private bool _isPlaying;
         public bool IsPlaying
         {
@@ -38,38 +32,34 @@ namespace MrJackApp.ViewModel.Sound.Music
             set { SetProperty(ref _isPlaying, value); }
         }
 
-        public ICommand InitialPlayCommand { get; private set; }
+        public ICommand InitializationCommand { get; private set; }
         public ICommand RepeatCommand { get; private set; }
 
         public MusicPlayerViewModel() : base()
         {
-            InitialPlayCommand = new DelegateCommand(InitialPlayCommandExecute);
+            InitializationCommand = new DelegateCommand(InitializationCommandExecute);
             RepeatCommand = new DelegateCommand(RepeatCommandExecute);
         }
 
         public void Play(int musicIndex)
         {
-            _currentMusicIndex = musicIndex;
-
-            IsPlaying = false;
-
-            Position = TimeSpan.FromMilliseconds(0.0);
-
-            switch (musicIndex)
+            if (!_isMute)
             {
-                case MusicIndex.MainTheme:
-                    Source = "Sound/Music/MainTheme.mp3";
-                    break;
-                default:
-                    throw new NotImplementedException();
+                _currentMusicIndex = musicIndex;
+
+                IsPlaying = false;
+
+                switch (musicIndex)
+                {
+                    case MusicIndex.MainTheme:
+                        Source = "Sound/Music/MainTheme.mp3";
+                        break;
+                    default:
+                        throw new NotImplementedException();
+                }
+
+                IsPlaying = true;
             }
-
-            IsPlaying = true;
-        }
-
-        public void Play()
-        {
-            IsPlaying = true;
         }
 
         public void SetVolume(double volume)
@@ -77,12 +67,70 @@ namespace MrJackApp.ViewModel.Sound.Music
             Volume = volume;
         }
 
+        public double GetVolume()
+        {
+            return Volume;
+        }
+
         public void Stop()
         {
             IsPlaying = false;
         }
 
-        private void InitialPlayCommandExecute()
+        public void Mute()
+        {
+            _isMute = true;
+
+            if (IsPlaying)
+                Stop();
+        }
+
+        public void Unmute()
+        {
+            _isMute = false;
+
+            if (!IsPlaying)
+                Play(_currentMusicIndex);
+        }
+
+        public bool IsMute()
+        {
+            return _isMute;
+        }
+
+        public void Save()
+        {
+
+        }
+
+        public void Initialize()
+        {
+            if (HasDataToLoad())
+                Load();
+            else
+            {
+                SetDefaultValues();
+                Save();
+            }
+        }
+
+        private void Load()
+        {
+
+        }
+
+        private bool HasDataToLoad()
+        {
+            return false;
+        }
+
+        private void SetDefaultValues()
+        {
+            _isMute = false;
+            Volume = 0.5;
+        }
+
+        private void InitializationCommandExecute()
         {
             Play(MusicIndex.MainTheme);
         }

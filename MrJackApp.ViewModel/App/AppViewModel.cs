@@ -1,9 +1,11 @@
 ﻿using MrJackApp.DTO.Game.Board;
 using MrJackApp.Service.Navigation;
+using MrJackApp.Service.Sound.Effect;
 using MrJackApp.ViewModel.Common;
 using MrJackApp.ViewModel.Game.Board;
 using MrJackApp.ViewModel.MainMenu;
 using MrJackApp.ViewModel.RuleBook;
+using MrJackApp.ViewModel.Setting;
 using MrJackApp.ViewModel.Sound.effect;
 using MrJackApp.ViewModel.Sound.Music;
 using MrJackApp.ViewModel.Waiting;
@@ -34,6 +36,9 @@ namespace MrJackApp.ViewModel.App
         public void Initialize()
         {
             _serviceClientManager.OpenSession();
+
+            EffectPlayerViewModel.Initialize();
+            MusicPlayerViewModel.Initialize();
         }
 
         public void GoBack()
@@ -59,7 +64,7 @@ namespace MrJackApp.ViewModel.App
             switch (index)
             {
                 case NavigationIndex.MainMenu:
-                    CurrentViewModel = new MainMenuViewModel(this, _serviceClientManager);
+                    CurrentViewModel = new MainMenuViewModel(this, EffectPlayerViewModel, _serviceClientManager);
                     break;
                 case NavigationIndex.WaitingForGame:
                     CurrentViewModel = new WaitingForGameViewModel(this, _serviceClientManager);
@@ -71,6 +76,9 @@ namespace MrJackApp.ViewModel.App
                     break;
                 case NavigationIndex.RuleBook:
                     CurrentViewModel = new RuleBookDisplayerViewModel(this);
+                    break;
+                case NavigationIndex.Settings:
+                    CurrentViewModel = new SettingsViewModel(this, MusicPlayerViewModel, EffectPlayerViewModel);
                     break;
                 default:
                     throw new NotImplementedException();

@@ -3,8 +3,12 @@
     public interface IEffectController
     {
         void Play(int effectIndex);
-        void Play();
         void Stop();
         void SetVolume(double volume);
+        double GetVolume();
+        void Mute();
+        void Unmute();
+        bool IsMute();
+        void Save();
     }
 }

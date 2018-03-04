@@ -1,4 +1,5 @@
 ﻿using MrJackApp.Service.Navigation;
+using MrJackApp.Service.Sound.Effect;
 using MrJackApp.ViewModel.Common.Navigation;
 using MrJackApp.WCFServiceClient.Game;
 using System.Collections.Generic;
@@ -9,11 +10,12 @@ namespace MrJackApp.ViewModel.MainMenu
     {
         public List<MainMenuItemViewModel> Menus { get; private set; } = new List<MainMenuItemViewModel>();
 
-        public MainMenuViewModel(INavigationService navigationService, ServiceClientManager serviceClientManager) : base(navigationService)
+        public MainMenuViewModel(INavigationService navigationService, IEffectController effectController, ServiceClientManager serviceClientManager) : base(navigationService)
         {
-            Menus.Add(new QuickGameMenuItemViewModel(navigationService, serviceClientManager));
-            Menus.Add(new RuleBookMenuItemViewModel(navigationService));
-            Menus.Add(new AboutMenuItemViewModel(navigationService));
+            Menus.Add(new QuickGameMenuItemViewModel(navigationService, effectController, serviceClientManager));
+            Menus.Add(new RuleBookMenuItemViewModel(navigationService, effectController));
+            Menus.Add(new SettingsMenuItemViewModel(navigationService, effectController));
+            Menus.Add(new AboutMenuItemViewModel(navigationService, effectController));
         }
     }
 }

@@ -1,0 +1,56 @@
+﻿<UserControl x:Class="MrJackApp.View.Setting.SettingsView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:Button="clr-namespace:MrJackApp.View.Common.Component.Button">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/MrJackApp.View;component/Common/ResDic/CommonResDic.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="0" Text="Paramètres" Style="{StaticResource SubTitleTextStyle}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0 20 0 40"/>
+
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="50"/>
+            </Grid.RowDefinitions>
+
+            <!--Musique.-->
+            <TextBlock Text="Musique" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource BigTextStyle}" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0 0 0 10"/>
+            <TextBlock Grid.Column="0" Grid.Row="1" Style="{StaticResource TextStyle}" Text="Volume de la musique" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0 0 10 0"/>
+            <Slider Grid.Column="1" Grid.Row="1" Minimum="0" Maximum="1" Width="300" Ticks="0.1" Value="{Binding MusicVolume}" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10 0 10 0"/>
+            <TextBlock Grid.Column="0" Grid.Row="2" Style="{StaticResource TextStyle}" Text="Activer la musique ?" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0 0 10 0"/>
+            <CheckBox Grid.Column="1" Grid.Row="2" IsChecked="{Binding IsMusicActivated}" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10 0 0 0"/>
+            
+            <!--Effet.-->
+            <TextBlock Text="Effets" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource BigTextStyle}" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0 20 0 10"/>
+            <TextBlock Grid.Column="0" Grid.Row="4" Style="{StaticResource TextStyle}" Text="Volume des effets" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0 0 10 0"/>
+            <Slider Grid.Column="1" Grid.Row="4" Minimum="0" Maximum="1" Width="300" Ticks="0.1" Value="{Binding EffectVolume}" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10 0 10 0"/>
+            <TextBlock Grid.Column="0" Grid.Row="5" Style="{StaticResource TextStyle}" Text="Activer les effets ?" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0 0 10 0"/>
+            <CheckBox Grid.Column="1" Grid.Row="5" IsChecked="{Binding IsEffectActivated}" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10 0 0 0"/>
+        </Grid>
+
+        <StackPanel Grid.Row="2" Orientation="Horizontal" Margin="0 10 0 20" HorizontalAlignment="Center">
+            <Button:MenuButton Width="150" Height="50" Text="Ok" Command="{Binding ValidateCommand}" EffectController="{Binding EffectController}"/>
+            <Button:MenuButton Width="150" Height="50" Text="Annuler" Command="{Binding CancelCommand}" EffectController="{Binding EffectController}" Margin="10 0 0 0"/>
+        </StackPanel>
+    </Grid>
+</UserControl>

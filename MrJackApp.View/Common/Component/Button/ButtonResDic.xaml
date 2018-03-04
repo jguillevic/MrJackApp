@@ -5,7 +5,7 @@
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="pack://application:,,,/MrJackApp.View;component/Common/ResDic/CommonResDic.xaml"/>
     </ResourceDictionary.MergedDictionaries>
-    
+
     <Style BasedOn="{StaticResource TextStyle}" TargetType="TextBlock">
         <Setter Property="FontSize" Value="30"/>
     </Style>

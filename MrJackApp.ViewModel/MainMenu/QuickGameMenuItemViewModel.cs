@@ -1,4 +1,5 @@
 ﻿using MrJackApp.Service.Navigation;
+using MrJackApp.Service.Sound.Effect;
 using MrJackApp.WCFServiceClient.Game;
 
 namespace MrJackApp.ViewModel.MainMenu
@@ -7,7 +8,7 @@ namespace MrJackApp.ViewModel.MainMenu
     {
         private ServiceClientManager _serviceClientManager;
 
-        public QuickGameMenuItemViewModel(INavigationService navigationService, ServiceClientManager serviceClientManager) : base(navigationService)
+        public QuickGameMenuItemViewModel(INavigationService navigationService, IEffectController effectController, ServiceClientManager serviceClientManager) : base(navigationService, effectController)
         {
             Label = "Partie rapide";
 
