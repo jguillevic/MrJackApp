@@ -12,15 +12,15 @@
         </ResourceDictionary>
     </UserControl.Resources>
 
-    <Grid HorizontalAlignment="Center">
+    <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <TextBlock Grid.Row="0" Text="Mr. Jack" Style="{StaticResource TitleTextStyle}" Margin="0 100 0 100"/>
+        <TextBlock Grid.Row="0" Text="Mr. Jack" Style="{StaticResource TitleTextStyle}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0 100 0 100"/>
 
-        <ItemsControl Grid.Row="1" ItemsSource="{Binding Menus}">
+        <ItemsControl Grid.Row="1" ItemsSource="{Binding Menus}" HorizontalAlignment="Center" VerticalAlignment="Top">
             <ItemsControl.ItemsPanel>
                 <ItemsPanelTemplate>
                     <StackPanel Orientation="Vertical"/>
@@ -32,5 +32,7 @@
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
         </ItemsControl>
+
+        <AboutView:AboutDisplayerView DataContext="{Binding AboutViewModel}" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0 0 5 0"/>
     </Grid>
 </UserControl>

@@ -55,6 +55,9 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="About\AboutDisplayerView.xaml.cs">
+      <DependentUpon>AboutDisplayerView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="About\AboutView.xaml.cs">
       <DependentUpon>AboutView.xaml</DependentUpon>
     </Compile>
@@ -145,6 +148,10 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <Page Include="About\AboutDisplayerView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="About\AboutView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
