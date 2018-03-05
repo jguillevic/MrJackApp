@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace MrJackApp.View.About
 {
     /// <summary>
-    /// Interaction logic for AboutDisplayerView.xaml
+    /// Logique d'interaction pour AboutContentView.xaml
     /// </summary>
-    public partial class AboutDisplayerView : UserControl
+    public partial class AboutContentView : UserControl
     {
-        public AboutDisplayerView()
+        public AboutContentView()
         {
             InitializeComponent();
         }

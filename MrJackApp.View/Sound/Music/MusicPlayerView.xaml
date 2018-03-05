@@ -8,9 +8,6 @@
                   Source="{Binding Source}"
                   Extension:MediaElementExtension.IsPlaying="{Binding IsPlaying}">
         <Interactivity:Interaction.Triggers>
-            <Interactivity:EventTrigger EventName="Loaded">
-                <Interactivity:InvokeCommandAction Command="{Binding InitializationCommand}"/>
-            </Interactivity:EventTrigger>
             <Interactivity:EventTrigger EventName="MediaEnded">
                 <Interactivity:InvokeCommandAction Command="{Binding RepeatCommand}"/>
             </Interactivity:EventTrigger>

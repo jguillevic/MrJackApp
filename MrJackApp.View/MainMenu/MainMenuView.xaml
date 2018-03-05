@@ -33,6 +33,6 @@
             </ItemsControl.ItemTemplate>
         </ItemsControl>
 
-        <AboutView:AboutDisplayerView DataContext="{Binding AboutViewModel}" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0 0 5 0"/>
+        <AboutView:AboutView DataContext="{Binding AboutViewModel}" HorizontalAlignment="Right" VerticalAlignment="Top"/>
     </Grid>
 </UserControl>

@@ -1,4 +1,5 @@
-﻿using MrJackApp.Service.Navigation;
+﻿using MrJackApp.Service.App;
+using MrJackApp.Service.Navigation;
 using MrJackApp.ViewModel.App;
 using System.Windows.Controls;
 
@@ -20,7 +21,7 @@ namespace MrJackApp.View.App
         {
             Loaded -= AppViewLoaded;
 
-            var viewModel = new AppViewModel();
+            var viewModel = new AppViewModel(Parent as IAppService);
             viewModel.Initialize();
             viewModel.NavigateTo(NavigationIndex.MainMenu);
             DataContext = viewModel;

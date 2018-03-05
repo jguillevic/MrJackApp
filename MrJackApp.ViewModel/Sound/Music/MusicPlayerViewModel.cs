@@ -31,13 +31,11 @@ namespace MrJackApp.ViewModel.Sound.Music
             get { return _isPlaying; }
             set { SetProperty(ref _isPlaying, value); }
         }
-
-        public ICommand InitializationCommand { get; private set; }
+        
         public ICommand RepeatCommand { get; private set; }
 
         public MusicPlayerViewModel() : base()
         {
-            InitializationCommand = new DelegateCommand(InitializationCommandExecute);
             RepeatCommand = new DelegateCommand(RepeatCommandExecute);
         }
 
@@ -112,6 +110,8 @@ namespace MrJackApp.ViewModel.Sound.Music
                 SetDefaultValues();
                 Save();
             }
+
+            Play(MusicIndex.MainTheme);
         }
 
         private void Load()
@@ -128,11 +128,6 @@ namespace MrJackApp.ViewModel.Sound.Music
         {
             _isMute = false;
             Volume = 0.5;
-        }
-
-        private void InitializationCommandExecute()
-        {
-            Play(MusicIndex.MainTheme);
         }
 
         private void RepeatCommandExecute()

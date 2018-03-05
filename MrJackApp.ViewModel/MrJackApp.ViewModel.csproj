@@ -76,6 +76,7 @@
     <Compile Include="MainMenu\MainMenuItemViewModel.cs" />
     <Compile Include="MainMenu\MainMenuViewModel.cs" />
     <Compile Include="MainMenu\QuickGameMenuItemViewModel.cs" />
+    <Compile Include="MainMenu\QuitMenuItemViewModel.cs" />
     <Compile Include="MainMenu\RuleBookMenuItemViewModel.cs" />
     <Compile Include="MainMenu\SettingsMenuItemViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

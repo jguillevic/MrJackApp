@@ -1,4 +1,5 @@
 ﻿using MrJackApp.DTO.Game.Board;
+using MrJackApp.Service.App;
 using MrJackApp.Service.Navigation;
 using MrJackApp.Service.Sound.Effect;
 using MrJackApp.ViewModel.Common;
@@ -18,6 +19,8 @@ namespace MrJackApp.ViewModel.App
 {
     public sealed class AppViewModel : BindableBase, INavigationService
     {
+        private IAppService _appService;
+
         public EffectPlayerViewModel EffectPlayerViewModel { get; private set; } = new EffectPlayerViewModel();
         public MusicPlayerViewModel MusicPlayerViewModel { get; private set; } = new MusicPlayerViewModel();
 
@@ -31,7 +34,10 @@ namespace MrJackApp.ViewModel.App
             set { SetProperty(ref _currentViewModel, value); }
         }
 
-        public AppViewModel() : base() { }
+        public AppViewModel(IAppService appService) : base()
+        {
+            _appService = appService;
+        }
 
         public void Initialize()
         {
