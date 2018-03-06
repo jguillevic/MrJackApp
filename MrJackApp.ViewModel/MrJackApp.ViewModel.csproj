@@ -83,7 +83,9 @@
     <Compile Include="RuleBook\RuleBookDisplayerViewModel.cs" />
     <Compile Include="Setting\SettingsViewModel.cs" />
     <Compile Include="Sound\Effect\EffectPlayerViewModel.cs" />
+    <Compile Include="Sound\Effect\EffectSettings.cs" />
     <Compile Include="Sound\Music\MusicPlayerViewModel.cs" />
+    <Compile Include="Sound\Music\MusicSettings.cs" />
     <Compile Include="Waiting\WaitingForGameViewModel.cs" />
   </ItemGroup>
   <ItemGroup />
@@ -91,6 +93,10 @@
     <ProjectReference Include="..\MrJackApp.DTO\MrJackApp.DTO.csproj">
       <Project>{F2739FC9-FB09-4BAA-8D56-179BC21A7667}</Project>
       <Name>MrJackApp.DTO</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MrJackApp.Serialization\MrJackApp.Serialization.csproj">
+      <Project>{1da77677-a7a9-4e80-a779-07c678e879f5}</Project>
+      <Name>MrJackApp.Serialization</Name>
     </ProjectReference>
     <ProjectReference Include="..\MrJackApp.Service\MrJackApp.Service.csproj">
       <Project>{87C1B4F9-83B9-432C-8EB6-89536EB7637D}</Project>

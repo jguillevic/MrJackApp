@@ -1,17 +1,21 @@
-﻿using MrJackApp.Service.Sound.Music;
+﻿using MrJackApp.Serialization.Json;
+using MrJackApp.Service.Sound.Music;
 using MrJackApp.ViewModel.Common;
 using MrJackApp.ViewModel.Common.Command;
 using System;
+using System.IO;
 using System.Windows.Input;
 
 namespace MrJackApp.ViewModel.Sound.Music
 {
     public sealed class MusicPlayerViewModel : BindableBase, IMusicController
     {
+        private const string MusicSettingsFilePath = "MusicSettings.json";
+
         private bool _isMute;
         private int _currentMusicIndex;
 
-        private double _volume = 0.1;
+        private double _volume;
         public double Volume
         {
             get { return _volume; }
@@ -98,7 +102,13 @@ namespace MrJackApp.ViewModel.Sound.Music
 
         public void Save()
         {
+            var settings = CreateAndMapToMusicSettings();
 
+            using (var fs = new FileStream(MusicSettingsFilePath, FileMode.Create))
+            {
+                var jsonSer = new JsonSerializer() { OutputStream = fs, InputData = settings };
+                jsonSer.Serialize();
+            }
         }
 
         public void Initialize()
@@ -116,12 +126,21 @@ namespace MrJackApp.ViewModel.Sound.Music
 
         private void Load()
         {
+            MusicSettings settings = null;
 
+            using (var fs = new FileStream(MusicSettingsFilePath, FileMode.Open))
+            {
+                var jsonDeser = new JsonDeserializer<MusicSettings>() { InputStream = fs };
+                jsonDeser.Deserialize();
+                settings = jsonDeser.OutputData;
+            }
+
+            MapFromMusicSettings(settings);
         }
 
         private bool HasDataToLoad()
         {
-            return false;
+            return File.Exists(MusicSettingsFilePath);
         }
 
         private void SetDefaultValues()
@@ -133,6 +152,17 @@ namespace MrJackApp.ViewModel.Sound.Music
         private void RepeatCommandExecute()
         {
             Play(_currentMusicIndex);
+        }
+
+        private MusicSettings CreateAndMapToMusicSettings()
+        {
+            return new MusicSettings() { IsMute = _isMute, Volume = Volume };
+        }
+
+        private void MapFromMusicSettings(MusicSettings settings)
+        {
+            _isMute = settings.IsMute;
+            Volume = settings.Volume;
         }
     }
 }

@@ -31,7 +31,11 @@
                             <ObjectAnimationUsingKeyFrames Storyboard.TargetName="AboutContentView" Storyboard.TargetProperty="Visibility">
                                 <DiscreteObjectKeyFrame KeyTime="0:0:0.0" Value="{x:Static Visibility.Visible}"/>
                             </ObjectAnimationUsingKeyFrames>
-                            <DoubleAnimation Storyboard.TargetName="AboutContentView" Storyboard.TargetProperty="RenderTransform.X" To="0.0" Duration="0:0:0.5"/>
+                            <DoubleAnimation Storyboard.TargetName="AboutContentView" Storyboard.TargetProperty="RenderTransform.X" To="0.0" Duration="0:0:1.0">
+                                <DoubleAnimation.EasingFunction>
+                                    <BounceEase Bounces="3" Bounciness="2" EasingMode="EaseOut"/>
+                                </DoubleAnimation.EasingFunction>
+                            </DoubleAnimation>
                         </Storyboard>
                     </BeginStoryboard>
                 </EventTrigger>

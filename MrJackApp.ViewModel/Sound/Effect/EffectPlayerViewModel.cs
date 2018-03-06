@@ -1,13 +1,15 @@
-﻿using MrJackApp.Service.Sound.Effect;
+﻿using MrJackApp.Serialization.Json;
+using MrJackApp.Service.Sound.Effect;
 using MrJackApp.ViewModel.Common;
-using MrJackApp.ViewModel.Common.Command;
 using System;
-using System.Windows.Input;
+using System.IO;
 
-namespace MrJackApp.ViewModel.Sound.effect
+namespace MrJackApp.ViewModel.Sound.Effect
 {
     public sealed class EffectPlayerViewModel : BindableBase, IEffectController
     {
+        private const string EffectSettingsFilePath = "EffectSettings.json";
+
         private bool _isMute;
 
         private double _volume;
@@ -88,7 +90,13 @@ namespace MrJackApp.ViewModel.Sound.effect
 
         public void Save()
         {
-            
+            var settings = CreateAndMapToEffectSettings();
+
+            using (var fs = new FileStream(EffectSettingsFilePath, FileMode.Create))
+            {
+                var jsonSer = new JsonSerializer() { OutputStream = fs, InputData = settings };
+                jsonSer.Serialize();
+            }
         }
 
         public void Initialize()
@@ -104,18 +112,38 @@ namespace MrJackApp.ViewModel.Sound.effect
 
         private void Load()
         {
+            EffectSettings settings = null;
 
+            using (var fs = new FileStream(EffectSettingsFilePath, FileMode.Open))
+            {
+                var jsonDeser = new JsonDeserializer<EffectSettings>() { InputStream = fs };
+                jsonDeser.Deserialize();
+                settings = jsonDeser.OutputData;
+            }
+
+            MapFromEffectSettings(settings);
         }
 
         private bool HasDataToLoad()
         {
-            return false;
+            return File.Exists(EffectSettingsFilePath);
         }
 
         private void SetDefaultValues()
         {
             _isMute = false;
             Volume = 0.5;
+        }
+
+        private EffectSettings CreateAndMapToEffectSettings()
+        {
+            return new EffectSettings() { IsMute = _isMute, Volume = Volume };
+        }
+
+        private void MapFromEffectSettings(EffectSettings settings)
+        {
+            _isMute = settings.IsMute;
+            Volume = settings.Volume;
         }
     }
 }
