@@ -6,7 +6,13 @@
              xmlns:TurnView="clr-namespace:MrJackApp.View.Game.Board.Turn"
              xmlns:CardView="clr-namespace:MrJackApp.View.Game.Board.Card"
              xmlns:NotifierView="clr-namespace:MrJackApp.View.Game.Board.Notifier"
-             xmlns:Interactivity="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity">
+             xmlns:Interactivity="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+             xmlns:CommonConverter="clr-namespace:MrJackApp.Converter.Common;assembly=MrJackApp.Converter"
+             x:Name="UserControl">
+    <UserControl.Resources>
+        <CommonConverter:BoolToVisibilityConverter x:Key="BoolToVisConverter"/>
+    </UserControl.Resources>
+    
     <Interactivity:Interaction.Triggers>
         <Interactivity:EventTrigger EventName="Loaded">
             <Interactivity:InvokeCommandAction Command="{Binding StartGameCommand}"/>
@@ -32,7 +38,10 @@
             </Grid>
         </ScrollViewer>
 
-        <TurnView:TurnSchedulerView Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" DataContext="{Binding TurnScheduler}" Margin="0 20 0 20"/>
+        <TurnView:TurnSchedulerView Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" 
+                                    DataContext="{Binding TurnScheduler}" 
+                                    Visibility="{Binding ElementName=UserControl, Path=DataContext.IsTurnSchedulerReady, Converter={StaticResource BoolToVisConverter}}" 
+                                    Margin="0 20 0 20"/>
 
         <CardView:CharacterCardsDisplayerView Grid.Row="0" Grid.Column="1" DataContext="{Binding CharacterCardsDisplayer}"/>
 

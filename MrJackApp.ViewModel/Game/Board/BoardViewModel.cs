@@ -26,25 +26,11 @@ namespace MrJackApp.ViewModel.Game.Board
         public TurnSchedulerViewModel TurnScheduler { get; private set; }
         public NotifierViewModel Notifier { get; } = new NotifierViewModel();
 
-        private bool _isTileDisplayerDisplayed;
-        public bool IsTilesDisplayerDisplayed
+        private bool _isTurnSchedulerReady;
+        public bool IsTurnSchedulerReady
         {
-            get { return _isTileDisplayerDisplayed; }
-            set { SetProperty(ref _isTileDisplayerDisplayed, value); }
-        }
-
-        private bool _isCharactersDisplayerDisplayed;
-        public bool IsCharactersDisplayerDisplayed
-        {
-            get { return _isCharactersDisplayerDisplayed; }
-            set { SetProperty(ref _isCharactersDisplayerDisplayed, value); }
-        }
-
-        private bool _isTurnSchedulerDisplayed;
-        public bool IsTurnSchedulerDisplayed
-        {
-            get { return _isTurnSchedulerDisplayed; }
-            set { SetProperty(ref _isTurnSchedulerDisplayed, value); }
+            get { return _isTurnSchedulerReady; }
+            set { SetProperty(ref _isTurnSchedulerReady, value); }
         }
 
         public ICommand StartGameCommand { get; private set; }
@@ -88,9 +74,7 @@ namespace MrJackApp.ViewModel.Game.Board
 
         private void SetDefaultValues()
         {
-            IsTilesDisplayerDisplayed = false;
-            IsCharactersDisplayerDisplayed = false;
-            IsTurnSchedulerDisplayed = false;
+            IsTurnSchedulerReady = false;
         }
 
         private void SetCommands()
@@ -127,9 +111,7 @@ namespace MrJackApp.ViewModel.Game.Board
 
         private void StartGameMessagesDisplayed(object sender, System.EventArgs e)
         {
-            IsTilesDisplayerDisplayed = true;
-            IsCharactersDisplayerDisplayed = true;
-            IsTurnSchedulerDisplayed = true;
+            IsTurnSchedulerReady = true;
         }
     }
 }

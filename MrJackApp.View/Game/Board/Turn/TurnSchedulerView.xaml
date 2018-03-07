@@ -1,7 +1,25 @@
 ﻿<UserControl x:Class="MrJackApp.View.Game.Board.Turn.TurnSchedulerView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:TurnView="clr-namespace:MrJackApp.View.Game.Board.Turn">
+             xmlns:TurnView="clr-namespace:MrJackApp.View.Game.Board.Turn"
+             x:Name="UserControl">
+
+    <UserControl.Style>
+        <Style>
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding ElementName=UserControl, Path=Visibility}"  Value="Visible">
+                    <DataTrigger.EnterActions>
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation Storyboard.TargetProperty="Opacity" From="0.0" To="1.0" Duration="0:0:1.0"/>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </DataTrigger.EnterActions>
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+    </UserControl.Style>
+    
     <Grid>
         <ItemsControl ItemsSource="{Binding Turns}">
             <ItemsControl.ItemsPanel>
