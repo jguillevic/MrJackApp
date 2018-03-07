@@ -126,7 +126,7 @@
     <Compile Include="Setting\SettingsView.xaml.cs">
       <DependentUpon>SettingsView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Sound\Common\MediaElementExtension.cs" />
+    <Compile Include="Common\Extension\MediaElement\MediaElementExtension.cs" />
     <Compile Include="Sound\Effect\EffectPlayerView.xaml.cs">
       <DependentUpon>EffectPlayerView.xaml</DependentUpon>
     </Compile>

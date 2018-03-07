@@ -1,17 +1,16 @@
 ﻿using System;
 using System.Windows;
-using System.Windows.Controls;
 
-namespace MrJackApp.View.Sound.Common
+namespace MrJackApp.View.Common.Extension.MediaElement
 {
-    public sealed class MediaElementExtension
+    public static class MediaElementExtension
     {
         public static TimeSpan GetPosition(DependencyObject obj)
         {
             return (TimeSpan)obj.GetValue(PositionProperty);
         }
 
-        public static void SetPosition(DependencyObject obj, double value)
+        public static void SetPosition(DependencyObject obj, TimeSpan value)
         {
             obj.SetValue(PositionProperty, value);
         }
@@ -21,8 +20,9 @@ namespace MrJackApp.View.Sound.Common
 
         private static void PositionChangedCallback(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            MediaElement mediaElement = d as MediaElement;
-            if (mediaElement == null) return;
+            var mediaElement = d as System.Windows.Controls.MediaElement;
+            if (mediaElement == null)
+                return;
 
             mediaElement.Position = (TimeSpan)e.NewValue;
         }
@@ -42,7 +42,7 @@ namespace MrJackApp.View.Sound.Common
 
         private static void IsPlayingChangedCallback(DependencyObject obj, DependencyPropertyChangedEventArgs args)
         {
-            var mediaElement = obj as MediaElement;
+            var mediaElement = obj as System.Windows.Controls.MediaElement;
 
             if (mediaElement == null)
                 return;

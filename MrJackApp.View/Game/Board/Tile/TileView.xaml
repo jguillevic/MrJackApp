@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:tileConverter="clr-namespace:MrJackApp.Converter.Game.Board.Tile;assembly=MrJackApp.Converter"
              xmlns:commonConverter="clr-namespace:MrJackApp.Converter.Common;assembly=MrJackApp.Converter"
-             xmlns:interactivity="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+             xmlns:Interactivity="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
              x:Name="UserControl">
     <UserControl.Resources>
         <tileConverter:TileToFillConverter x:Key="FillConverter"/>
@@ -11,13 +11,13 @@
         <commonConverter:BoolToVisibilityConverter x:Key="BoolToVisConverter"/>
     </UserControl.Resources>
 
-    <Canvas>
-        <interactivity:Interaction.Triggers>
-            <interactivity:EventTrigger EventName="MouseLeftButtonDown">
-                <interactivity:InvokeCommandAction Command="{Binding SelectionCommand}"/>
-            </interactivity:EventTrigger>
-        </interactivity:Interaction.Triggers>
+    <Interactivity:Interaction.Triggers>
+        <Interactivity:EventTrigger EventName="MouseLeftButtonDown">
+            <Interactivity:InvokeCommandAction Command="{Binding SelectionCommand}"/>
+        </Interactivity:EventTrigger>
+    </Interactivity:Interaction.Triggers>
 
+    <Canvas>
         <Polygon Fill="{Binding Converter={StaticResource FillConverter}}"
                  StrokeThickness="1"
                  Stroke="Black"

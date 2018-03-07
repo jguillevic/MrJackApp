@@ -1,6 +1,7 @@
 ﻿using MrJackApp.DTO.Game.Board;
 using MrJackApp.DTO.Game.Board.Character;
 using MrJackApp.Service.Navigation;
+using MrJackApp.ViewModel.Common.Command;
 using MrJackApp.ViewModel.Common.Navigation;
 using MrJackApp.ViewModel.Game.Board.Card;
 using MrJackApp.ViewModel.Game.Board.Character;
@@ -8,6 +9,7 @@ using MrJackApp.ViewModel.Game.Board.Notifier;
 using MrJackApp.ViewModel.Game.Board.Tile;
 using MrJackApp.ViewModel.Game.Board.Turn;
 using System.Linq;
+using System.Windows.Input;
 
 namespace MrJackApp.ViewModel.Game.Board
 {
@@ -24,21 +26,40 @@ namespace MrJackApp.ViewModel.Game.Board
         public TurnSchedulerViewModel TurnScheduler { get; private set; }
         public NotifierViewModel Notifier { get; } = new NotifierViewModel();
 
+        private bool _isTileDisplayerDisplayed;
+        public bool IsTilesDisplayerDisplayed
+        {
+            get { return _isTileDisplayerDisplayed; }
+            set { SetProperty(ref _isTileDisplayerDisplayed, value); }
+        }
+
+        private bool _isCharactersDisplayerDisplayed;
+        public bool IsCharactersDisplayerDisplayed
+        {
+            get { return _isCharactersDisplayerDisplayed; }
+            set { SetProperty(ref _isCharactersDisplayerDisplayed, value); }
+        }
+
+        private bool _isTurnSchedulerDisplayed;
+        public bool IsTurnSchedulerDisplayed
+        {
+            get { return _isTurnSchedulerDisplayed; }
+            set { SetProperty(ref _isTurnSchedulerDisplayed, value); }
+        }
+
+        public ICommand StartGameCommand { get; private set; }
+
         public BoardViewModel(BoardDTO board, INavigationService navigationService) : base(navigationService)
         {
             Map(board);
-
+            SetDefaultValues();
+            SetCommands();
             SetEvents();
-
-            //Notifier.Notify("Test1");
-            //Notifier.Notify(string.Empty);
-            //Notifier.Notify("Test2");
         }
 
         private void Map(BoardDTO board)
         {
             TilesDisplayer = new TilesDisplayerViewModel(board.Tiles);
-            TilesDisplayer.TileSelected += ManageTileSelection;
             CharactersDisplayer = new CharactersDisplayerViewModel(board.Characters);
             JackVisibility = new JackVisibilityViewModel(board.JackVisibility);
             JackIdentity = new JackIdentityViewModel(board.JackIdentity);
@@ -60,8 +81,21 @@ namespace MrJackApp.ViewModel.Game.Board
 
         private void SetEvents()
         {
+            TilesDisplayer.TileSelected += ManageTileSelection;
             CharacterCardsDisplayer.CardSelected += CharacterCardsDisplayerCardSelected;
             AlibiCardsDisplayer.CardSelected += AlibiCardsDisplayerCardSelected;
+        }
+
+        private void SetDefaultValues()
+        {
+            IsTilesDisplayerDisplayed = false;
+            IsCharactersDisplayerDisplayed = false;
+            IsTurnSchedulerDisplayed = false;
+        }
+
+        private void SetCommands()
+        {
+            StartGameCommand = new DelegateCommand(StartGameCommandExecute);
         }
 
         private void CharacterCardsDisplayerCardSelected(object sender, CardSelectedEventArgs e)
@@ -81,6 +115,21 @@ namespace MrJackApp.ViewModel.Game.Board
         private void MapCharactersDisplayer(CharacterDTO[] characters)
         {
 
+        }
+
+        private void StartGameCommandExecute()
+        {
+            Notifier.AllMessagesDisplayed += StartGameMessagesDisplayed;
+            Notifier.Notify("La partie commence");
+            Notifier.Notify("Vous êtes Jack");
+            Notifier.Notify("Voici votre identité");
+        }
+
+        private void StartGameMessagesDisplayed(object sender, System.EventArgs e)
+        {
+            IsTilesDisplayerDisplayed = true;
+            IsCharactersDisplayerDisplayed = true;
+            IsTurnSchedulerDisplayed = true;
         }
     }
 }

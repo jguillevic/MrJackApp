@@ -31,5 +31,12 @@ namespace MrJackApp.View.Game.Board.Notifier
             var viewModel = (NotifierViewModel)DataContext;
             viewModel.NextMessageCommand.Execute(null);
         }
+
+        private void TextBlockTargetUpdated(object sender, DataTransferEventArgs e)
+        {
+            var textBlock = (TextBlock)sender;
+            if (textBlock.Text == null)
+                e.Handled = true;
+        }
     }
 }

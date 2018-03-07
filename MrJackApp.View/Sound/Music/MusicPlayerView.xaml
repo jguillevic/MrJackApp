@@ -1,7 +1,7 @@
 ﻿<UserControl x:Class="MrJackApp.View.Sound.Music.MusicPlayerView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:Extension="clr-namespace:MrJackApp.View.Sound.Common"
+             xmlns:Extension="clr-namespace:MrJackApp.View.Common.Extension.MediaElement"
              xmlns:Interactivity="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity">
     <MediaElement LoadedBehavior="Manual"
                   Volume="{Binding Volume}" 

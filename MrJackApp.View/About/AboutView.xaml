@@ -42,7 +42,7 @@
                 <EventTrigger RoutedEvent="MouseLeave">
                     <BeginStoryboard>
                         <Storyboard>
-                            <DoubleAnimation Storyboard.TargetName="AboutContentView" Storyboard.TargetProperty="RenderTransform.X" To="{Binding ElementName=AboutView, Path=ActualWidth}" Duration="0:0:0.5"/>
+                            <DoubleAnimation Storyboard.TargetName="AboutContentView" Storyboard.TargetProperty="RenderTransform.X" To="{Binding ElementName=AboutContentView, Path=Width}" Duration="0:0:0.5"/>
                             <ObjectAnimationUsingKeyFrames Storyboard.TargetName="AboutContentView" Storyboard.TargetProperty="Visibility">
                                 <DiscreteObjectKeyFrame KeyTime="0:0:0.5" Value="{x:Static Visibility.Collapsed}"/>
                             </ObjectAnimationUsingKeyFrames>

@@ -5,8 +5,14 @@
              xmlns:CharacterView="clr-namespace:MrJackApp.View.Game.Board.Character"
              xmlns:TurnView="clr-namespace:MrJackApp.View.Game.Board.Turn"
              xmlns:CardView="clr-namespace:MrJackApp.View.Game.Board.Card"
-             xmlns:NotifierView="clr-namespace:MrJackApp.View.Game.Board.Notifier">
-
+             xmlns:NotifierView="clr-namespace:MrJackApp.View.Game.Board.Notifier"
+             xmlns:Interactivity="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity">
+    <Interactivity:Interaction.Triggers>
+        <Interactivity:EventTrigger EventName="Loaded">
+            <Interactivity:InvokeCommandAction Command="{Binding StartGameCommand}"/>
+        </Interactivity:EventTrigger>
+    </Interactivity:Interaction.Triggers>
+    
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>

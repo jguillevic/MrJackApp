@@ -2,11 +2,11 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:CharacterView="clr-namespace:MrJackApp.View.Game.Board.Character"
-             xmlns:charConverter="clr-namespace:MrJackApp.Converter.Game.Board.Character;assembly=MrJackApp.Converter">
+             xmlns:CharConverter="clr-namespace:MrJackApp.Converter.Game.Board.Character;assembly=MrJackApp.Converter">
     <UserControl.Resources>
-        <charConverter:CharPosToMarginConverter x:Key="PosToMarginConverter"/>
+        <CharConverter:CharPosToMarginConverter x:Key="PosToMarginConverter"/>
     </UserControl.Resources>
-    
+
     <Grid>
         <ItemsControl ItemsSource="{Binding Characters}">
             <ItemsControl.ItemsPanel>
