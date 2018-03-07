@@ -29,6 +29,10 @@ namespace MrJackApp.ViewModel.Game.Board
             Map(board);
 
             SetEvents();
+
+            //Notifier.Notify("Test1");
+            //Notifier.Notify(string.Empty);
+            //Notifier.Notify("Test2");
         }
 
         private void Map(BoardDTO board)

@@ -43,7 +43,10 @@ namespace MrJackApp.ViewModel.Game.Board.Notifier
             {
                 var message = _messages[0];
                 _messages.RemoveAt(0);
-                CurrentMessage = message;
+                if (!string.IsNullOrWhiteSpace(message))
+                    CurrentMessage = message;
+                else
+                    NextMessageCommandExecute();
             }
             else
             {
