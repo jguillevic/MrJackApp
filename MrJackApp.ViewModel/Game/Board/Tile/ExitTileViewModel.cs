@@ -6,13 +6,14 @@ namespace MrJackApp.ViewModel.Game.Board.Tile
     {
         public bool IsBlocked { get; set; }
 
-        public ExitTileViewModel(TileDTO tile) : base(tile) { }
-
-        protected override void Map(TileDTO tile)
+        public ExitTileViewModel(ExitTileDTO tile) : base(tile)
         {
-            base.Map(tile);
+            Map(tile);
+        }
 
-            IsBlocked = ((ExitTileDTO)tile).IsBlocked;
+        private void Map(ExitTileDTO tile)
+        {
+            IsBlocked = tile.IsBlocked;
         }
     }
 }

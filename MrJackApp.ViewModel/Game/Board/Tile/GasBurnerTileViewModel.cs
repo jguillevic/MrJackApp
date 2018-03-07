@@ -6,13 +6,14 @@ namespace MrJackApp.ViewModel.Game.Board.Tile
     {
         public bool IsOn { get; set; }
 
-        public GasBurnerTileViewModel(TileDTO tile) : base(tile) { }
-
-        protected override void Map(TileDTO tile)
+        public GasBurnerTileViewModel(GasBurnerTileDTO tile) : base(tile)
         {
-            base.Map(tile);
+            Map(tile);
+        }
 
-            IsOn = ((GasBurnerTileDTO)tile).IsOn;
+        private void Map(GasBurnerTileDTO tile)
+        {
+            IsOn = tile.IsOn;
         }
     }
 }

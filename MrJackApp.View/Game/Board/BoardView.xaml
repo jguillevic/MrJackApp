@@ -20,9 +20,9 @@
 
         <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
             <Grid Grid.Row="0" Grid.Column="0">
-                <TileView:TilesDisplayerView/>
+                <TileView:TilesDisplayerView DataContext="{Binding TilesDisplayer}"/>
 
-                <CharacterView:CharactersDisplayerView/>
+                <CharacterView:CharactersDisplayerView DataContext="{Binding CharactersDisplayer}"/>
             </Grid>
         </ScrollViewer>
 

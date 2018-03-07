@@ -54,6 +54,7 @@
     <Compile Include="Game\Board\Card\CharacterCardsDisplayerViewModel.cs" />
     <Compile Include="Game\Board\Card\JackIdentityViewModel.cs" />
     <Compile Include="Game\Board\Card\JackVisibilityViewModel.cs" />
+    <Compile Include="Game\Board\Character\CharactersDisplayerViewModel.cs" />
     <Compile Include="Game\Board\Character\CharacterViewModel.cs" />
     <Compile Include="Game\Board\Character\InspecteurLestradeViewModel.cs" />
     <Compile Include="Game\Board\Character\JeremyBertViewModel.cs" />
@@ -70,6 +71,8 @@
     <Compile Include="Game\Board\Tile\HouseTileViewModel.cs" />
     <Compile Include="Game\Board\Tile\ManholeTileViewModel.cs" />
     <Compile Include="Game\Board\Tile\StreetTileViewModel.cs" />
+    <Compile Include="Game\Board\Tile\TilesDisplayerViewModel.cs" />
+    <Compile Include="Game\Board\Tile\TileSelectedEventArgs.cs" />
     <Compile Include="Game\Board\Tile\TileViewModel.cs" />
     <Compile Include="Game\Board\Turn\TurnSchedulerViewModel.cs" />
     <Compile Include="Game\Board\Turn\TurnViewModel.cs" />

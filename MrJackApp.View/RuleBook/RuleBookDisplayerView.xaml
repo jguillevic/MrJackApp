@@ -3,15 +3,33 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:Button="clr-namespace:MrJackApp.View.Common.Component.Button"
              x:Name="UserControl">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/MrJackApp.View;component/Common/ResDic/CommonResDic.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    
     <Grid>
         <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <Grid x:Name="Grid" Grid.Row="0">
-            <ScrollViewer x:Name="ScrollViewer"                       
-                      Margin="50 20 50 10" 
+        <TextBlock Grid.Row="0" Text="Règles" Style="{StaticResource SubTitleTextStyle}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0 20 0 40"/>
+
+        <Grid x:Name="Grid" Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+
+            <Button:NavigationButton Grid.Column="0" Margin="20 20 20 20" Direction="Left" HorizontalAlignment="Center" VerticalAlignment="Center" Command="{Binding MoveToPreviousPageCommand}"/>
+
+            <ScrollViewer Grid.Column="1" x:Name="ScrollViewer"                        
                       HorizontalScrollBarVisibility="Auto" 
                       VerticalScrollBarVisibility="Auto">
                 <Image x:Name="Image" Source="{Binding CurrentPagePath}" MouseWheel="ImageMouseWheel">
@@ -23,12 +41,12 @@
                     </Image.LayoutTransform>
                 </Image>
             </ScrollViewer>
+
+            <Button:NavigationButton Grid.Column="2" Margin="20 20 20 20" Direction="Right" HorizontalAlignment="Center" VerticalAlignment="Center" Command="{Binding MoveToNextPageCommand}"/>
         </Grid>
 
-        <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="0 10 0 20" HorizontalAlignment="Center">
-            <Button:NavigationButton Margin="0 0 10 0" Direction="Left" Command="{Binding MoveToPreviousPageCommand}"/>
-            <Button:NavigationButton Margin="10 0 10 0" Direction="Right" Command="{Binding MoveToNextPageCommand}"/>
-            <Button Width="100" Height="50" Margin="10 0 0 0" Content="Back" Command="{Binding GoBackCommand}"/>
+        <StackPanel Grid.Row="2" Orientation="Horizontal" Margin="0 20 0 20" HorizontalAlignment="Center">
+            <Button:MenuButton Width="150" Height="50" Text="Ok" Command="{Binding ValidateCommand}" EffectController="{Binding EffectController}"/>
         </StackPanel>
     </Grid>
 </UserControl>

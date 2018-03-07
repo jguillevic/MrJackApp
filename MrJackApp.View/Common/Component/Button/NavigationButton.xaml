@@ -16,7 +16,7 @@
                     <MultiTrigger.Setters>
                         <Setter Property="Effect">
                             <Setter.Value>
-                                <DropShadowEffect ShadowDepth="0" Color="Yellow" Opacity="1" BlurRadius="20"/>
+                                <DropShadowEffect ShadowDepth="0" Color="White" Opacity="1" BlurRadius="20"/>
                             </Setter.Value>
                         </Setter>
                     </MultiTrigger.Setters>
@@ -46,6 +46,11 @@
                         <EllipseGeometry RadiusX="20" RadiusY="20" Center="25,25" />
                     </CombinedGeometry.Geometry2>
                 </CombinedGeometry>
+            </Path.Data>
+        </Path>
+        <Path Fill="Transparent">
+            <Path.Data>
+                <EllipseGeometry RadiusX="20" RadiusY="20" Center="25,25" />
             </Path.Data>
         </Path>
         <Path x:Name="ArrowPath" Data="M 5 25 L 38 10 L 38 40" Fill="{Binding ElementName=UserControl, Path=CanExecute, Converter={StaticResource FillConverter}, FallbackValue=White}"/>

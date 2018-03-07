@@ -14,11 +14,14 @@ namespace MrJackApp.ViewModel.Game.Board.Tile
         {
             get
             {
-#if DEBUG
-                return true;
-#else
+                //#if DEBUG
+                //                return true;
+                //#else
+                //                return false;
+                //#endif
+
                 return false;
-#endif
+
             }
         }
 
@@ -36,7 +39,7 @@ namespace MrJackApp.ViewModel.Game.Board.Tile
             SelectionCommand = new DelegateCommand(() => RaiseSelected());
         }
 
-        protected virtual void Map(TileDTO tile)
+        private void Map(TileDTO tile)
         {
             CanGoOn = tile.CanGoOn;
             Coordinate = new Coordinate(tile.X, tile.Y);
@@ -45,7 +48,7 @@ namespace MrJackApp.ViewModel.Game.Board.Tile
         public delegate void SelectedEventHandler(object sender, EventArgs e);
         public event SelectedEventHandler Selected;
 
-        protected virtual void RaiseSelected()
+        private void RaiseSelected()
         {
             Selected?.Invoke(this, EventArgs.Empty);
         }

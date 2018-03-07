@@ -1,4 +1,5 @@
 ﻿using MrJackApp.Service.Navigation;
+using MrJackApp.Service.Sound.Effect;
 using MrJackApp.ViewModel.Common.Command;
 using MrJackApp.ViewModel.Common.Navigation;
 using MrJackApp.WCFServiceCallback.Game;
@@ -11,10 +12,14 @@ namespace MrJackApp.ViewModel.Waiting
     {
         private ServiceClientManager _serviceClientManager;
 
+        public IEffectController EffectController { get; private set; }
+
         public ICommand CancelCommand { get; private set; }
 
-        public WaitingForGameViewModel(INavigationService navigationService, ServiceClientManager serviceClientManager) : base(navigationService)
+        public WaitingForGameViewModel(INavigationService navigationService, IEffectController effectController, ServiceClientManager serviceClientManager) : base(navigationService)
         {
+            EffectController = effectController;
+
             CancelCommand = new DelegateCommand(CancelCommandExecute);
 
             _serviceClientManager = serviceClientManager;

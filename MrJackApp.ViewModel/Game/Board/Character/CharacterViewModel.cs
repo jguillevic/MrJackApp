@@ -21,7 +21,7 @@ namespace MrJackApp.ViewModel.Game.Board.Character
             Map(character);
         }
 
-        protected virtual void Map(CharacterDTO character)
+        protected void Map(CharacterDTO character)
         {
             Id = character.Id;
             Name = character.Name;

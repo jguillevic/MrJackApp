@@ -1,18 +1,13 @@
 ﻿using MrJackApp.DTO.Game.Board;
-using MrJackApp.DTO.Game.Board.Tile;
+using MrJackApp.DTO.Game.Board.Character;
+using MrJackApp.Service.Navigation;
+using MrJackApp.ViewModel.Common.Navigation;
 using MrJackApp.ViewModel.Game.Board.Card;
 using MrJackApp.ViewModel.Game.Board.Character;
-using MrJackApp.ViewModel.Common;
+using MrJackApp.ViewModel.Game.Board.Notifier;
 using MrJackApp.ViewModel.Game.Board.Tile;
 using MrJackApp.ViewModel.Game.Board.Turn;
-using System;
-using System.Collections.ObjectModel;
 using System.Linq;
-using MrJackApp.ViewModel.Common.Navigation;
-using MrJackApp.DTO.Game.Board.Character;
-using MrJackApp.ViewModel.Game.Board.Notifier;
-using System.Collections.Generic;
-using MrJackApp.Service.Navigation;
 
 namespace MrJackApp.ViewModel.Game.Board
 {
@@ -20,8 +15,8 @@ namespace MrJackApp.ViewModel.Game.Board
     {
         public CharacterViewModel _selectedCharacter;
 
-        public ObservableCollection<TileViewModel> Tiles { get; } = new ObservableCollection<TileViewModel>();
-        public ObservableCollection<CharacterViewModel> Characters { get; } = new ObservableCollection<CharacterViewModel>();
+        public TilesDisplayerViewModel TilesDisplayer { get; private set; }
+        public CharactersDisplayerViewModel CharactersDisplayer { get; private set; }
         public AlibiCardsDisplayerViewModel AlibiCardsDisplayer { get; } = new AlibiCardsDisplayerViewModel();
         public CharacterCardsDisplayerViewModel CharacterCardsDisplayer { get; } = new CharacterCardsDisplayerViewModel();
         public JackVisibilityViewModel JackVisibility { get; private set; }
@@ -34,17 +29,29 @@ namespace MrJackApp.ViewModel.Game.Board
             Map(board);
 
             SetEvents();
-
-            Notifier.Notify(new List<string> { "Toto", "Titi", "Tata" });
         }
 
         private void Map(BoardDTO board)
         {
-            MapTiles(board);
-            MapCharacters(board);
-            MapJackVisibility(board);
-            MapJackIdentity(board);
-            MapTurnScheduler(board);
+            TilesDisplayer = new TilesDisplayerViewModel(board.Tiles);
+            TilesDisplayer.TileSelected += ManageTileSelection;
+            CharactersDisplayer = new CharactersDisplayerViewModel(board.Characters);
+            JackVisibility = new JackVisibilityViewModel(board.JackVisibility);
+            JackIdentity = new JackIdentityViewModel(board.JackIdentity);
+            TurnScheduler = new TurnSchedulerViewModel(board.TurnScheduler);
+        }
+
+        private void ManageTileSelection(object sender, TileSelectedEventArgs e)
+        {
+            if (_selectedCharacter != null)
+            {
+                var tile = e.Tile;
+                if (tile.CanGoOn)
+                {
+                    var coord = tile.Coordinate;
+                    _selectedCharacter.MoveTo(coord.X, coord.Y);
+                }
+            }
         }
 
         private void SetEvents()
@@ -57,7 +64,7 @@ namespace MrJackApp.ViewModel.Game.Board
         {
             var card = e.Card;
             if (card.IsSelected)
-                _selectedCharacter = Characters.First(item => item.Id == card.CharacterId);
+                _selectedCharacter = CharactersDisplayer.Characters.First(item => item.Id == card.CharacterId);
             else
                 _selectedCharacter = null;
         }
@@ -67,104 +74,9 @@ namespace MrJackApp.ViewModel.Game.Board
 
         }
 
-        private void MapTurnScheduler(BoardDTO board)
+        private void MapCharactersDisplayer(CharacterDTO[] characters)
         {
-            TurnScheduler = new TurnSchedulerViewModel(board.TurnScheduler);
-        }
 
-        private void MapJackIdentity(BoardDTO board)
-        {
-            JackIdentity = new JackIdentityViewModel(board.JackIdentity);
-        }
-
-        private void MapJackVisibility(BoardDTO board)
-        {
-            JackVisibility = new JackVisibilityViewModel(board.JackVisibility);
-        }
-
-        private void MapCharacters(BoardDTO board)
-        {
-            for (int i = 0; i < board.Characters.Length; i++)
-            {
-                CharacterViewModel charViewModel = null;
-                var character = board.Characters[i];
-
-                switch (character.Kind)
-                {
-                    case CharacterKind.SherlockHolmes:
-                        charViewModel = new SherlockHolmesViewModel(character);
-                        break;
-                    case CharacterKind.JohnHWatson:
-                        charViewModel = new JohnHWatsonViewModel(character);
-                        break;
-                    case CharacterKind.JohnSmith:
-                        charViewModel = new JohnSmithViewModel(character);
-                        break;
-                    case CharacterKind.InspecteurLestrade:
-                        charViewModel = new InspecteurLestradeViewModel(character);
-                        break;
-                    case CharacterKind.MissStealthy:
-                        charViewModel = new MissStealthyViewModel(character);
-                        break;
-                    case CharacterKind.SergentGoodley:
-                        charViewModel = new SergentGoodleyViewModel(character);
-                        break;
-                    case CharacterKind.SirWilliamGull:
-                        charViewModel = new SirWilliamGullViewModel(character);
-                        break;
-                    case CharacterKind.JeremyBert:
-                        charViewModel = new JeremyBertViewModel(character);
-                        break;
-                    default:
-                        throw new NotImplementedException();
-                }
-
-                Characters.Add(charViewModel);
-            }
-        }
-
-        private void MapTiles(BoardDTO board)
-        {
-            for (int i = 0; i < board.Tiles.Length; i++)
-            {
-                for (int j = 0; j < board.Tiles[i].Length; j++)
-                {
-                    TileViewModel tileViewModel = null;
-                    var tile = board.Tiles[i][j];
-
-                    if (tile is ExitTileDTO)
-                        tileViewModel = new ExitTileViewModel(tile);
-                    else if (tile is GasBurnerTileDTO)
-                        tileViewModel = new GasBurnerTileViewModel(tile);
-                    else if (tile is HouseTileDTO)
-                        tileViewModel = new HouseTileViewModel(tile);
-                    else if (tile is ManholeTileDTO)
-                        tileViewModel = new ManholeTileViewModel(tile);
-                    else if (tile is StreetTileDTO)
-                        tileViewModel = new StreetTileViewModel(tile);
-                    else if (tile is EmptyTileDTO)
-                        tileViewModel = new EmptyTileViewModel(tile);
-                    else
-                        throw new NotImplementedException();
-
-                    tileViewModel.Selected += ManageTileViewModelSelection;
-
-                    Tiles.Add(tileViewModel);
-                }
-            }
-        }
-
-        private void ManageTileViewModelSelection(object sender, EventArgs e)
-        {
-            if (_selectedCharacter != null)
-            {
-                var tile = (TileViewModel)sender;
-                if (tile.CanGoOn)
-                {
-                    var coord = tile.Coordinate;
-                    _selectedCharacter.MoveTo(coord.X, coord.Y);
-                }
-            }
         }
     }
 }

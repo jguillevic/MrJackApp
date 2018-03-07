@@ -1,4 +1,5 @@
 ﻿using MrJackApp.Service.Navigation;
+using MrJackApp.Service.Sound.Effect;
 using MrJackApp.ViewModel.Common.Command;
 using MrJackApp.ViewModel.Common.Navigation;
 using System.Globalization;
@@ -21,15 +22,19 @@ namespace MrJackApp.ViewModel.RuleBook
             set { SetProperty(ref _currentPagePath, value); }
         }
 
+        public IEffectController EffectController { get; private set; }
+
         public DelegateCommand MoveToPreviousPageCommand { get; private set; }
         public DelegateCommand MoveToNextPageCommand { get; private set; }
-        public ICommand GoBackCommand { get; private set; }
+        public ICommand ValidateCommand { get; private set; }
 
-        public RuleBookDisplayerViewModel(INavigationService navigationService) : base(navigationService)
+        public RuleBookDisplayerViewModel(INavigationService navigationService, IEffectController effectController) : base(navigationService)
         {
+            EffectController = effectController;
+
             MoveToPreviousPageCommand = new DelegateCommand(MoveToPreviousPageCommandExecute, MoveToPreviousPageCommandCanExecute);
             MoveToNextPageCommand = new DelegateCommand(MoveToNextPageCommandExecute, MoveToNextPageCommandCanExecute);
-            GoBackCommand = new DelegateCommand(GoBackCommandExecute);
+            ValidateCommand = new DelegateCommand(ValidateCommandExecute);
 
             _currentPageIndex = _minPageIndex;
             SetCurrentPagePath();
@@ -66,7 +71,7 @@ namespace MrJackApp.ViewModel.RuleBook
             return _currentPageIndex < _maxPageIndex;
         }
 
-        private void GoBackCommandExecute()
+        private void ValidateCommandExecute()
         {
             GoBack();
         }

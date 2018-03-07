@@ -6,13 +6,14 @@ namespace MrJackApp.ViewModel.Game.Board.Tile
     {
         public bool IsOpen { get; set; }
 
-        public ManholeTileViewModel(TileDTO tile) : base(tile) { }
-
-        protected override void Map(TileDTO tile)
+        public ManholeTileViewModel(ManholeTileDTO tile) : base(tile)
         {
-            base.Map(tile);
+            Map(tile);
+        }
 
-            IsOpen = ((ManholeTileDTO)tile).IsOpen;
+        private void Map(ManholeTileDTO tile)
+        {
+            IsOpen = tile.IsOpen;
         }
     }
 }
