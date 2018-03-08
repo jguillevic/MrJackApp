@@ -1,13 +1,13 @@
 ﻿using MrJackApp.DTO.Game.Board.Tile;
 using MrJackApp.ViewModel.Common;
 using System;
-using System.Collections.Generic;
+using System.Collections.ObjectModel;
 
 namespace MrJackApp.ViewModel.Game.Board.Tile
 {
     public sealed class TilesDisplayerViewModel : BindableBase
     {
-        public List<TileViewModel> Tiles { get; } = new List<TileViewModel>();
+        public ObservableCollection<TileViewModel> Tiles { get; } = new ObservableCollection<TileViewModel>();
 
         public TilesDisplayerViewModel(TileDTO[][] tiles) : base()
         {

@@ -1,13 +1,13 @@
 ﻿using MrJackApp.DTO.Game.Board.Character;
 using MrJackApp.ViewModel.Common;
 using System;
-using System.Collections.Generic;
+using System.Collections.ObjectModel;
 
 namespace MrJackApp.ViewModel.Game.Board.Character
 {
     public sealed class CharactersDisplayerViewModel : BindableBase
     {
-        public List<CharacterViewModel> Characters { get; } = new List<CharacterViewModel>();
+        public ObservableCollection<CharacterViewModel> Characters { get; } = new ObservableCollection<CharacterViewModel>();
 
         public CharactersDisplayerViewModel(CharacterDTO[] characters) : base()
         {
