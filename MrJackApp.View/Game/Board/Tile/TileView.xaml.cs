@@ -23,14 +23,9 @@ namespace MrJackApp.View.Game.Board.Tile
         {
             InitializeComponent();
 
-            // TODO : Revoir la définition des points pour les faire correspondre au visuel.
             Points = new PointCollection();
-            Points.Add(new Point(TileConst.Radius * 2, Math.Sqrt(3) / 2 * TileConst.Radius));
-            Points.Add(new Point(TileConst.Radius * 3 / 2, Math.Sqrt(3) * TileConst.Radius));
-            Points.Add(new Point(TileConst.Radius / 2, Math.Sqrt(3) * TileConst.Radius));
-            Points.Add(new Point(0, Math.Sqrt(3) / 2 * TileConst.Radius));
-            Points.Add(new Point(TileConst.Radius / 2, 0));
-            Points.Add(new Point(TileConst.Radius * 3 / 2, 0));
+            for (int i = 0; i < 6; i++)
+                Points.Add(new Point(TileConst.Radius * Math.Cos(i * Math.PI / 3), TileConst.Radius * Math.Sin(i * Math.PI / 3)));
         }
     }
 }

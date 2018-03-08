@@ -10,7 +10,7 @@
              xmlns:CommonConverter="clr-namespace:MrJackApp.Converter.Common;assembly=MrJackApp.Converter"
              x:Name="UserControl">
     <UserControl.Resources>
-        <CommonConverter:BoolToVisibilityConverter x:Key="BoolToVisConverter"/>
+        <CommonConverter:BoolToVisibilityConverter x:Key="BoolToVisConverter" FalseValue="Hidden"/>
     </UserControl.Resources>
     
     <Interactivity:Interaction.Triggers>
@@ -30,13 +30,13 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
-            <Grid Grid.Row="0" Grid.Column="0">
-                <TileView:TilesDisplayerView DataContext="{Binding TilesDisplayer}"/>
+        <Grid Grid.Row="0" Grid.Column="0">
+            <TileView:TilesDisplayerView Visibility="{Binding ElementName=UserControl, Path=DataContext.IsTilesDisplayerReady, Converter={StaticResource BoolToVisConverter}}" 
+                                             DataContext="{Binding TilesDisplayer}"/>
 
-                <CharacterView:CharactersDisplayerView DataContext="{Binding CharactersDisplayer}"/>
-            </Grid>
-        </ScrollViewer>
+            <CharacterView:CharactersDisplayerView Visibility="{Binding ElementName=UserControl, Path=DataContext.IsCharactersDisplayerReady, Converter={StaticResource BoolToVisConverter}}" 
+                                                       DataContext="{Binding CharactersDisplayer}"/>
+        </Grid>
 
         <TurnView:TurnSchedulerView Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" 
                                     DataContext="{Binding TurnScheduler}" 

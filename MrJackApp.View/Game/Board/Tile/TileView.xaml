@@ -21,7 +21,7 @@
         <Polygon Fill="{Binding Converter={StaticResource FillConverter}}"
                  StrokeThickness="1"
                  Stroke="Black"
-                 Points="60, 0, 30, 51.96152, -30, 51.96152, -60, 0, -30, -51.96152, 30, -51.96152">
+                 Points="{Binding ElementName=UserControl, Path=Points}">
         </Polygon>
         <TextBlock Text="{Binding Coordinate, Converter={StaticResource TextConverter}}" Foreground="Goldenrod" Margin="-25 -10 0 0" Visibility="{Binding ShowCoordinate, Converter={StaticResource BoolToVisConverter}}">
         </TextBlock>

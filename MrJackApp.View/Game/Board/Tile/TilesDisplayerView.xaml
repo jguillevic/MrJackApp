@@ -6,6 +6,7 @@
              x:Name="UserControl">
     <UserControl.Resources>
         <TileConverter:TilePosToMarginConverter x:Key="PosToMarginConverter"/>
+        <TileConverter:TileToVisibilityConverter x:Key="TileToVisConverter"/>
     </UserControl.Resources>
 
     <Grid>
@@ -17,7 +18,7 @@
             </ItemsControl.ItemsPanel>
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
-                    <TileView:TileView Margin="{Binding Coordinate, Converter={StaticResource PosToMarginConverter}}"/>
+                    <TileView:TileView Margin="{Binding Coordinate, Converter={StaticResource PosToMarginConverter}}" Visibility="{Binding Converter={StaticResource TileToVisConverter}}"/>
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
         </ItemsControl>

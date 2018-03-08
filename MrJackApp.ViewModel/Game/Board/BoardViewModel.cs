@@ -33,6 +33,20 @@ namespace MrJackApp.ViewModel.Game.Board
             set { SetProperty(ref _isTurnSchedulerReady, value); }
         }
 
+        private bool _isTilesDisplayerReady;
+        public bool IsTilesDisplayerReady
+        {
+            get { return _isTilesDisplayerReady; }
+            set { SetProperty(ref _isTilesDisplayerReady, value); }
+        }
+
+        private bool _isCharactersDisplayerReady;
+        public bool IsCharactersDisplayerReady
+        {
+            get { return _isCharactersDisplayerReady; }
+            set { SetProperty(ref _isCharactersDisplayerReady, value); }
+        }
+
         public ICommand StartGameCommand { get; private set; }
 
         public BoardViewModel(BoardDTO board, INavigationService navigationService) : base(navigationService)
@@ -75,6 +89,8 @@ namespace MrJackApp.ViewModel.Game.Board
         private void SetDefaultValues()
         {
             IsTurnSchedulerReady = false;
+            IsTilesDisplayerReady = false;
+            IsCharactersDisplayerReady = false;
         }
 
         private void SetCommands()
@@ -112,6 +128,8 @@ namespace MrJackApp.ViewModel.Game.Board
         private void StartGameMessagesDisplayed(object sender, System.EventArgs e)
         {
             IsTurnSchedulerReady = true;
+            IsTilesDisplayerReady = true;
+            IsCharactersDisplayerReady = true;
         }
     }
 }

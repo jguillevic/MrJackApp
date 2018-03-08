@@ -2,6 +2,6 @@
 {
     public static class TileConst
     {
-        public const double Radius = 60f;
+        public const double Radius = 40f;
     }
 }
