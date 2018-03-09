@@ -9,7 +9,7 @@ namespace MrJackApp.WCFService.Game
     {
         private static List<string> _lfgSessionIds = new List<string>();
         private static Dictionary<string, IGameServiceCallback> _callbacks = new Dictionary<string, IGameServiceCallback>();
-        private static Dictionary<string, Engine.Game.Game> _hostedGames = new Dictionary<string, Engine.Game.Game>();
+        private static Dictionary<string, HostedGame> _hostedGames = new Dictionary<string, HostedGame>();
 
         public void CloseSession()
         {
@@ -28,19 +28,20 @@ namespace MrJackApp.WCFService.Game
                     _lfgSessionIds.Add(firstPlayerSessionId);
                 else
                 {
-                    var game = new Engine.Game.Game();
-                    game.Init();
-
+                    var hostedGame = new HostedGame();
+                    
                     string secondPlayerSessionId;
                     lock (_hostedGames)
                     {
                         secondPlayerSessionId = _lfgSessionIds[0];
-                        _hostedGames.Add(secondPlayerSessionId, game);
+                        _hostedGames.Add(secondPlayerSessionId, hostedGame);
                         _lfgSessionIds.RemoveAt(0);
-                        _hostedGames.Add(firstPlayerSessionId, game);
+                        _hostedGames.Add(firstPlayerSessionId, hostedGame);
                     }
 
-                    var board = game.Board.GetDTO();
+                    hostedGame.Init(firstPlayerSessionId, secondPlayerSessionId);
+
+                    var board = hostedGame.Game.Board.GetDTO();
                     lock (_callbacks)
                     {            
                         _callbacks[firstPlayerSessionId].BroadcastBoard(board);
@@ -68,6 +69,16 @@ namespace MrJackApp.WCFService.Game
 
             lock (_hostedGames)
                 _hostedGames.Remove(sessionId);
+        }
+
+        public bool IsJack()
+        {
+            var playerSessionId = OperationContext.Current.SessionId;
+
+            lock(_hostedGames)
+            {
+                return _hostedGames[playerSessionId].IsJack(playerSessionId);
+            }
         }
     }
 }

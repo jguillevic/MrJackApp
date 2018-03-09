@@ -8,6 +8,7 @@ using MrJackApp.ViewModel.Game.Board.Character;
 using MrJackApp.ViewModel.Game.Board.Notifier;
 using MrJackApp.ViewModel.Game.Board.Tile;
 using MrJackApp.ViewModel.Game.Board.Turn;
+using MrJackApp.WCFServiceClient.Game;
 using System.Linq;
 using System.Windows.Input;
 
@@ -15,7 +16,9 @@ namespace MrJackApp.ViewModel.Game.Board
 {
     public sealed class BoardViewModel : NavigationViewModel
     {
-        public CharacterViewModel _selectedCharacter;
+        private bool _isJack;
+        private ServiceClientManager _serviceClientManager;
+        private CharacterViewModel _selectedCharacter;
 
         public TilesDisplayerViewModel TilesDisplayer { get; private set; }
         public CharactersDisplayerViewModel CharactersDisplayer { get; private set; }
@@ -49,12 +52,18 @@ namespace MrJackApp.ViewModel.Game.Board
 
         public ICommand StartGameCommand { get; private set; }
 
-        public BoardViewModel(BoardDTO board, INavigationService navigationService) : base(navigationService)
-        {
+        public BoardViewModel(BoardDTO board, INavigationService navigationService, ServiceClientManager serviceClientManager) : base(navigationService)
+        {     
             Map(board);
+            SetFields(serviceClientManager);
             SetDefaultValues();
             SetCommands();
             SetEvents();
+        }
+
+        private void SetFields(ServiceClientManager serviceClientManager)
+        {
+            _serviceClientManager = serviceClientManager;
         }
 
         private void Map(BoardDTO board)
@@ -121,8 +130,17 @@ namespace MrJackApp.ViewModel.Game.Board
         {
             Notifier.AllMessagesDisplayed += StartGameMessagesDisplayed;
             Notifier.Notify("La partie commence");
-            Notifier.Notify("Vous êtes Jack");
-            Notifier.Notify("Voici votre identité");
+
+            _isJack = _serviceClientManager.GameServiceClient.IsJack();
+            if (_isJack)
+            {
+                Notifier.Notify("Vous êtes Jack");
+                Notifier.Notify("Voici votre identité");
+            }
+            else
+            {
+                Notifier.Notify("Vous êtes l'inspecteur");
+            }
         }
 
         private void StartGameMessagesDisplayed(object sender, System.EventArgs e)

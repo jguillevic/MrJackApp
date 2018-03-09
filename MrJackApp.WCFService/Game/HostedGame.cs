@@ -1,21 +1,44 @@
-﻿namespace MrJackApp.WCFService.Game
+﻿using System;
+
+namespace MrJackApp.WCFService.Game
 {
     public sealed class HostedGame
     {
-        public string InspectorId { get; private set; }
-        public string JackId { get; private set; }
-        public Engine.Game.Game Game { get; private set; }
+        private string _inspectorId;
+        private string _jackId;
+        public Engine.Game.Game Game { get; private set; } = new Engine.Game.Game();
 
-        public HostedGame(string inspectorId, string jackId)
+        public void Init(string player1Id, string player2Id)
         {
-            InspectorId = inspectorId;
-            JackId = jackId;
-            Game = new Engine.Game.Game();
+            SetPlayerIds(player1Id, player2Id);
+
+            Game.Init();
         }
 
-        public void Init()
+        private void SetPlayerIds(string player1Id, string player2Id)
         {
-            Game.Init();
+            var rand = new Random();
+            var result = rand.Next(0, 1);
+            if (result == 0)
+            {
+                _inspectorId = player1Id;
+                _jackId = player2Id;
+            }
+            else
+            {
+                _inspectorId = player2Id;
+                _jackId = player1Id;
+            }
+        }
+
+        public bool IsJack(string playerId)
+        {
+            return _jackId == playerId;
+        }
+
+        public bool IsInspector(string playerId)
+        {
+            return _inspectorId == playerId;
         }
     }
 }

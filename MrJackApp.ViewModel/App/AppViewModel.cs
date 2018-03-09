@@ -75,7 +75,7 @@ namespace MrJackApp.ViewModel.App
                     CurrentViewModel = new WaitingForGameViewModel(this, EffectPlayerViewModel, _serviceClientManager);
                     break;
                 case NavigationIndex.Game:
-                    CurrentViewModel = new BoardViewModel((BoardDTO)parameter, this);
+                    CurrentViewModel = new BoardViewModel((BoardDTO)parameter, this, _serviceClientManager);
                     break;
                 case NavigationIndex.RuleBook:
                     CurrentViewModel = new RuleBookDisplayerViewModel(this, EffectPlayerViewModel);

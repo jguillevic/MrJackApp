@@ -4,20 +4,12 @@ namespace MrJackApp.Engine.Game
 {
     public sealed class Game
     {
-        private InspectorPlayer _inspector;
-        private JackPlayer _jack;
+        private InspectorPlayer _inspector = new InspectorPlayer();
+        private JackPlayer _jack = new JackPlayer();
 
-        public Board.Board Board { get; private set; }
+        public Board.Board Board { get; private set; } = new Board.Board();
 
         private GameResultState _result;
-
-        public Game()
-        {
-            _inspector = new InspectorPlayer();
-            _jack = new JackPlayer();
-
-            Board = new Board.Board();
-        }
 
         public void Init()
         {

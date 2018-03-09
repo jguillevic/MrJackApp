@@ -1,6 +1,7 @@
 ﻿using MrJackApp.WCFContract.Game;
 using MrJackApp.WCFServiceCallback.Game;
 using System.ServiceModel;
+using System;
 
 namespace MrJackApp.WCFServiceClient.Game
 {
@@ -37,6 +38,11 @@ namespace MrJackApp.WCFServiceClient.Game
         public void StopLookingForQuickGame()
         {
             _service.StopLookingForQuickGame();
+        }
+
+        public bool IsJack()
+        {
+            return _service.IsJack();
         }
     }
 }
