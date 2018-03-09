@@ -15,6 +15,8 @@ namespace MrJackApp.Engine.Game.Board
         public Character.Character[] Characters { get; private set; } = new Character.Character[8];
         public TurnScheduler TurnScheduler { get; private set; } = new TurnScheduler();
         public JackVisibility JackVisibility { get; set; }
+        public CharacterDeck CharacterDeck { get; private set; } = new CharacterDeck();
+        public AlibiDeck AlibiDeck { get; private set; } = new AlibiDeck();
 
         public void Init()
         {
@@ -23,6 +25,12 @@ namespace MrJackApp.Engine.Game.Board
             JackVisibility = JackVisibility.Light;
 
             TurnScheduler.Init();
+
+            CharacterDeck.Init();
+            CharacterDeck.Shuffle();
+
+            AlibiDeck.Init();
+            AlibiDeck.Shuffle();
         }
 
         public void Generate()

@@ -11,10 +11,10 @@
                     <ObjectAnimationUsingKeyFrames Storyboard.TargetName="UserControl" Storyboard.TargetProperty="Visibility">
                         <DiscreteObjectKeyFrame KeyTime="0:0:0.0" Value="{x:Static Visibility.Visible}"/>
                     </ObjectAnimationUsingKeyFrames>
-                    <DoubleAnimation Storyboard.TargetName="UserControl" Storyboard.TargetProperty="Opacity" From="0" To="1" BeginTime="0:0:0.0" Duration="0:0:1.0"/>
-                    <DoubleAnimation Storyboard.TargetName="UserControl" Storyboard.TargetProperty="Opacity" From="1" To="0" BeginTime="0:0:6.0" Duration="0:0:1.0"/>
+                    <DoubleAnimation Storyboard.TargetName="UserControl" Storyboard.TargetProperty="Opacity" From="0" To="1" BeginTime="0:0:0.0" Duration="0:0:0.5"/>
+                    <DoubleAnimation Storyboard.TargetName="UserControl" Storyboard.TargetProperty="Opacity" From="1" To="0" BeginTime="0:0:1.0" Duration="0:0:0.5"/>
                     <ObjectAnimationUsingKeyFrames Storyboard.TargetName="UserControl" Storyboard.TargetProperty="Visibility">
-                        <DiscreteObjectKeyFrame KeyTime="0:0:7.0" Value="{x:Static Visibility.Collapsed}"/>
+                        <DiscreteObjectKeyFrame KeyTime="0:0:1.5" Value="{x:Static Visibility.Collapsed}"/>
                     </ObjectAnimationUsingKeyFrames>
                 </Storyboard>
             </BeginStoryboard>

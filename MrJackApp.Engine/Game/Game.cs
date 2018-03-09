@@ -1,13 +1,9 @@
-﻿using MrJackApp.Engine.Game.Board.Card;
-using MrJackApp.Engine.Game.Player;
+﻿using MrJackApp.Engine.Game.Player;
 
 namespace MrJackApp.Engine.Game
 {
     public sealed class Game
     {
-        private CharacterDeck _characterDeck;
-        private AlibiDeck _alibiDeck;
-
         private InspectorPlayer _inspector;
         private JackPlayer _jack;
 
@@ -17,9 +13,6 @@ namespace MrJackApp.Engine.Game
 
         public Game()
         {
-            _characterDeck = new CharacterDeck();
-            _alibiDeck = new AlibiDeck();
-
             _inspector = new InspectorPlayer();
             _jack = new JackPlayer();
 
@@ -30,13 +23,6 @@ namespace MrJackApp.Engine.Game
         {
             _result = GameResultState.None;
 
-            // TODO : Mettre ce code dans Board.
-            _characterDeck.Init();
-            _characterDeck.Shuffle();
-
-            _alibiDeck.Init();
-            _alibiDeck.Shuffle();
-
             Board.Init();
         }
 
@@ -44,7 +30,7 @@ namespace MrJackApp.Engine.Game
         {
             #region 1. Choix et activation des personnages.
 
-            var drawedChar = _characterDeck.Draw(4);
+            var drawedChar = Board.CharacterDeck.Draw(4);
 
             // S'il s'agit d'un tour impair.
             if (Board.TurnScheduler.CurrentTurnValue % 2 != 0)
@@ -84,8 +70,8 @@ namespace MrJackApp.Engine.Game
             // S'il s'agit d'un tour pair.
             if (Board.TurnScheduler.CurrentTurnValue % 2 == 0)
             {
-                _characterDeck.Init();
-                _characterDeck.Shuffle();
+                Board.CharacterDeck.Init();
+                Board.CharacterDeck.Shuffle();
             }
 
             // Déterminer si Jack a gagné.

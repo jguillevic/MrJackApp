@@ -55,6 +55,7 @@
     <Compile Include="Game\Board\Tile\TileDTO.cs" />
     <Compile Include="Game\Board\Turn\TurnDTO.cs" />
     <Compile Include="Game\Board\Turn\TurnSchedulerDTO.cs" />
+    <Compile Include="Game\Player\PlayerRole.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />
