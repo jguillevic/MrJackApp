@@ -17,6 +17,7 @@ namespace MrJackApp.Engine.Game.Board
         public JackVisibility JackVisibility { get; set; }
         public CharacterDeck CharacterDeck { get; private set; } = new CharacterDeck();
         public AlibiDeck AlibiDeck { get; private set; } = new AlibiDeck();
+        public AlibiCard JackIdentity { get; private set; }
 
         public void Init()
         {
@@ -31,6 +32,8 @@ namespace MrJackApp.Engine.Game.Board
 
             AlibiDeck.Init();
             AlibiDeck.Shuffle();
+
+            JackIdentity = AlibiDeck.Draw(1)[0];
         }
 
         public void Generate()
@@ -289,7 +292,7 @@ namespace MrJackApp.Engine.Game.Board
         // TODO : Gérer l'identité.
         private void SetJackIdentityDTO(BoardDTO board)
         {
-            board.JackIdentity = new CardDTO { CharacterId = 0, Name = "Tata" };
+            board.JackIdentity = JackIdentity.GetDTO();
         }
     }
 }

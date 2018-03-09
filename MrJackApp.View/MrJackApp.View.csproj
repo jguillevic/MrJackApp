@@ -74,11 +74,17 @@
     <Compile Include="Game\Board\BoardView.xaml.cs">
       <DependentUpon>BoardView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Game\Board\Card\AlibiCardView.xaml.cs">
+      <DependentUpon>AlibiCardView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Game\Board\Card\CharacterCardsDisplayerView.xaml.cs">
       <DependentUpon>CharacterCardsDisplayerView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Game\Board\Card\CharacterCardView.xaml.cs">
       <DependentUpon>CharacterCardView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Game\Board\Card\JackIdentityView.xaml.cs">
+      <DependentUpon>JackIdentityView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Game\Board\Character\CharactersDisplayerView.xaml.cs">
       <DependentUpon>CharactersDisplayerView.xaml</DependentUpon>
@@ -184,11 +190,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Game\Board\Card\AlibiCardView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Game\Board\Card\CharacterCardsDisplayerView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Game\Board\Card\CharacterCardView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Game\Board\Card\JackIdentityView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

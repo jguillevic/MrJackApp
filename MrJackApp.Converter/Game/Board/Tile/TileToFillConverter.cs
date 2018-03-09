@@ -3,6 +3,7 @@ using System;
 using System.Globalization;
 using System.Windows.Data;
 using System.Windows.Media;
+using System.Windows.Media.Imaging;
 
 namespace MrJackApp.Converter.Game.Board.Tile
 {
@@ -20,7 +21,7 @@ namespace MrJackApp.Converter.Game.Board.Tile
             else if (value is GasBurnerTileViewModel)
             {
                 if (((GasBurnerTileViewModel)value).IsOn)
-                    return new SolidColorBrush(Colors.Yellow);
+                    return new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/MrJackApp.Resource;component/Image/Game/Board/Tile/GasBurnerTileOn.png")));
                 else
                     return new SolidColorBrush(Colors.LightYellow);
             }
@@ -31,13 +32,13 @@ namespace MrJackApp.Converter.Game.Board.Tile
             else if (value is ManholeTileViewModel)
             {
                 if (((ManholeTileViewModel)value).IsOpen)
-                    return new SolidColorBrush(Colors.Green);
+                    return new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/MrJackApp.Resource;component/Image/Game/Board/Tile/ManholeTileOpen.png")));
                 else
                     return new SolidColorBrush(Colors.Red);
             }
             else if (value is StreetTileViewModel)
             {
-                return new SolidColorBrush(Colors.LightGray);
+                return new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/MrJackApp.Resource;component/Image/Game/Board/Tile/StreetTile.png")));
             }
 
             return null;

@@ -50,6 +50,13 @@ namespace MrJackApp.ViewModel.Game.Board
             set { SetProperty(ref _isCharactersDisplayerReady, value); }
         }
 
+        private bool _isJackIdentityReady;
+        public bool IsJackIdentityReady
+        {
+            get { return _isJackIdentityReady; }
+            set { SetProperty(ref _isJackIdentityReady, value); }
+        }
+
         public ICommand StartGameCommand { get; private set; }
 
         public BoardViewModel(BoardDTO board, INavigationService navigationService, ServiceClientManager serviceClientManager) : base(navigationService)
@@ -100,6 +107,7 @@ namespace MrJackApp.ViewModel.Game.Board
             IsTurnSchedulerReady = false;
             IsTilesDisplayerReady = false;
             IsCharactersDisplayerReady = false;
+            IsJackIdentityReady = false;
         }
 
         private void SetCommands()
@@ -136,6 +144,7 @@ namespace MrJackApp.ViewModel.Game.Board
             {
                 Notifier.Notify("Vous êtes Jack");
                 Notifier.Notify("Voici votre identité");
+                IsJackIdentityReady = true;
             }
             else
             {
