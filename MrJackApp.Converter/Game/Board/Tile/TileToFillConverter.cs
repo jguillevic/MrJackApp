@@ -9,36 +9,45 @@ namespace MrJackApp.Converter.Game.Board.Tile
 {
     public sealed class TileToFillConverter : IValueConverter
     {
+        private static Brush _gasBurnerTileOnBrush = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/MrJackApp.Resource;component/Image/Game/Board/Tile/GasBurnerTileOn.png")));
+        private static Brush _gasBurnerTileOffBrush = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/MrJackApp.Resource;component/Image/Game/Board/Tile/GasBurnerTileOff.png")));
+        private static Brush _streetTileBrush = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/MrJackApp.Resource;component/Image/Game/Board/Tile/StreetTile.png")));
+        private static Brush _manholeTileOpenBrush = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/MrJackApp.Resource;component/Image/Game/Board/Tile/ManholeTileOpen.png")));
+        private static Brush _manholeTileCloseBrush = new SolidColorBrush(Colors.Red);
+        private static Brush _houseTileBrush = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/MrJackApp.Resource;component/Image/Game/Board/Tile/HouseTile.png")));
+        private static Brush _exitTileBlockedBrush = new SolidColorBrush(Colors.DarkBlue);
+        private static Brush _exitTileNotBlockedBrush = new SolidColorBrush(Colors.LightBlue);
+
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             if (value is ExitTileViewModel)
             {
                 if (((ExitTileViewModel)value).IsBlocked)
-                    return new SolidColorBrush(Colors.LightBlue);
+                    return _exitTileBlockedBrush;
                 else
-                    return new SolidColorBrush(Colors.DarkBlue);
+                    return _exitTileNotBlockedBrush;
             }
             else if (value is GasBurnerTileViewModel)
             {
                 if (((GasBurnerTileViewModel)value).IsOn)
-                    return new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/MrJackApp.Resource;component/Image/Game/Board/Tile/GasBurnerTileOn.png")));
+                    return _gasBurnerTileOnBrush;
                 else
-                    return new SolidColorBrush(Colors.LightYellow);
+                    return _gasBurnerTileOffBrush;
             }
             else if (value is HouseTileViewModel)
             {
-                return new SolidColorBrush(Colors.Black);
+                return _houseTileBrush;
             }
             else if (value is ManholeTileViewModel)
             {
                 if (((ManholeTileViewModel)value).IsOpen)
-                    return new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/MrJackApp.Resource;component/Image/Game/Board/Tile/ManholeTileOpen.png")));
+                    return _manholeTileOpenBrush;
                 else
-                    return new SolidColorBrush(Colors.Red);
+                    return _manholeTileCloseBrush;
             }
             else if (value is StreetTileViewModel)
             {
-                return new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/MrJackApp.Resource;component/Image/Game/Board/Tile/StreetTile.png")));
+                return _streetTileBrush;
             }
 
             return null;

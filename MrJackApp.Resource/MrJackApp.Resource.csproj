@@ -44,6 +44,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Image\Game\Board\Card\Alibi\" />
+    <Folder Include="Image\Game\Board\Card\Character\" />
+    <Folder Include="Image\Game\Board\Card\JackVisibility\" />
     <Folder Include="Text\" />
   </ItemGroup>
   <ItemGroup>
@@ -109,6 +112,30 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Image\Game\Board\Tile\ManholeTileOpen.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Image\Game\Board\Tile\GasBurnerTileOff.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Image\Game\Board\Tile\HouseTile.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Image\Game\Board\Character\MissStealthyCharacter.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Image\Game\Board\Character\InspecteurLestradeCharacter.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Image\Game\Board\Character\JohnHWatsonCharacter.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Image\Game\Board\Character\SergentGoodleyCharacter.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Image\Game\Board\Character\SherlockHolmesCharacter.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Image\Game\Board\Character\SirWilliamGullCharacter.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
     <Content Include="Sound\Effect\Button\MenuButtonClicked.mp3">
