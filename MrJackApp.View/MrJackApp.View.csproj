@@ -83,8 +83,11 @@
     <Compile Include="Game\Board\Card\CharacterCardView.xaml.cs">
       <DependentUpon>CharacterCardView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Game\Board\Card\JackIdentityView.xaml.cs">
+    <Compile Include="Game\Board\Card\JackIdentity\JackIdentityView.xaml.cs">
       <DependentUpon>JackIdentityView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Game\Board\Card\JackVisibility\JackVisibilityView.xaml.cs">
+      <DependentUpon>JackVisibilityView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Game\Board\Character\CharactersDisplayerView.xaml.cs">
       <DependentUpon>CharactersDisplayerView.xaml</DependentUpon>
@@ -152,7 +155,10 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Game\Board\Card\Alibi\" />
+    <Folder Include="Game\Board\Card\Character\" />
+  </ItemGroup>
   <ItemGroup>
     <Page Include="About\AboutContentView.xaml">
       <SubType>Designer</SubType>
@@ -202,7 +208,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Game\Board\Card\JackIdentityView.xaml">
+    <Page Include="Game\Board\Card\JackIdentity\JackIdentityView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Game\Board\Card\JackVisibility\JackVisibilityView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

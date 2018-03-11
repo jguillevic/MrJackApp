@@ -44,9 +44,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Image\Game\Board\Card\Alibi\" />
     <Folder Include="Image\Game\Board\Card\Character\" />
-    <Folder Include="Image\Game\Board\Card\JackVisibility\" />
     <Folder Include="Text\" />
   </ItemGroup>
   <ItemGroup>
@@ -136,6 +134,21 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Image\Game\Board\Character\SirWilliamGullCharacter.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Image\Game\Board\Character\JeremyBertCharacter.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Image\Game\Board\Character\JohnSmithCharacter.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Image\Game\Board\Card\JackVisibility\JackVisibilityDark.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Image\Game\Board\Card\JackVisibility\JackVisibilityLight.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Image\Game\Board\Card\Alibi\MissStealthyAlibiCard.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
     <Content Include="Sound\Effect\Button\MenuButtonClicked.mp3">

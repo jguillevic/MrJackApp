@@ -12,15 +12,15 @@
                         <DiscreteObjectKeyFrame KeyTime="0:0:0.0" Value="{x:Static Visibility.Visible}"/>
                     </ObjectAnimationUsingKeyFrames>
                     <DoubleAnimation Storyboard.TargetName="UserControl" Storyboard.TargetProperty="Opacity" From="0" To="1" BeginTime="0:0:0.0" Duration="0:0:0.5"/>
-                    <DoubleAnimation Storyboard.TargetName="UserControl" Storyboard.TargetProperty="Opacity" From="1" To="0" BeginTime="0:0:1.0" Duration="0:0:0.5"/>
+                    <DoubleAnimation Storyboard.TargetName="UserControl" Storyboard.TargetProperty="Opacity" From="1" To="0" BeginTime="0:0:2.5" Duration="0:0:0.5"/>
                     <ObjectAnimationUsingKeyFrames Storyboard.TargetName="UserControl" Storyboard.TargetProperty="Visibility">
-                        <DiscreteObjectKeyFrame KeyTime="0:0:1.5" Value="{x:Static Visibility.Collapsed}"/>
+                        <DiscreteObjectKeyFrame KeyTime="0:0:3.0" Value="{x:Static Visibility.Collapsed}"/>
                     </ObjectAnimationUsingKeyFrames>
                 </Storyboard>
             </BeginStoryboard>
         </EventTrigger>
     </UserControl.Triggers>
-    <Grid Background="LightGray">
-        <TextBlock Text="{Binding Path=CurrentMessage, NotifyOnTargetUpdated=True}" TargetUpdated="TextBlockTargetUpdated" FontSize="200" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+    <Grid Background="DarkGray">
+        <TextBlock Text="{Binding Path=CurrentMessage, NotifyOnTargetUpdated=True}" TargetUpdated="TextBlockTargetUpdated" FontSize="200" TextWrapping="Wrap" HorizontalAlignment="Center" VerticalAlignment="Center"/>
     </Grid>
 </UserControl>

@@ -15,8 +15,8 @@ namespace MrJackApp.Converter.Game.Board.Character
         private static Brush _sergentGoodleyBrush = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/MrJackApp.Resource;component/Image/Game/Board/Character/SergentGoodleyCharacter.png")));
         private static Brush _sherlockHolmesBrush = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/MrJackApp.Resource;component/Image/Game/Board/Character/SherlockHolmesCharacter.png")));
         private static Brush _sirWilliamGullBrush = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/MrJackApp.Resource;component/Image/Game/Board/Character/SirWilliamGullCharacter.png")));
-        private static Brush _johnSmithBrush = new SolidColorBrush(Colors.Yellow);//new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/MrJackApp.Resource;component/Image/Game/Board/Character/JohnSmithCharacter.png")));
-        private static Brush _jeremyBertBrush = new SolidColorBrush(Colors.Orange);//new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/MrJackApp.Resource;component/Image/Game/Board/Character/JeremyBertCharacter.png")));
+        private static Brush _johnSmithBrush = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/MrJackApp.Resource;component/Image/Game/Board/Character/JohnSmithCharacter.png")));
+        private static Brush _jeremyBertBrush = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/MrJackApp.Resource;component/Image/Game/Board/Character/JeremyBertCharacter.png")));
 
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {

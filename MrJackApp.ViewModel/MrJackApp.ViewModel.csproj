@@ -52,8 +52,8 @@
     <Compile Include="Game\Board\Card\CardSelectedEventArgs.cs" />
     <Compile Include="Game\Board\Card\CardViewModel.cs" />
     <Compile Include="Game\Board\Card\CharacterCardsDisplayerViewModel.cs" />
-    <Compile Include="Game\Board\Card\JackIdentityViewModel.cs" />
-    <Compile Include="Game\Board\Card\JackVisibilityViewModel.cs" />
+    <Compile Include="Game\Board\Card\JackIdentity\JackIdentityViewModel.cs" />
+    <Compile Include="Game\Board\Card\JackVisibility\JackVisibilityViewModel.cs" />
     <Compile Include="Game\Board\Character\CharactersDisplayerViewModel.cs" />
     <Compile Include="Game\Board\Character\CharacterViewModel.cs" />
     <Compile Include="Game\Board\Character\InspecteurLestradeViewModel.cs" />
@@ -91,7 +91,10 @@
     <Compile Include="Sound\Music\MusicSettings.cs" />
     <Compile Include="Waiting\WaitingForGameViewModel.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Game\Board\Card\Alibi\" />
+    <Folder Include="Game\Board\Card\Character\" />
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MrJackApp.DTO\MrJackApp.DTO.csproj">
       <Project>{F2739FC9-FB09-4BAA-8D56-179BC21A7667}</Project>

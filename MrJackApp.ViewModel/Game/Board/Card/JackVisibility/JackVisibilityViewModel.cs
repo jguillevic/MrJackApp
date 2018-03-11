@@ -1,7 +1,7 @@
 ﻿using MrJackApp.DTO.Game.Board.Card;
 using MrJackApp.ViewModel.Common;
 
-namespace MrJackApp.ViewModel.Game.Board.Card
+namespace MrJackApp.ViewModel.Game.Board.Card.JackVisibility
 {
     public sealed class JackVisibilityViewModel : BindableBase
     {

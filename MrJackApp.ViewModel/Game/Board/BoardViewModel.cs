@@ -4,6 +4,8 @@ using MrJackApp.Service.Navigation;
 using MrJackApp.ViewModel.Common.Command;
 using MrJackApp.ViewModel.Common.Navigation;
 using MrJackApp.ViewModel.Game.Board.Card;
+using MrJackApp.ViewModel.Game.Board.Card.JackIdentity;
+using MrJackApp.ViewModel.Game.Board.Card.JackVisibility;
 using MrJackApp.ViewModel.Game.Board.Character;
 using MrJackApp.ViewModel.Game.Board.Notifier;
 using MrJackApp.ViewModel.Game.Board.Tile;
@@ -57,7 +59,15 @@ namespace MrJackApp.ViewModel.Game.Board
             set { SetProperty(ref _isJackIdentityReady, value); }
         }
 
+        private bool _isJackVisibilityReady;
+        public bool IsJackVisibilityReady
+        {
+            get { return _isJackVisibilityReady; }
+            set { SetProperty(ref _isJackVisibilityReady, value); }
+        }
+
         public ICommand StartGameCommand { get; private set; }
+        public DelegateCommand InitializeCommand { get; private set; }
 
         public BoardViewModel(BoardDTO board, INavigationService navigationService, ServiceClientManager serviceClientManager) : base(navigationService)
         {     
@@ -108,11 +118,12 @@ namespace MrJackApp.ViewModel.Game.Board
             IsTilesDisplayerReady = false;
             IsCharactersDisplayerReady = false;
             IsJackIdentityReady = false;
+            IsJackVisibilityReady = false;
         }
 
         private void SetCommands()
         {
-            StartGameCommand = new DelegateCommand(StartGameCommandExecute);
+            InitializeCommand = new DelegateCommand(InitializeCommandExecute);
         }
 
         private void CharacterCardsDisplayerCardSelected(object sender, CardSelectedEventArgs e)
@@ -134,29 +145,105 @@ namespace MrJackApp.ViewModel.Game.Board
 
         }
 
-        private void StartGameCommandExecute()
-        {
-            Notifier.AllMessagesDisplayed += StartGameMessagesDisplayed;
-            Notifier.Notify("La partie commence");
-
+        private void InitializeCommandExecute()
+        {           
             _isJack = _serviceClientManager.GameServiceClient.IsJack();
+
+            Notifier.AllMessagesDisplayed += Sequence1MessagesDisplayed;
+            Notifier.Notify("La partie commence");  
+        }
+
+        private void Sequence1MessagesDisplayed(object sender, System.EventArgs e)
+        {
+            Notifier.AllMessagesDisplayed -= Sequence1MessagesDisplayed;
+
             if (_isJack)
             {
-                Notifier.Notify("Vous êtes Jack");
-                Notifier.Notify("Voici votre identité");
-                IsJackIdentityReady = true;
+                Notifier.AllMessagesDisplayed += JackSequence2MessagesDisplayed;
+
+                Notifier.Notify("Vous êtes Jack");               
             }
             else
             {
+                Notifier.AllMessagesDisplayed += InspectorSequence2MessagesDisplayed;
+
                 Notifier.Notify("Vous êtes l'inspecteur");
             }
         }
 
-        private void StartGameMessagesDisplayed(object sender, System.EventArgs e)
+        private void JackSequence2MessagesDisplayed(object sender, System.EventArgs e)
         {
+            Notifier.AllMessagesDisplayed -= JackSequence2MessagesDisplayed;
+            Notifier.AllMessagesDisplayed += JackSequence3MessagesDisplayed;
+
+            Notifier.Notify("Voici votre identité");
+            IsJackIdentityReady = true;
+        }
+
+        private void JackSequence3MessagesDisplayed(object sender, System.EventArgs e)
+        {
+            Notifier.AllMessagesDisplayed -= JackSequence3MessagesDisplayed;
+            Notifier.AllMessagesDisplayed += JackSequence4MessagesDisplayed;
+
+            Notifier.Notify("Vous êtes visible");
+            IsJackVisibilityReady = true;
+        }
+
+        private void JackSequence4MessagesDisplayed(object sender, System.EventArgs e)
+        {
+            Notifier.AllMessagesDisplayed -= JackSequence4MessagesDisplayed;
+            Notifier.AllMessagesDisplayed += JackSequence5MessagesDisplayed;
+
+            Notifier.Notify("Ne vous faites pas attraper ou enfuyez vous !");
+        }
+
+        private void JackSequence5MessagesDisplayed(object sender, System.EventArgs e)
+        {
+            Notifier.AllMessagesDisplayed -= JackSequence5MessagesDisplayed;
+
             IsTurnSchedulerReady = true;
             IsTilesDisplayerReady = true;
             IsCharactersDisplayerReady = true;
+        }
+
+        private void InspectorSequence2MessagesDisplayed(object sender, System.EventArgs e)
+        {
+            Notifier.AllMessagesDisplayed -= InspectorSequence2MessagesDisplayed;
+            Notifier.AllMessagesDisplayed += InspectorSequence3MessagesDisplayed;
+
+            Notifier.Notify("Jack est visible");
+
+            IsJackVisibilityReady = true;
+        }
+
+        private void InspectorSequence3MessagesDisplayed(object sender, System.EventArgs e)
+        {
+            Notifier.AllMessagesDisplayed -= InspectorSequence3MessagesDisplayed;
+            Notifier.AllMessagesDisplayed += InspectorSequence4MessagesDisplayed;
+
+            Notifier.Notify("Attrapez Jack !");
+        }
+
+        private void InspectorSequence4MessagesDisplayed(object sender, System.EventArgs e)
+        {
+            Notifier.AllMessagesDisplayed -= InspectorSequence4MessagesDisplayed;
+
+            IsTurnSchedulerReady = true;
+            IsTilesDisplayerReady = true;
+            IsCharactersDisplayerReady = true;
+        }
+
+        
+
+        
+
+        private void StartGameMessagesDisplayed(object sender, System.EventArgs e)
+        {
+            Notifier.AllMessagesDisplayed -= StartGameMessagesDisplayed;
+
+            IsTurnSchedulerReady = true;
+            IsTilesDisplayerReady = true;
+            IsCharactersDisplayerReady = true;           
         }
     }
 }
