@@ -23,31 +23,28 @@ namespace MrJackApp.WCFService.Game
         {
             lock (_lfgSessionIds)
             {
-                var firstPlayerSessionId = OperationContext.Current.SessionId;         
-                if (_lfgSessionIds.Count == 0)         
-                    _lfgSessionIds.Add(firstPlayerSessionId);
+                var player1SessionId = OperationContext.Current.SessionId;
+                if (_lfgSessionIds.Count == 0)
+                    _lfgSessionIds.Add(player1SessionId);
                 else
                 {
-                    var hostedGame = new HostedGame();
-                    
-                    string secondPlayerSessionId;
+                    string player2SessionId;
                     lock (_hostedGames)
                     {
-                        secondPlayerSessionId = _lfgSessionIds[0];
-                        _hostedGames.Add(secondPlayerSessionId, hostedGame);
+                        player2SessionId = _lfgSessionIds[0];
+                        var result = HostedGame.CreateFromPlayerIds(player1SessionId, player2SessionId);
                         _lfgSessionIds.RemoveAt(0);
-                        _hostedGames.Add(firstPlayerSessionId, hostedGame);
+
+                        foreach (var value in result)
+                            _hostedGames.Add(value.Key, value.Value);
                     }
 
-                    hostedGame.Init(firstPlayerSessionId, secondPlayerSessionId);
-
-                    var board = hostedGame.Game.Board.GetDTO();
                     lock (_callbacks)
-                    {            
-                        _callbacks[firstPlayerSessionId].BroadcastBoard(board);
-                        _callbacks[secondPlayerSessionId].BroadcastBoard(board);
+                    {
+                        _callbacks[player1SessionId].BroadcastGame(_hostedGames[player1SessionId].GetDTO());
+                        _callbacks[player2SessionId].BroadcastGame(_hostedGames[player2SessionId].GetDTO());
                     }
-                }             
+                }
             }
         }
 
@@ -69,16 +66,6 @@ namespace MrJackApp.WCFService.Game
 
             lock (_hostedGames)
                 _hostedGames.Remove(sessionId);
-        }
-
-        public bool IsJack()
-        {
-            var playerSessionId = OperationContext.Current.SessionId;
-
-            lock(_hostedGames)
-            {
-                return _hostedGames[playerSessionId].IsJack(playerSessionId);
-            }
         }
     }
 }

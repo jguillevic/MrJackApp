@@ -21,6 +21,6 @@
         </EventTrigger>
     </UserControl.Triggers>
     <Grid Background="DarkGray">
-        <TextBlock Text="{Binding Path=CurrentMessage, NotifyOnTargetUpdated=True}" TargetUpdated="TextBlockTargetUpdated" FontSize="200" TextWrapping="Wrap" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <TextBlock Text="{Binding Path=CurrentMessage, NotifyOnTargetUpdated=True}" FontSize="90" TextWrapping="Wrap" HorizontalAlignment="Center" VerticalAlignment="Center"/>
     </Grid>
 </UserControl>

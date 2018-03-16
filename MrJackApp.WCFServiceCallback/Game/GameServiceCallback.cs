@@ -1,4 +1,4 @@
-﻿using MrJackApp.DTO.Game.Board;
+﻿using MrJackApp.DTO.Game;
 using MrJackApp.WCFContract.Game;
 using System.ServiceModel;
 
@@ -7,17 +7,17 @@ namespace MrJackApp.WCFServiceCallback.Game
     [CallbackBehavior(ConcurrencyMode = ConcurrencyMode.Single, UseSynchronizationContext = false)]
     public class GameServiceCallback : IGameServiceCallback
     {
-        public void BroadcastBoard(BoardDTO board)
+        public void BroadcastGame(GameDTO game)
         {
-            RaiseBoardReceived(board);
+            RaiseGameReceived(game);
         }
 
-        public delegate void BoardReceivedEventHandler(object sender, BoardReceivedEventArgs e);
-        public event BoardReceivedEventHandler BoardReceived;
+        public delegate void GameReceivedEventHandler(object sender, GameReceivedEventArgs e);
+        public event GameReceivedEventHandler GameReceived;
 
-        private void RaiseBoardReceived(BoardDTO board)
+        private void RaiseGameReceived(GameDTO game)
         {
-            BoardReceived?.Invoke(this, new BoardReceivedEventArgs { Board = board });
+            GameReceived?.Invoke(this, new GameReceivedEventArgs { Game = game });
         }
     }
 }

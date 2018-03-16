@@ -1,4 +1,4 @@
-﻿using MrJackApp.DTO.Game.Board;
+﻿using MrJackApp.DTO.Game;
 using System.ServiceModel;
 
 namespace MrJackApp.WCFContract.Game
@@ -7,6 +7,6 @@ namespace MrJackApp.WCFContract.Game
     public interface IGameServiceCallback
     {
         [OperationContract(IsOneWay = true)]
-        void BroadcastBoard(BoardDTO board);
+        void BroadcastGame(GameDTO game);
     }
 }

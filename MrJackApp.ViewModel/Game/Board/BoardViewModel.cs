@@ -1,4 +1,4 @@
-﻿using MrJackApp.DTO.Game.Board;
+﻿using MrJackApp.DTO.Game;
 using MrJackApp.DTO.Game.Board.Character;
 using MrJackApp.Service.Navigation;
 using MrJackApp.ViewModel.Common.Command;
@@ -8,8 +8,10 @@ using MrJackApp.ViewModel.Game.Board.Card.JackIdentity;
 using MrJackApp.ViewModel.Game.Board.Card.JackVisibility;
 using MrJackApp.ViewModel.Game.Board.Character;
 using MrJackApp.ViewModel.Game.Board.Notifier;
+using MrJackApp.ViewModel.Game.Board.Player;
 using MrJackApp.ViewModel.Game.Board.Tile;
 using MrJackApp.ViewModel.Game.Board.Turn;
+using MrJackApp.ViewModel.Game.Board.Visibility;
 using MrJackApp.WCFServiceClient.Game;
 using System.Linq;
 using System.Windows.Input;
@@ -18,7 +20,6 @@ namespace MrJackApp.ViewModel.Game.Board
 {
     public sealed class BoardViewModel : NavigationViewModel
     {
-        private bool _isJack;
         private ServiceClientManager _serviceClientManager;
         private CharacterViewModel _selectedCharacter;
 
@@ -30,50 +31,15 @@ namespace MrJackApp.ViewModel.Game.Board
         public JackIdentityViewModel JackIdentity { get; private set; }
         public TurnSchedulerViewModel TurnScheduler { get; private set; }
         public NotifierViewModel Notifier { get; } = new NotifierViewModel();
+        public PlayerDisplayerViewModel PlayerDisplayer { get; private set; }
+        public VisibilityManagerViewModel VisibilityManager { get; } = new VisibilityManagerViewModel();
 
-        private bool _isTurnSchedulerReady;
-        public bool IsTurnSchedulerReady
-        {
-            get { return _isTurnSchedulerReady; }
-            set { SetProperty(ref _isTurnSchedulerReady, value); }
-        }
+        public ICommand InitializeCommand { get; private set; }
 
-        private bool _isTilesDisplayerReady;
-        public bool IsTilesDisplayerReady
-        {
-            get { return _isTilesDisplayerReady; }
-            set { SetProperty(ref _isTilesDisplayerReady, value); }
-        }
-
-        private bool _isCharactersDisplayerReady;
-        public bool IsCharactersDisplayerReady
-        {
-            get { return _isCharactersDisplayerReady; }
-            set { SetProperty(ref _isCharactersDisplayerReady, value); }
-        }
-
-        private bool _isJackIdentityReady;
-        public bool IsJackIdentityReady
-        {
-            get { return _isJackIdentityReady; }
-            set { SetProperty(ref _isJackIdentityReady, value); }
-        }
-
-        private bool _isJackVisibilityReady;
-        public bool IsJackVisibilityReady
-        {
-            get { return _isJackVisibilityReady; }
-            set { SetProperty(ref _isJackVisibilityReady, value); }
-        }
-
-        public ICommand StartGameCommand { get; private set; }
-        public DelegateCommand InitializeCommand { get; private set; }
-
-        public BoardViewModel(BoardDTO board, INavigationService navigationService, ServiceClientManager serviceClientManager) : base(navigationService)
+        public BoardViewModel(GameDTO game, INavigationService navigationService, ServiceClientManager serviceClientManager) : base(navigationService)
         {     
-            Map(board);
+            Map(game);
             SetFields(serviceClientManager);
-            SetDefaultValues();
             SetCommands();
             SetEvents();
         }
@@ -83,13 +49,16 @@ namespace MrJackApp.ViewModel.Game.Board
             _serviceClientManager = serviceClientManager;
         }
 
-        private void Map(BoardDTO board)
+        private void Map(GameDTO game)
         {
+            var board = game.Board;
             TilesDisplayer = new TilesDisplayerViewModel(board.Tiles);
             CharactersDisplayer = new CharactersDisplayerViewModel(board.Characters);
             JackVisibility = new JackVisibilityViewModel(board.JackVisibility);
             JackIdentity = new JackIdentityViewModel(board.JackIdentity);
             TurnScheduler = new TurnSchedulerViewModel(board.TurnScheduler);
+
+            PlayerDisplayer = new PlayerDisplayerViewModel(game.Player);
         }
 
         private void ManageTileSelection(object sender, TileSelectedEventArgs e)
@@ -110,15 +79,6 @@ namespace MrJackApp.ViewModel.Game.Board
             TilesDisplayer.TileSelected += ManageTileSelection;
             CharacterCardsDisplayer.CardSelected += CharacterCardsDisplayerCardSelected;
             AlibiCardsDisplayer.CardSelected += AlibiCardsDisplayerCardSelected;
-        }
-
-        private void SetDefaultValues()
-        {
-            IsTurnSchedulerReady = false;
-            IsTilesDisplayerReady = false;
-            IsCharactersDisplayerReady = false;
-            IsJackIdentityReady = false;
-            IsJackVisibilityReady = false;
         }
 
         private void SetCommands()
@@ -147,8 +107,6 @@ namespace MrJackApp.ViewModel.Game.Board
 
         private void InitializeCommandExecute()
         {           
-            _isJack = _serviceClientManager.GameServiceClient.IsJack();
-
             Notifier.AllMessagesDisplayed += Sequence1MessagesDisplayed;
             Notifier.Notify("La partie commence");  
         }
@@ -157,7 +115,7 @@ namespace MrJackApp.ViewModel.Game.Board
         {
             Notifier.AllMessagesDisplayed -= Sequence1MessagesDisplayed;
 
-            if (_isJack)
+            if (PlayerDisplayer.IsJack)
             {
                 Notifier.AllMessagesDisplayed += JackSequence2MessagesDisplayed;
 
@@ -177,7 +135,7 @@ namespace MrJackApp.ViewModel.Game.Board
             Notifier.AllMessagesDisplayed += JackSequence3MessagesDisplayed;
 
             Notifier.Notify("Voici votre identité");
-            IsJackIdentityReady = true;
+            VisibilityManager.IsJackIdentityDisplayable = true;
         }
 
         private void JackSequence3MessagesDisplayed(object sender, System.EventArgs e)
@@ -186,7 +144,7 @@ namespace MrJackApp.ViewModel.Game.Board
             Notifier.AllMessagesDisplayed += JackSequence4MessagesDisplayed;
 
             Notifier.Notify("Vous êtes visible");
-            IsJackVisibilityReady = true;
+            VisibilityManager.IsJackVisibilityDisplayable = true;
         }
 
         private void JackSequence4MessagesDisplayed(object sender, System.EventArgs e)
@@ -201,9 +159,9 @@ namespace MrJackApp.ViewModel.Game.Board
         {
             Notifier.AllMessagesDisplayed -= JackSequence5MessagesDisplayed;
 
-            IsTurnSchedulerReady = true;
-            IsTilesDisplayerReady = true;
-            IsCharactersDisplayerReady = true;
+            VisibilityManager.IsTurnSchedulerDisplayable = true;
+            VisibilityManager.IsTilesDisplayerDisplayable = true;
+            VisibilityManager.IsCharactersDisplayerDisplayable = true;
         }
 
         private void InspectorSequence2MessagesDisplayed(object sender, System.EventArgs e)
@@ -213,7 +171,7 @@ namespace MrJackApp.ViewModel.Game.Board
 
             Notifier.Notify("Jack est visible");
 
-            IsJackVisibilityReady = true;
+            VisibilityManager.IsJackVisibilityDisplayable = true;
         }
 
         private void InspectorSequence3MessagesDisplayed(object sender, System.EventArgs e)
@@ -228,22 +186,9 @@ namespace MrJackApp.ViewModel.Game.Board
         {
             Notifier.AllMessagesDisplayed -= InspectorSequence4MessagesDisplayed;
 
-            IsTurnSchedulerReady = true;
-            IsTilesDisplayerReady = true;
-            IsCharactersDisplayerReady = true;
-        }
-
-        
-
-        
-
-        private void StartGameMessagesDisplayed(object sender, System.EventArgs e)
-        {
-            Notifier.AllMessagesDisplayed -= StartGameMessagesDisplayed;
-
-            IsTurnSchedulerReady = true;
-            IsTilesDisplayerReady = true;
-            IsCharactersDisplayerReady = true;           
+            VisibilityManager.IsTurnSchedulerDisplayable = true;
+            VisibilityManager.IsTilesDisplayerDisplayable = true;
+            VisibilityManager.IsCharactersDisplayerDisplayable = true;
         }
     }
 }

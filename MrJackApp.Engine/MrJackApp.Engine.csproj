@@ -66,8 +66,6 @@
     <Compile Include="Game\Board\Turn\TurnScheduler.cs" />
     <Compile Include="Game\Game.cs" />
     <Compile Include="Game\GameResultState.cs" />
-    <Compile Include="Game\Player\InspectorPlayer.cs" />
-    <Compile Include="Game\Player\JackPlayer.cs" />
     <Compile Include="Helper\ListHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

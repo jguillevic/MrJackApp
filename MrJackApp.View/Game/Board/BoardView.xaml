@@ -8,6 +8,7 @@
              xmlns:JackIdView="clr-namespace:MrJackApp.View.Game.Board.Card.JackIdentity"
              xmlns:JackVisView="clr-namespace:MrJackApp.View.Game.Board.Card.JackVisibility"
              xmlns:NotifierView="clr-namespace:MrJackApp.View.Game.Board.Notifier"
+             xmlns:PlayerView="clr-namespace:MrJackApp.View.Game.Board.Player"
              xmlns:Interactivity="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
              xmlns:CommonConverter="clr-namespace:MrJackApp.Converter.Common;assembly=MrJackApp.Converter"
              x:Name="UserControl">
@@ -32,53 +33,57 @@
         </Grid.ColumnDefinitions>
 
         <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <Grid Grid.Column="0" Grid.Row="0" Grid.RowSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="20 20 50 50">
-            <TileView:TilesDisplayerView Visibility="{Binding ElementName=UserControl, Path=DataContext.IsTilesDisplayerReady, Converter={StaticResource BoolToVisConverter}}" 
+        <Grid Grid.Column="0" Grid.Row="1" Grid.RowSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="20 20 50 50">
+            <TileView:TilesDisplayerView Visibility="{Binding ElementName=UserControl, Path=DataContext.VisibilityManager.IsTilesDisplayerDisplayable, Converter={StaticResource BoolToVisConverter}}" 
                                              DataContext="{Binding TilesDisplayer}"/>
 
-            <CharacterView:CharactersDisplayerView Visibility="{Binding ElementName=UserControl, Path=DataContext.IsCharactersDisplayerReady, Converter={StaticResource BoolToVisConverter}}" 
+            <CharacterView:CharactersDisplayerView Visibility="{Binding ElementName=UserControl, Path=DataContext.VisibilityManager.IsCharactersDisplayerDisplayable, Converter={StaticResource BoolToVisConverter}}" 
                                                        DataContext="{Binding CharactersDisplayer}"/>
         </Grid>
 
         <TurnView:TurnSchedulerView Grid.Column="1"
-                                    Grid.Row="0" 
+                                    Grid.Row="1" 
                                     Grid.RowSpan="2"
                                     DataContext="{Binding TurnScheduler}" 
-                                    Visibility="{Binding ElementName=UserControl, Path=DataContext.IsTurnSchedulerReady, Converter={StaticResource BoolToVisConverter}}" 
+                                    Visibility="{Binding ElementName=UserControl, Path=DataContext.VisibilityManager.IsTurnSchedulerDisplayable, Converter={StaticResource BoolToVisConverter}}" 
                                     Margin="20 20 20 20"
                                     VerticalAlignment="Center"/>
 
         <CardView:CharacterCardsDisplayerView Grid.Column="2" 
-                                              Grid.Row="0" 
+                                              Grid.Row="1" 
                                               Grid.RowSpan="2" 
                                               DataContext="{Binding CharacterCardsDisplayer}"/>
         
         <JackIdView:JackIdentityView Grid.Column="4" 
-                                     Grid.Row="0"
+                                     Grid.Row="1"
                                      Width="140"
                                      DataContext="{Binding JackIdentity}"
-                                     Visibility="{Binding ElementName=UserControl, Path=DataContext.IsJackIdentityReady, Converter={StaticResource BoolToVisConverter}}" 
+                                     Visibility="{Binding ElementName=UserControl, Path=DataContext.VisibilityManager.IsJackIdentityDisplayable, Converter={StaticResource BoolToVisConverter}}" 
                                      HorizontalAlignment="Center" 
                                      VerticalAlignment="Center"/>
         
         <JackVisView:JackVisibilityView Grid.Column="4" 
-                                        Grid.Row="1"
+                                        Grid.Row="2"
                                         Width="140"
                                         DataContext="{Binding JackVisibility}"
-                                        Visibility="{Binding ElementName=UserControl, Path=DataContext.IsJackVisibilityReady, Converter={StaticResource BoolToVisConverter}}" 
+                                        Visibility="{Binding ElementName=UserControl, Path=DataContext.VisibilityManager.IsJackVisibilityDisplayable, Converter={StaticResource BoolToVisConverter}}" 
                                         HorizontalAlignment="Center" 
                                         VerticalAlignment="Center"/>
+
+        <PlayerView:PlayerDisplayerView DataContext="{Binding PlayerDisplayer}" Grid.Column="0" Grid.Row="0"/>
 
         <NotifierView:NotifierView Grid.Column="0" 
                                    Grid.ColumnSpan="6" 
                                    Grid.Row="0" 
                                    Grid.RowSpan="2" 
                                    DataContext="{Binding Notifier}" 
-                                   HorizontalContentAlignment="Stretch" 
-                                   VerticalAlignment="Center"/>
+                                   HorizontalAlignment="Stretch" 
+                                   VerticalAlignment="Top"
+                                   Height="100"/>
     </Grid>
 </UserControl>

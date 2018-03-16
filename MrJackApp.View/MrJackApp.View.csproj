@@ -98,6 +98,9 @@
     <Compile Include="Game\Board\Notifier\NotifierView.xaml.cs">
       <DependentUpon>NotifierView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Game\Board\Player\PlayerDisplayerView.xaml.cs">
+      <DependentUpon>PlayerDisplayerView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Game\Board\Tile\TilesDisplayerView.xaml.cs">
       <DependentUpon>TilesDisplayerView.xaml</DependentUpon>
     </Compile>
@@ -225,6 +228,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Game\Board\Notifier\NotifierView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Game\Board\Player\PlayerDisplayerView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -65,6 +65,8 @@
     <Compile Include="Game\Board\Character\SherlockHolmesViewModel.cs" />
     <Compile Include="Game\Board\Character\SirWilliamGullViewModel.cs" />
     <Compile Include="Game\Board\Notifier\NotifierViewModel.cs" />
+    <Compile Include="Game\Board\Player\PlayerDisplayerViewModel.cs" />
+    <Compile Include="Game\Board\Player\PlayerKind.cs" />
     <Compile Include="Game\Board\Tile\EmptyTileViewModel.cs" />
     <Compile Include="Game\Board\Tile\ExitTileViewModel.cs" />
     <Compile Include="Game\Board\Tile\GasBurnerTileViewModel.cs" />
@@ -76,6 +78,7 @@
     <Compile Include="Game\Board\Tile\TileViewModel.cs" />
     <Compile Include="Game\Board\Turn\TurnSchedulerViewModel.cs" />
     <Compile Include="Game\Board\Turn\TurnViewModel.cs" />
+    <Compile Include="Game\Board\Visibility\VisibilityManagerViewModel.cs" />
     <Compile Include="MainMenu\MainMenuItemViewModel.cs" />
     <Compile Include="MainMenu\MainMenuViewModel.cs" />
     <Compile Include="MainMenu\QuickGameMenuItemViewModel.cs" />

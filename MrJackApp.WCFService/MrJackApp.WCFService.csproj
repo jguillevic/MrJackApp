@@ -43,6 +43,8 @@
   <ItemGroup>
     <Compile Include="Game\GameService.cs" />
     <Compile Include="Game\HostedGame.cs" />
+    <Compile Include="Game\Player\Player.cs" />
+    <Compile Include="Game\Player\PlayerKind.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

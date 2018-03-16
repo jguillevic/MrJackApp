@@ -41,7 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Game\BoardReceivedEventArgs.cs" />
+    <Compile Include="Game\GameReceivedEventArgs.cs" />
     <Compile Include="Game\GameServiceCallback.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

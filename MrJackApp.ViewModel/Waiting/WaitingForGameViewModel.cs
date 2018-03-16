@@ -23,13 +23,13 @@ namespace MrJackApp.ViewModel.Waiting
             CancelCommand = new DelegateCommand(CancelCommandExecute);
 
             _serviceClientManager = serviceClientManager;
-            _serviceClientManager.GameServiceClient.Callback.BoardReceived += CallbackBoardReceived;
+            _serviceClientManager.GameServiceClient.Callback.GameReceived += CallbackBoardReceived;
         }
 
-        private void CallbackBoardReceived(object sender, BoardReceivedEventArgs e)
+        private void CallbackBoardReceived(object sender, GameReceivedEventArgs e)
         {
-            _serviceClientManager.GameServiceClient.Callback.BoardReceived -= CallbackBoardReceived;
-            NavigateTo(NavigationIndex.Game, e.Board);
+            _serviceClientManager.GameServiceClient.Callback.GameReceived -= CallbackBoardReceived;
+            NavigateTo(NavigationIndex.Game, e.Game);
         }
 
         private void CancelCommandExecute()

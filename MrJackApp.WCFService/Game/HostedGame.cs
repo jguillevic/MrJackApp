@@ -1,44 +1,57 @@
-﻿using System;
+﻿using MrJackApp.DTO.Game;
+using MrJackApp.WCFService.Game.Player;
+using System.Collections.Generic;
+using System;
 
 namespace MrJackApp.WCFService.Game
 {
     public sealed class HostedGame
     {
-        private string _inspectorId;
-        private string _jackId;
-        public Engine.Game.Game Game { get; private set; } = new Engine.Game.Game();
+        private Player.Player _player;
+        private Engine.Game.Game _game;
 
-        public void Init(string player1Id, string player2Id)
+        public HostedGame(PlayerKind kind, Engine.Game.Game game)
         {
-            SetPlayerIds(player1Id, player2Id);
-
-            Game.Init();
+            _player = new Player.Player(kind);
+            _game = game;
         }
 
-        private void SetPlayerIds(string player1Id, string player2Id)
+        public GameDTO GetDTO()
         {
-            var rand = new Random();
-            var result = rand.Next(0, 1);
-            if (result == 0)
+            var game = new GameDTO();
+
+            game.Player = _player.GetDTO();
+            game.Board = _game.Board.GetDTO();
+
+            return game;
+        }
+
+        public static Dictionary<string, HostedGame> CreateFromPlayerIds(string player1Id, string player2Id)
+        {
+            var result = new Dictionary<string, HostedGame>();
+
+            var game = new Engine.Game.Game();
+            game.Init();
+
+            var isFirstPlayerJack = GetRandomBool();
+
+            if (isFirstPlayerJack)
             {
-                _inspectorId = player1Id;
-                _jackId = player2Id;
+                result.Add(player1Id, new HostedGame(PlayerKind.Jack, game));
+                result.Add(player2Id, new HostedGame(PlayerKind.Inspector, game));
             }
             else
             {
-                _inspectorId = player2Id;
-                _jackId = player1Id;
+                result.Add(player2Id, new HostedGame(PlayerKind.Jack, game));
+                result.Add(player1Id, new HostedGame(PlayerKind.Inspector, game));
             }
+
+            return result;
         }
 
-        public bool IsJack(string playerId)
+        private static bool GetRandomBool()
         {
-            return _jackId == playerId;
-        }
-
-        public bool IsInspector(string playerId)
-        {
-            return _inspectorId == playerId;
+            return new Random().Next(100) % 2 == 0;
         }
     }
 }
