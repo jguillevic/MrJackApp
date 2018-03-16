@@ -53,6 +53,7 @@
     <Compile Include="Game\Board\Character\CharacterToDiameterConverter.cs" />
     <Compile Include="Game\Board\Character\CharacterToFillConverter.cs" />
     <Compile Include="Game\Board\Character\CharPosToMarginConverter.cs" />
+    <Compile Include="Game\Board\Player\PlayerKindToTextConverter.cs" />
     <Compile Include="Game\Board\Tile\TileConst.cs" />
     <Compile Include="Game\Board\Tile\TileCoordinateToTextConverter.cs" />
     <Compile Include="Game\Board\Tile\TilePosToMarginConverter.cs" />

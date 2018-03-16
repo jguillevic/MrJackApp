@@ -1,9 +1,9 @@
 ﻿<UserControl x:Class="MrJackApp.View.Game.Board.Turn.TurnView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:turnConverter="clr-namespace:MrJackApp.Converter.Game.Board.Turn;assembly=MrJackApp.Converter">
+             xmlns:TurnConverter="clr-namespace:MrJackApp.Converter.Game.Board.Turn;assembly=MrJackApp.Converter">
     <UserControl.Resources>
-        <turnConverter:TurnToFillConverter x:Key="TurnToFillConv"/>
+        <TurnConverter:TurnToFillConverter x:Key="TurnToFillConv"/>
     </UserControl.Resources>
     
     <Grid>
