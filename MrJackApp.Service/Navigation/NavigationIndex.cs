@@ -7,5 +7,6 @@
         public const int WaitingForGame = 3;
         public const int RuleBook = 4;
         public const int Settings = 5;
+        public const int InputLogin = 6;
     }
 }

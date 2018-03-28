@@ -13,9 +13,9 @@ namespace MrJackApp.ViewModel.MainMenu
         public AboutViewModel AboutViewModel { get; } = new AboutViewModel();
         public List<MainMenuItemViewModel> Menus { get; } = new List<MainMenuItemViewModel>();
 
-        public MainMenuViewModel(INavigationService navigationService, IEffectController effectController, IAppService appService, ServiceClientManager serviceClientManager) : base(navigationService)
+        public MainMenuViewModel(INavigationService navigationService, IEffectController effectController, IAppService appService) : base(navigationService)
         {
-            Menus.Add(new QuickGameMenuItemViewModel(navigationService, effectController, serviceClientManager));
+            Menus.Add(new QuickGameMenuItemViewModel(navigationService, effectController));
             Menus.Add(new RuleBookMenuItemViewModel(navigationService, effectController));
             Menus.Add(new SettingsMenuItemViewModel(navigationService, effectController));
             Menus.Add(new QuitMenuItemViewModel(navigationService, effectController, appService));

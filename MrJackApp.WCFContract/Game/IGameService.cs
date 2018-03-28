@@ -12,7 +12,7 @@ namespace MrJackApp.WCFContract.Game
         void CloseSession();
 
         [OperationContract(IsInitiating = false, IsTerminating = false, IsOneWay = true)]
-        void LookingForQuickGame();
+        void LookingForQuickGame(string login);
 
         [OperationContract(IsInitiating = false, IsTerminating = false, IsOneWay = true)]
         void StopLookingForQuickGame();

@@ -1,13 +1,15 @@
 ﻿using MrJackApp.WCFContract.Game;
+using MrJackApp.WCFService.Game.Session;
 using System.Collections.Generic;
 using System.ServiceModel;
+using System.Linq;
 
 namespace MrJackApp.WCFService.Game
 {
     [ServiceBehavior(InstanceContextMode = InstanceContextMode.PerSession, ConcurrencyMode = ConcurrencyMode.Single)]
     public class GameService : IGameService
     {
-        private static List<string> _lfgSessionIds = new List<string>();
+        private static List<LfgSession> _lfgSessions = new List<LfgSession>();
         private static Dictionary<string, IGameServiceCallback> _callbacks = new Dictionary<string, IGameServiceCallback>();
         private static Dictionary<string, HostedGame> _hostedGames = new Dictionary<string, HostedGame>();
 
@@ -19,21 +21,21 @@ namespace MrJackApp.WCFService.Game
                 _callbacks.Remove(sessionId);
         }
 
-        public void LookingForQuickGame()
+        public void LookingForQuickGame(string login)
         {
-            lock (_lfgSessionIds)
+            lock (_lfgSessions)
             {
-                var player1SessionId = OperationContext.Current.SessionId;
-                if (_lfgSessionIds.Count == 0)
-                    _lfgSessionIds.Add(player1SessionId);
+                var player1Session = new LfgSession { SessionId = OperationContext.Current.SessionId, Login = login };
+                if (_lfgSessions.Count == 0)
+                    _lfgSessions.Add(player1Session);
                 else
                 {
-                    string player2SessionId;
+                    LfgSession player2Session;
                     lock (_hostedGames)
                     {
-                        player2SessionId = _lfgSessionIds[0];
-                        var result = HostedGame.CreateFromPlayerIds(player1SessionId, player2SessionId);
-                        _lfgSessionIds.RemoveAt(0);
+                        player2Session = _lfgSessions[0];
+                        var result = HostedGame.Create(player1Session, player2Session);
+                        _lfgSessions.RemoveAt(0);
 
                         foreach (var value in result)
                             _hostedGames.Add(value.Key, value.Value);
@@ -41,8 +43,8 @@ namespace MrJackApp.WCFService.Game
 
                     lock (_callbacks)
                     {
-                        _callbacks[player1SessionId].BroadcastGame(_hostedGames[player1SessionId].GetDTO());
-                        _callbacks[player2SessionId].BroadcastGame(_hostedGames[player2SessionId].GetDTO());
+                        _callbacks[player1Session.SessionId].BroadcastGame(_hostedGames[player1Session.SessionId].GetDTO());
+                        _callbacks[player2Session.SessionId].BroadcastGame(_hostedGames[player2Session.SessionId].GetDTO());
                     }
                 }
             }
@@ -61,8 +63,8 @@ namespace MrJackApp.WCFService.Game
         {
             var sessionId = OperationContext.Current.SessionId;
 
-            lock (_lfgSessionIds)
-                _lfgSessionIds.Remove(sessionId);
+            lock (_lfgSessions)
+                _lfgSessions.Remove(_lfgSessions.First(item => item.SessionId == sessionId));
 
             lock (_hostedGames)
                 _hostedGames.Remove(sessionId);

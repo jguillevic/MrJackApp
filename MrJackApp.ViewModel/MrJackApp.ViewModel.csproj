@@ -79,6 +79,7 @@
     <Compile Include="Game\Board\Turn\TurnSchedulerViewModel.cs" />
     <Compile Include="Game\Board\Turn\TurnViewModel.cs" />
     <Compile Include="Game\Board\Visibility\VisibilityManagerViewModel.cs" />
+    <Compile Include="Login\InputLoginViewModel.cs" />
     <Compile Include="MainMenu\MainMenuItemViewModel.cs" />
     <Compile Include="MainMenu\MainMenuViewModel.cs" />
     <Compile Include="MainMenu\QuickGameMenuItemViewModel.cs" />

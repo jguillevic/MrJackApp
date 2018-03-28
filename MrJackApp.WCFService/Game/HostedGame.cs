@@ -2,6 +2,7 @@
 using MrJackApp.WCFService.Game.Player;
 using System.Collections.Generic;
 using System;
+using MrJackApp.WCFService.Game.Session;
 
 namespace MrJackApp.WCFService.Game
 {
@@ -10,9 +11,9 @@ namespace MrJackApp.WCFService.Game
         private Player.Player _player;
         private Engine.Game.Game _game;
 
-        public HostedGame(PlayerKind kind, Engine.Game.Game game)
+        public HostedGame(PlayerKind kind, string login, Engine.Game.Game game)
         {
-            _player = new Player.Player(kind);
+            _player = new Player.Player(kind, login);
             _game = game;
         }
 
@@ -26,7 +27,7 @@ namespace MrJackApp.WCFService.Game
             return game;
         }
 
-        public static Dictionary<string, HostedGame> CreateFromPlayerIds(string player1Id, string player2Id)
+        public static Dictionary<string, HostedGame> Create(LfgSession session1, LfgSession session2)
         {
             var result = new Dictionary<string, HostedGame>();
 
@@ -37,13 +38,13 @@ namespace MrJackApp.WCFService.Game
 
             if (isFirstPlayerJack)
             {
-                result.Add(player1Id, new HostedGame(PlayerKind.Jack, game));
-                result.Add(player2Id, new HostedGame(PlayerKind.Inspector, game));
+                result.Add(session1.SessionId, new HostedGame(PlayerKind.Jack, session1.Login, game));
+                result.Add(session2.SessionId, new HostedGame(PlayerKind.Inspector, session2.Login, game));
             }
             else
             {
-                result.Add(player2Id, new HostedGame(PlayerKind.Jack, game));
-                result.Add(player1Id, new HostedGame(PlayerKind.Inspector, game));
+                result.Add(session2.SessionId, new HostedGame(PlayerKind.Jack, session2.Login, game));
+                result.Add(session1.SessionId, new HostedGame(PlayerKind.Inspector, session1.Login, game));
             }
 
             return result;

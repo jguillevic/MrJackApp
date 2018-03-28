@@ -11,7 +11,9 @@
                     xmlns:RuleBookView="clr-namespace:MrJackApp.View.RuleBook"
                     xmlns:RuleBookViewModel="clr-namespace:MrJackApp.ViewModel.RuleBook;assembly=MrJackApp.ViewModel"
                     xmlns:SettingView="clr-namespace:MrJackApp.View.Setting"
-                    xmlns:SettingViewModel="clr-namespace:MrJackApp.ViewModel.Setting;assembly=MrJackApp.ViewModel">
+                    xmlns:SettingViewModel="clr-namespace:MrJackApp.ViewModel.Setting;assembly=MrJackApp.ViewModel"
+                    xmlns:LoginView="clr-namespace:MrJackApp.View.Login"
+                    xmlns:LoginViewModel="clr-namespace:MrJackApp.ViewModel.Login;assembly=MrJackApp.ViewModel">
 
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="pack://application:,,,/MrJackApp.View;component/Common/ResDic/CommonResDic.xaml"/>
@@ -34,6 +36,9 @@
     </DataTemplate>
     <DataTemplate DataType="{x:Type SettingViewModel:SettingsViewModel}">
         <SettingView:SettingsView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type LoginViewModel:InputLoginViewModel}">
+        <LoginView:InputLoginView/>
     </DataTemplate>
 
     <BitmapImage x:Key="AppBackground" UriSource="pack://application:,,,/MrJackApp.Resource;component/Image/Background/AppBackground.jpg"/>

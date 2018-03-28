@@ -7,5 +7,7 @@ namespace MrJackApp.DTO.Game.Player
     {
         [DataMember]
         public PlayerKind Kind { get; set; }
+        [DataMember]
+        public string Login { get; set; }
     }
 }

@@ -45,6 +45,7 @@
     <Compile Include="Game\HostedGame.cs" />
     <Compile Include="Game\Player\Player.cs" />
     <Compile Include="Game\Player\PlayerKind.cs" />
+    <Compile Include="Game\Session\LfgSession.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

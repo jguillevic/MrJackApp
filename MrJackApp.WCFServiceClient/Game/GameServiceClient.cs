@@ -24,9 +24,9 @@ namespace MrJackApp.WCFServiceClient.Game
             _service.CloseSession();
         }
 
-        public void LookingForQuickGame()
+        public void LookingForQuickGame(string login)
         {
-            _service.LookingForQuickGame();
+            _service.LookingForQuickGame(login);
         }
 
         public void OpenSession()

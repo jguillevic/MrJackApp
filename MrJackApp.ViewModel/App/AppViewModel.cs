@@ -3,6 +3,7 @@ using MrJackApp.Service.App;
 using MrJackApp.Service.Navigation;
 using MrJackApp.ViewModel.Common;
 using MrJackApp.ViewModel.Game.Board;
+using MrJackApp.ViewModel.Login;
 using MrJackApp.ViewModel.MainMenu;
 using MrJackApp.ViewModel.RuleBook;
 using MrJackApp.ViewModel.Setting;
@@ -69,7 +70,7 @@ namespace MrJackApp.ViewModel.App
             switch (index)
             {
                 case NavigationIndex.MainMenu:
-                    CurrentViewModel = new MainMenuViewModel(this, EffectPlayerViewModel, _appService, _serviceClientManager);
+                    CurrentViewModel = new MainMenuViewModel(this, EffectPlayerViewModel, _appService);
                     break;
                 case NavigationIndex.WaitingForGame:
                     CurrentViewModel = new WaitingForGameViewModel(this, EffectPlayerViewModel, _serviceClientManager);
@@ -82,6 +83,9 @@ namespace MrJackApp.ViewModel.App
                     break;
                 case NavigationIndex.Settings:
                     CurrentViewModel = new SettingsViewModel(this, MusicPlayerViewModel, EffectPlayerViewModel);
+                    break;
+                case NavigationIndex.InputLogin:
+                    CurrentViewModel = new InputLoginViewModel(this, EffectPlayerViewModel, _serviceClientManager);
                     break;
                 default:
                     throw new NotImplementedException();

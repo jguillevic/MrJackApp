@@ -113,6 +113,9 @@
     <Compile Include="Game\Board\Turn\TurnView.xaml.cs">
       <DependentUpon>TurnView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Login\InputLoginView.xaml.cs">
+      <DependentUpon>InputLoginView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MainMenu\MainMenuItemView.xaml.cs">
       <DependentUpon>MainMenuItemView.xaml</DependentUpon>
     </Compile>
@@ -248,6 +251,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Game\Board\Turn\TurnView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Login\InputLoginView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
