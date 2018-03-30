@@ -13,12 +13,39 @@
         <Setter Property="FontSize" Value="40"/>
     </Style>
 
+    <Style x:Key="VeryBigTitleTextStyle" TargetType="TextBlock" BasedOn="{StaticResource TextStyle}">
+        <Setter Property="FontSize" Value="80"/>
+    </Style>
+    
     <Style x:Key="SubTitleTextStyle" TargetType="TextBlock" BasedOn="{StaticResource TextStyle}">
         <Setter Property="FontSize" Value="120"/>
     </Style>
     
     <Style x:Key="TitleTextStyle" TargetType="TextBlock" BasedOn="{StaticResource TextStyle}">
         <Setter Property="FontSize" Value="200"/>
+    </Style>
+
+    <Style x:Key="TextBoxStyle" TargetType="TextBox">
+        <Setter Property="Background">
+            <Setter.Value>
+                <SolidColorBrush Color="Black" Opacity="0.5"/>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="FontFamily" Value="pack://application:,,,/MrJackApp.Resource;component/Font/OldLondon.ttf#Old London"/>
+        <Setter Property="FontSize" Value="24"/>
+        <Setter Property="BorderThickness" Value="2"/>
+        <Setter Property="BorderBrush" Value="DarkGray"/>
+        <Setter Property="Padding" Value="10"/>
+        <Setter Property="TextAlignment" Value="Center"/>
+    </Style>
+
+    <Style x:Key="BigTextBoxStyle" TargetType="TextBox" BasedOn="{StaticResource TextBoxStyle}">
+        <Setter Property="FontSize" Value="40"/>
+    </Style>
+
+    <Style x:Key="VeryBigTextBoxStyle" TargetType="TextBox" BasedOn="{StaticResource TextBoxStyle}">
+        <Setter Property="FontSize" Value="80"/>
     </Style>
 
 </ResourceDictionary>

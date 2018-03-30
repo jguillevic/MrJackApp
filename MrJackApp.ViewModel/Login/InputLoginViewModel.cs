@@ -21,6 +21,7 @@ namespace MrJackApp.ViewModel.Login
         public IEffectController EffectController { get; private set; }
 
         public ICommand ValidateLoginCommand { get; private set; }
+        public ICommand CancelCommand { get; private set; }
 
         public InputLoginViewModel(INavigationService navigationService, IEffectController effectController, ServiceClientManager serviceClientManager) : base(navigationService)
         {
@@ -29,6 +30,7 @@ namespace MrJackApp.ViewModel.Login
             EffectController = effectController;
 
             ValidateLoginCommand = new DelegateCommand(ValidateLoginCommandExecute);
+            CancelCommand = new DelegateCommand(CancelCommandExecute);
         }
 
         private void ValidateLoginCommandExecute()
@@ -44,6 +46,11 @@ namespace MrJackApp.ViewModel.Login
         private bool ValidateLogin()
         {
             return !string.IsNullOrWhiteSpace(Login);
+        }
+
+        private void CancelCommandExecute()
+        {
+            GoBack();
         }
     }
 }

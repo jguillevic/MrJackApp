@@ -16,13 +16,14 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <StackPanel Grid.Row="0" Orientation="Vertical">
-            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Bottom" Text="Saisissez votre login" Margin="50 0 50 5" Style="{StaticResource BigTextStyle}"/>
-            <TextBox HorizontalAlignment="Stretch" VerticalAlignment="Top" Text="{Binding Login}" Margin="50 5 50 0" Height="50"/>
+        <StackPanel Grid.Row="0" Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
+            <TextBlock Text="Saisissez votre login" Margin="50 0 50 5" Style="{StaticResource VeryBigTitleTextStyle}"/>
+            <TextBox Text="{Binding Path=Login, UpdateSourceTrigger=PropertyChanged}" Width="450" Style="{StaticResource BigTextBoxStyle}"/>
         </StackPanel>
 
         <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="0 20 0 20" HorizontalAlignment="Center">
             <Button:MenuButton Width="150" Height="50" Text="Ok" Command="{Binding ValidateLoginCommand}" EffectController="{Binding EffectController}"/>
+            <Button:MenuButton Width="150" Height="50" Text="Annuler" Command="{Binding CancelCommand}" EffectController="{Binding EffectController}" Margin="10 0 0 0"/>
         </StackPanel>
     </Grid>
 </UserControl>
